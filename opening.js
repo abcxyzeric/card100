@@ -543,7 +543,10 @@ JSON.stringify(playerOriginConfig(payload),null,2),
 '',
 opening.detail,
 '',
-'Vui lòng triển khai cốt truyện đến thời điểm cần người chơi phản hồi. Nội dung chính không dưới 1500 chữ.'
+'【YÊU CẦU ĐỊNH DẠNG BẮT BUỘC】',
+'- BẮT BUỘC viết toàn bộ nội dung diễn biến câu chuyện / chính văn mở đầu nằm bên trong cặp thẻ <now_plot>...</now_plot> (tối thiểu 1500 chữ). Tuyệt đối không được bỏ sót cặp thẻ <now_plot>...</now_plot>!',
+'- Khối cập nhật biến số <update>...</update> bắt buộc phải đặt ở CUỐI CÙNG, sau khi đã viết xong và đóng thẻ </now_plot>. Tuyệt đối KHÔNG ĐƯỢC chỉ xuất khối <update> mà bỏ qua phần chính văn <now_plot>!',
+'- Vui lòng triển khai cốt truyện sống động đến thời điểm cần người chơi phản hồi.'
 ].join('\n')}
 function sendMessageToChat(message){try{var doc=document;if(window.parent&&window.parent!==window){try{doc=window.parent.document}catch(_){}}var area=doc.getElementById('send_textarea'),button=doc.getElementById('send_but');if(!area||!button)return false;area.value=message;area.dispatchEvent(new Event('input',{bubbles:true}));area.dispatchEvent(new Event('change',{bubbles:true}));button.click();return true}catch(_){return false}}
 function finish(){const payload=openingPayload();payload.startMessage=buildStartMessage(payload);if(window.parent!==window)parent.postMessage({channel:'linjiang-opening',kind:'event',type:'commitPreview',payload},'*');else sendMessageToChat(payload.startMessage);navigator.clipboard?.writeText(payload.startMessage).catch(()=>{});console.log('[Cấu hình mở đầu Lâm Giang]',payload);toast('Đã gửi cấu hình mở đầu, cuộc sống tại Lâm Giang sắp bắt đầu')}

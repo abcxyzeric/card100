@@ -1,0 +1,1069 @@
+{
+  "version": 2,
+  "currency": {
+    "id": "arcade-token",
+    "name": "Xu trò chơi",
+    "icon": "token-chip.svg"
+  },
+  "pricing": {
+    "baseNonConsumable": {
+      "D": 16,
+      "C": 36,
+      "B": 80,
+      "A": 180,
+      "S": 720
+    },
+    "consumableRule": "Giá vật phẩm tiêu hao cùng cấp bằng một nửa giá vật phẩm không tiêu hao tương ứng",
+    "lateGame": "S??????????????????????????????????????????S??????????1.5?2.5????",
+    "discount": "??????????????25%"
+  },
+  "products": [
+    {
+      "id": "item-01",
+      "name": "Ứng dụng thôi miên",
+      "grade": "S",
+      "storageBucket": "消耗品",
+      "category": "Thuốc",
+      "price": 135,
+      "rarity": "Cấp S",
+      "icon": "../assets/items/consumable-medicine.png",
+      "description": "Nhập một mệnh lệnh vào giao diện điện thoại như \"không mặc nội y là chuyện bình thường\", \"phát tình mọi lúc mọi nơi là hợp pháp\", trong vòng 30 phút sẽ cưỡng chế ghi đè nhận thức não bộ của nữ giới được chỉ định, khiến cô ấy ngoan ngoãn chiều chuộng không chút e thẹn. Sau khi hiệu lực kết thúc, đối phương sẽ hoàn toàn mất sạch mọi ký ức bất thường trong 30 phút này.",
+      "effect": "Nhập một mệnh lệnh vào giao diện điện thoại như \"không mặc nội y là chuyện bình thường\", \"phát tình mọi lúc mọi nơi là hợp pháp\", trong vòng 30 phút sẽ cưỡng chế ghi đè nhận thức não bộ của nữ giới được chỉ định, khiến cô ấy ngoan ngoãn chiều chuộng không chút e thẹn. Sau khi hiệu lực kết thúc, đối phương sẽ hoàn toàn mất sạch mọi ký ức bất thường trong 30 phút này.",
+      "unlock": {
+        "minGames": 3,
+        "minAdvanced": 2
+      },
+      "goods": {
+        "名称": "Ứng dụng thôi miên",
+        "Tên": "Ứng dụng thôi miên",
+        "类别": "Thuốc",
+        "Phân loại": "Thuốc",
+        "数量": 1,
+        "Số lượng": 1,
+        "强度": 5,
+        "Cường độ": 5,
+        "描述": "Nhập một mệnh lệnh vào giao diện điện thoại như \"không mặc nội y là chuyện bình thường\", \"phát tình mọi lúc mọi nơi là hợp pháp\", trong vòng 30 phút sẽ cưỡng chế ghi đè nhận thức não bộ của nữ giới được chỉ định, khiến cô ấy ngoan ngoãn chiều chuộng không chút e thẹn. Sau khi hiệu lực kết thúc, đối phương sẽ hoàn toàn mất sạch mọi ký ức bất thường trong 30 phút này.",
+        "Mô tả": "Nhập một mệnh lệnh vào giao diện điện thoại như \"không mặc nội y là chuyện bình thường\", \"phát tình mọi lúc mọi nơi là hợp pháp\", trong vòng 30 phút sẽ cưỡng chế ghi đè nhận thức não bộ của nữ giới được chỉ định, khiến cô ấy ngoan ngoãn chiều chuộng không chút e thẹn. Sau khi hiệu lực kết thúc, đối phương sẽ hoàn toàn mất sạch mọi ký ức bất thường trong 30 phút này."
+      },
+      "referenceNonConsumablePrice": 135
+    },
+    {
+      "id": "item-02",
+      "name": "Hồng trà đặc chế",
+      "grade": "B",
+      "storageBucket": "消耗品",
+      "category": "Đồ uống",
+      "price": 29,
+      "rarity": "Cấp B",
+      "icon": "../assets/items/consumable-drink-2.png",
+      "description": "Chỉ dùng cho nam giới. Sau khi uống, thể lực bị khóa chặt ở mức tối đa 100 điểm, phớt lờ mọi mệt mỏi sinh lý, có thể ân ái liên tục ba ngày ba đêm không biết mệt. Tuy nhiên thể lực của nữ giới không được hưởng hiệu ứng này; nếu cưỡng ép hoan lạc suốt ngày đêm, đối phương cuối cùng sẽ vì phải chịu đựng chuỗi cực khoái vượt xa giới hạn mà rơi vào trạng thái mất thần, hai chân mềm nhũn không thể khép lại, bụng dưới tràn ngập tinh dịch ấm nóng, vừa khóc vừa chảy nước dãi ngã quỵ trên giường.",
+      "effect": "Chỉ dùng cho nam giới. Sau khi uống, thể lực bị khóa chặt ở mức tối đa 100 điểm, phớt lờ mọi mệt mỏi sinh lý, có thể ân ái liên tục ba ngày ba đêm không biết mệt. Tuy nhiên thể lực của nữ giới không được hưởng hiệu ứng này; nếu cưỡng ép hoan lạc suốt ngày đêm, đối phương cuối cùng sẽ vì phải chịu đựng chuỗi cực khoái vượt xa giới hạn mà rơi vào trạng thái mất thần, hai chân mềm nhũn không thể khép lại, bụng dưới tràn ngập tinh dịch ấm nóng, vừa khóc vừa chảy nước dãi ngã quỵ trên giường.",
+      "unlock": {
+        "minGames": 2,
+        "minAdvanced": 0
+      },
+      "goods": {
+        "名称": "Hồng trà đặc chế",
+        "Tên": "Hồng trà đặc chế",
+        "类别": "Đồ uống",
+        "Phân loại": "Đồ uống",
+        "数量": 1,
+        "Số lượng": 1,
+        "强度": 3,
+        "Cường độ": 3,
+        "描述": "Chỉ dùng cho nam giới. Sau khi uống, thể lực bị khóa chặt ở mức tối đa 100 điểm, phớt lờ mọi mệt mỏi sinh lý, có thể ân ái liên tục ba ngày ba đêm không biết mệt. Tuy nhiên thể lực của nữ giới không được hưởng hiệu ứng này; nếu cưỡng ép hoan lạc suốt ngày đêm, đối phương cuối cùng sẽ vì phải chịu đựng chuỗi cực khoái vượt xa giới hạn mà rơi vào trạng thái mất thần, hai chân mềm nhũn không thể khép lại, bụng dưới tràn ngập tinh dịch ấm nóng, vừa khóc vừa chảy nước dãi ngã quỵ trên giường.",
+        "Mô tả": "Chỉ dùng cho nam giới. Sau khi uống, thể lực bị khóa chặt ở mức tối đa 100 điểm, phớt lờ mọi mệt mỏi sinh lý, có thể ân ái liên tục ba ngày ba đêm không biết mệt. Tuy nhiên thể lực của nữ giới không được hưởng hiệu ứng này; nếu cưỡng ép hoan lạc suốt ngày đêm, đối phương cuối cùng sẽ vì phải chịu đựng chuỗi cực khoái vượt xa giới hạn mà rơi vào trạng thái mất thần, hai chân mềm nhũn không thể khép lại, bụng dưới tràn ngập tinh dịch ấm nóng, vừa khóc vừa chảy nước dãi ngã quỵ trên giường."
+      },
+      "referenceNonConsumablePrice": 29
+    },
+    {
+      "id": "item-03",
+      "name": "Bột thảo dược dâm mỹ",
+      "grade": "B",
+      "storageBucket": "消耗品",
+      "category": "Thuốc",
+      "price": 36,
+      "rarity": "Cấp B",
+      "icon": "../assets/items/consumable-medicine-3.png",
+      "description": "Chỉ dùng cho nữ giới, và độ thuận tùng hiện tại của đối tượng phải trên 600. Sau khi uống, thể lực và dục vọng của đối phương sẽ đồng thời khóa chặt ở mức tối đa và không bao giờ giảm bớt. Bình thường người phụ nữ dù có đoan trang kiềm chế đến đâu cũng sẽ lập tức biến thành dã thú phát tình bị tử cung chi phối, tính chủ động trong tình dục được cường hóa tột độ. Cô ấy sẽ dùng mọi thủ đoạn ép nam giới xuất tinh liên tục nhiều ngày nhiều đêm, bám chặt lấy bạn không rời một bước, ăn cơm ngủ nghỉ đều duy trì trạng thái cắm sâu, chỉ khi đi vệ sinh mới miễn cưỡng tách ra, dù dâm dịch ướt đẫm ga giường cũng sẽ ép bạn bắn trọn tinh dịch vào sâu bên trong.",
+      "effect": "Chỉ dùng cho nữ giới, và độ thuận tùng hiện tại của đối tượng phải trên 600. Sau khi uống, thể lực và dục vọng của đối phương sẽ đồng thời khóa chặt ở mức tối đa và không bao giờ giảm bớt. Bình thường người phụ nữ dù có đoan trang kiềm chế đến đâu cũng sẽ lập tức biến thành dã thú phát tình bị tử cung chi phối, tính chủ động trong tình dục được cường hóa tột độ. Cô ấy sẽ dùng mọi thủ đoạn ép nam giới xuất tinh liên tục nhiều ngày nhiều đêm, bám chặt lấy bạn không rời một bước, ăn cơm ngủ nghỉ đều duy trì trạng thái cắm sâu, chỉ khi đi vệ sinh mới miễn cưỡng tách ra, dù dâm dịch ướt đẫm ga giường cũng sẽ ép bạn bắn trọn tinh dịch vào sâu bên trong.",
+      "unlock": {
+        "minGames": 2,
+        "minAdvanced": 0
+      },
+      "goods": {
+        "名称": "Bột thảo dược dâm mỹ",
+        "Tên": "Bột thảo dược dâm mỹ",
+        "类别": "Thuốc",
+        "Phân loại": "Thuốc",
+        "数量": 1,
+        "Số lượng": 1,
+        "强度": 3,
+        "Cường độ": 3,
+        "描述": "Chỉ dùng cho nữ giới, và độ thuận tùng hiện tại của đối tượng phải trên 600. Sau khi uống, thể lực và dục vọng của đối phương sẽ đồng thời khóa chặt ở mức tối đa và không bao giờ giảm bớt. Bình thường người phụ nữ dù có đoan trang kiềm chế đến đâu cũng sẽ lập tức biến thành dã thú phát tình bị tử cung chi phối, tính chủ động trong tình dục được cường hóa tột độ. Cô ấy sẽ dùng mọi thủ đoạn ép nam giới xuất tinh liên tục nhiều ngày nhiều đêm, bám chặt lấy bạn không rời một bước, ăn cơm ngủ nghỉ đều duy trì trạng thái cắm sâu, chỉ khi đi vệ sinh mới miễn cưỡng tách ra, dù dâm dịch ướt đẫm ga giường cũng sẽ ép bạn bắn trọn tinh dịch vào sâu bên trong.",
+        "Mô tả": "Chỉ dùng cho nữ giới, và độ thuận tùng hiện tại của đối tượng phải trên 600. Sau khi uống, thể lực và dục vọng của đối phương sẽ đồng thời khóa chặt ở mức tối đa và không bao giờ giảm bớt. Bình thường người phụ nữ dù có đoan trang kiềm chế đến đâu cũng sẽ lập tức biến thành dã thú phát tình bị tử cung chi phối, tính chủ động trong tình dục được cường hóa tột độ. Cô ấy sẽ dùng mọi thủ đoạn ép nam giới xuất tinh liên tục nhiều ngày nhiều đêm, bám chặt lấy bạn không rời một bước, ăn cơm ngủ nghỉ đều duy trì trạng thái cắm sâu, chỉ khi đi vệ sinh mới miễn cưỡng tách ra, dù dâm dịch ướt đẫm ga giường cũng sẽ ép bạn bắn trọn tinh dịch vào sâu bên trong."
+      },
+      "referenceNonConsumablePrice": 36
+    },
+    {
+      "id": "item-04",
+      "name": "Chất nhầy axit Slime cực mạnh",
+      "grade": "B",
+      "storageBucket": "消耗品",
+      "category": "Thuốc",
+      "price": 33,
+      "rarity": "Cấp B",
+      "icon": "../assets/items/consumable-medicine.png",
+      "description": "Chất lỏng nhớt tỏa ánh sáng xanh huỳnh quang, sau khi ném trúng mục tiêu sẽ phát ra tiếng ăn mòn xèo xèo, áo ngoài lẫn đồ lót trên người lập tức biến thành những dải vải rách nửa trong suốt dính chặt vào cơ thể. Thuốc tuyệt đối không làm tổn thương da thịt con người, nhưng sẽ bám chặt khiến làn da trở nên cực kỳ nhạy cảm. Dược lực kéo dài 24 giờ, và chất nhầy liên tục bám trên da sẽ làm tan chảy mọi vải vóc che chắn, đồng nghĩa với việc nhân vật nữ sẽ bị cưỡng chế duy trì trạng thái hoàn toàn khỏa thân trong suốt thời gian hiệu lực.",
+      "effect": "Chất lỏng nhớt tỏa ánh sáng xanh huỳnh quang, sau khi ném trúng mục tiêu sẽ phát ra tiếng ăn mòn xèo xèo, áo ngoài lẫn đồ lót trên người lập tức biến thành những dải vải rách nửa trong suốt dính chặt vào cơ thể. Thuốc tuyệt đối không làm tổn thương da thịt con người, nhưng sẽ bám chặt khiến làn da trở nên cực kỳ nhạy cảm. Dược lực kéo dài 24 giờ, và chất nhầy liên tục bám trên da sẽ làm tan chảy mọi vải vóc che chắn, đồng nghĩa với việc nhân vật nữ sẽ bị cưỡng chế duy trì trạng thái hoàn toàn khỏa thân trong suốt thời gian hiệu lực.",
+      "unlock": {
+        "minGames": 2,
+        "minAdvanced": 0
+      },
+      "goods": {
+        "名称": "Chất nhầy axit Slime cực mạnh",
+        "Tên": "Chất nhầy axit Slime cực mạnh",
+        "类别": "Thuốc",
+        "Phân loại": "Thuốc",
+        "数量": 1,
+        "Số lượng": 1,
+        "强度": 3,
+        "Cường độ": 3,
+        "描述": "Chất lỏng nhớt tỏa ánh sáng xanh huỳnh quang, sau khi ném trúng mục tiêu sẽ phát ra tiếng ăn mòn xèo xèo, áo ngoài lẫn đồ lót trên người lập tức biến thành những dải vải rách nửa trong suốt dính chặt vào cơ thể. Thuốc tuyệt đối không làm tổn thương da thịt con người, nhưng sẽ bám chặt khiến làn da trở nên cực kỳ nhạy cảm. Dược lực kéo dài 24 giờ, và chất nhầy liên tục bám trên da sẽ làm tan chảy mọi vải vóc che chắn, đồng nghĩa với việc nhân vật nữ sẽ bị cưỡng chế duy trì trạng thái hoàn toàn khỏa thân trong suốt thời gian hiệu lực.",
+        "Mô tả": "Chất lỏng nhớt tỏa ánh sáng xanh huỳnh quang, sau khi ném trúng mục tiêu sẽ phát ra tiếng ăn mòn xèo xèo, áo ngoài lẫn đồ lót trên người lập tức biến thành những dải vải rách nửa trong suốt dính chặt vào cơ thể. Thuốc tuyệt đối không làm tổn thương da thịt con người, nhưng sẽ bám chặt khiến làn da trở nên cực kỳ nhạy cảm. Dược lực kéo dài 24 giờ, và chất nhầy liên tục bám trên da sẽ làm tan chảy mọi vải vóc che chắn, đồng nghĩa với việc nhân vật nữ sẽ bị cưỡng chế duy trì trạng thái hoàn toàn khỏa thân trong suốt thời gian hiệu lực."
+      },
+      "referenceNonConsumablePrice": 33
+    },
+    {
+      "id": "item-05",
+      "name": "Trứng rung siêu chiều không gian",
+      "grade": "A",
+      "storageBucket": "用品",
+      "category": "Dụng cụ",
+      "price": 165,
+      "rarity": "Cấp A",
+      "icon": "../assets/items/goods-implement-2.png",
+      "description": "Trứng rung tình thú phớt lờ khoảng cách vật lý. Sau khi kích hoạt chỉ cần khóa mục tiêu trong tâm trí, quả trứng rung sẽ trực tiếp xuất hiện ngay bên trong tiểu huyệt của đối phương. Tuy nhiên nó là thực thể, nếu đối tượng không tình nguyện, cô ấy hoàn toàn có thể thò tay vào váy móc ra và tịch thu.",
+      "effect": "Trứng rung tình thú phớt lờ khoảng cách vật lý. Sau khi kích hoạt chỉ cần khóa mục tiêu trong tâm trí, quả trứng rung sẽ trực tiếp xuất hiện ngay bên trong tiểu huyệt của đối phương. Tuy nhiên nó là thực thể, nếu đối tượng không tình nguyện, cô ấy hoàn toàn có thể thò tay vào váy móc ra và tịch thu.",
+      "unlock": {
+        "minGames": 3,
+        "minAdvanced": 1
+      },
+      "goods": {
+        "名称": "Trứng rung siêu chiều không gian",
+        "Tên": "Trứng rung siêu chiều không gian",
+        "类别": "Dụng cụ",
+        "Phân loại": "Dụng cụ",
+        "数量": 1,
+        "Số lượng": 1,
+        "强度": 1,
+        "Cường độ": 1,
+        "描述": "Trứng rung tình thú phớt lờ khoảng cách vật lý. Sau khi kích hoạt chỉ cần khóa mục tiêu trong tâm trí, quả trứng rung sẽ trực tiếp xuất hiện ngay bên trong tiểu huyệt của đối phương. Tuy nhiên nó là thực thể, nếu đối tượng không tình nguyện, cô ấy hoàn toàn có thể thò tay vào váy móc ra và tịch thu.",
+        "Mô tả": "Trứng rung tình thú phớt lờ khoảng cách vật lý. Sau khi kích hoạt chỉ cần khóa mục tiêu trong tâm trí, quả trứng rung sẽ trực tiếp xuất hiện ngay bên trong tiểu huyệt của đối phương. Tuy nhiên nó là thực thể, nếu đối tượng không tình nguyện, cô ấy hoàn toàn có thể thò tay vào váy móc ra và tịch thu.",
+        "佩戴": false,
+        "Đang đeo": false
+      },
+      "referenceNonConsumablePrice": 165
+    },
+    {
+      "id": "item-06",
+      "name": "Gấu bông chớp đèn đỏ",
+      "grade": "C",
+      "storageBucket": "用品",
+      "category": "Dụng cụ",
+      "price": 26,
+      "rarity": "Cấp C",
+      "icon": "../assets/items/goods-implement-3.png",
+      "description": "Gấu nhồi bông tinh xảo, mắt khảm cảm biến và đèn báo màu đỏ. Đặt trong phòng có thể bí mật ghi lại toàn bộ hình ảnh đời thường riêng tư của streamer và tự động tạo ra một đoạn video ngắn sống động.",
+      "effect": "Gấu nhồi bông tinh xảo, mắt khảm cảm biến và đèn báo màu đỏ. Đặt trong phòng có thể bí mật ghi lại toàn bộ hình ảnh đời thường riêng tư của streamer và tự động tạo ra một đoạn video ngắn sống động.",
+      "unlock": {
+        "minGames": 1,
+        "minAdvanced": 0
+      },
+      "goods": {
+        "名称": "Gấu bông chớp đèn đỏ",
+        "Tên": "Gấu bông chớp đèn đỏ",
+        "类别": "Dụng cụ",
+        "Phân loại": "Dụng cụ",
+        "数量": 1,
+        "Số lượng": 1,
+        "强度": 1,
+        "Cường độ": 1,
+        "描述": "Gấu nhồi bông tinh xảo, mắt khảm cảm biến và đèn báo màu đỏ. Đặt trong phòng có thể bí mật ghi lại toàn bộ hình ảnh đời thường riêng tư của streamer và tự động tạo ra một đoạn video ngắn sống động.",
+        "Mô tả": "Gấu nhồi bông tinh xảo, mắt khảm cảm biến và đèn báo màu đỏ. Đặt trong phòng có thể bí mật ghi lại toàn bộ hình ảnh đời thường riêng tư của streamer và tự động tạo ra một đoạn video ngắn sống động.",
+        "佩戴": false,
+        "Đang đeo": false
+      },
+      "referenceNonConsumablePrice": 26
+    },
+    {
+      "id": "item-07",
+      "name": "Đồ tập thể dục bó sát trói buộc",
+      "grade": "C",
+      "storageBucket": "用品",
+      "category": "Trang phục",
+      "price": 32,
+      "rarity": "Cấp C",
+      "icon": "../assets/items/goods-clothing.png",
+      "description": "Bộ đồ thể dục bó sát một mảnh bằng chất liệu co giãn công nghệ cao, ôm sát từng đường cong cơ thể. Khóa kéo phía sau được tích hợp khóa điện tử thông minh, một khi đã mặc vào và khóa lại thì đối phương không thể tự cởi ra, buộc phải để lộ toàn bộ đường nét gợi cảm và phục tùng người giữ chìa khóa.",
+      "effect": "Bộ đồ thể dục bó sát một mảnh bằng chất liệu co giãn công nghệ cao, ôm sát từng đường cong cơ thể. Khóa kéo phía sau được tích hợp khóa điện tử thông minh, một khi đã mặc vào và khóa lại thì đối phương không thể tự cởi ra, buộc phải để lộ toàn bộ đường nét gợi cảm và phục tùng người giữ chìa khóa.",
+      "unlock": {
+        "minGames": 1,
+        "minAdvanced": 0
+      },
+      "goods": {
+        "名称": "Đồ tập thể dục bó sát trói buộc",
+        "Tên": "Đồ tập thể dục bó sát trói buộc",
+        "类别": "Trang phục",
+        "Phân loại": "Trang phục",
+        "数量": 1,
+        "Số lượng": 1,
+        "强度": 1,
+        "Cường độ": 1,
+        "描述": "Bộ đồ thể dục bó sát một mảnh bằng chất liệu co giãn công nghệ cao, ôm sát từng đường cong cơ thể. Khóa kéo phía sau được tích hợp khóa điện tử thông minh, một khi đã mặc vào và khóa lại thì đối phương không thể tự cởi ra, buộc phải để lộ toàn bộ đường nét gợi cảm và phục tùng người giữ chìa khóa.",
+        "Mô tả": "Bộ đồ thể dục bó sát một mảnh bằng chất liệu co giãn công nghệ cao, ôm sát từng đường cong cơ thể. Khóa kéo phía sau được tích hợp khóa điện tử thông minh, một khi đã mặc vào và khóa lại thì đối phương không thể tự cởi ra, buộc phải để lộ toàn bộ đường nét gợi cảm và phục tùng người giữ chìa khóa.",
+        "佩戴": false,
+        "Đang đeo": false
+      },
+      "referenceNonConsumablePrice": 32
+    },
+    {
+      "id": "item-08",
+      "name": "Thuốc chân thật tình ái",
+      "grade": "C",
+      "storageBucket": "消耗品",
+      "category": "Thuốc",
+      "price": 14,
+      "rarity": "Cấp C",
+      "icon": "../assets/items/consumable-medicine-2.png",
+      "description": "Sau khi nhỏ vài giọt vào đồ uống của đối phương, trong vòng 2 giờ tiếp theo, khi được hỏi về các chủ đề tình dục, sở thích kín đáo hoặc cảm giác thể xác, đối phương sẽ không thể nói dối mà chỉ có thể thổ lộ toàn bộ tâm tư dâm đãng thầm kín nhất.",
+      "effect": "Sau khi nhỏ vài giọt vào đồ uống của đối phương, trong vòng 2 giờ tiếp theo, khi được hỏi về các chủ đề tình dục, sở thích kín đáo hoặc cảm giác thể xác, đối phương sẽ không thể nói dối mà chỉ có thể thổ lộ toàn bộ tâm tư dâm đãng thầm kín nhất.",
+      "unlock": {
+        "minGames": 1,
+        "minAdvanced": 0
+      },
+      "goods": {
+        "名称": "Thuốc chân thật tình ái",
+        "Tên": "Thuốc chân thật tình ái",
+        "类别": "Thuốc",
+        "Phân loại": "Thuốc",
+        "数量": 1,
+        "Số lượng": 1,
+        "强度": 2,
+        "Cường độ": 2,
+        "描述": "Sau khi nhỏ vài giọt vào đồ uống của đối phương, trong vòng 2 giờ tiếp theo, khi được hỏi về các chủ đề tình dục, sở thích kín đáo hoặc cảm giác thể xác, đối phương sẽ không thể nói dối mà chỉ có thể thổ lộ toàn bộ tâm tư dâm đãng thầm kín nhất.",
+        "Mô tả": "Sau khi nhỏ vài giọt vào đồ uống của đối phương, trong vòng 2 giờ tiếp theo, khi được hỏi về các chủ đề tình dục, sở thích kín đáo hoặc cảm giác thể xác, đối phương sẽ không thể nói dối mà chỉ có thể thổ lộ toàn bộ tâm tư dâm đãng thầm kín nhất."
+      },
+      "referenceNonConsumablePrice": 14
+    },
+    {
+      "id": "item-09",
+      "name": "Hạt giống Bắn ngô",
+      "grade": "A",
+      "storageBucket": "消耗品",
+      "category": "Đồ dùng hàng ngày",
+      "price": 83,
+      "rarity": "Cấp A",
+      "icon": "../assets/items/consumable-daily-3.png",
+      "description": "Gieo vào chậu cây trong nhà, chỉ sau vài phút sẽ nảy mầm thành một cây ngô ma thuật tí hon. Cứ mỗi 12 giờ nó sẽ bắn ra những hạt ngô bọc bơ ngọt ngào, ăn vào giúp hồi phục 40 điểm thể lực và giảm căng thẳng.",
+      "effect": "Gieo vào chậu cây trong nhà, chỉ sau vài phút sẽ nảy mầm thành một cây ngô ma thuật tí hon. Cứ mỗi 12 giờ nó sẽ bắn ra những hạt ngô bọc bơ ngọt ngào, ăn vào giúp hồi phục 40 điểm thể lực và giảm căng thẳng.",
+      "unlock": {
+        "minGames": 3,
+        "minAdvanced": 1
+      },
+      "goods": {
+        "名称": "Hạt giống Bắn ngô",
+        "Tên": "Hạt giống Bắn ngô",
+        "类别": "Đồ dùng hàng ngày",
+        "Phân loại": "Đồ dùng hàng ngày",
+        "数量": 1,
+        "Số lượng": 1,
+        "强度": 4,
+        "Cường độ": 4,
+        "描述": "Gieo vào chậu cây trong nhà, chỉ sau vài phút sẽ nảy mầm thành một cây ngô ma thuật tí hon. Cứ mỗi 12 giờ nó sẽ bắn ra những hạt ngô bọc bơ ngọt ngào, ăn vào giúp hồi phục 40 điểm thể lực và giảm căng thẳng.",
+        "Mô tả": "Gieo vào chậu cây trong nhà, chỉ sau vài phút sẽ nảy mầm thành một cây ngô ma thuật tí hon. Cứ mỗi 12 giờ nó sẽ bắn ra những hạt ngô bọc bơ ngọt ngào, ăn vào giúp hồi phục 40 điểm thể lực và giảm căng thẳng."
+      },
+      "referenceNonConsumablePrice": 83
+    },
+    {
+      "id": "item-10",
+      "name": "Đồng hồ bỏ túi cơ học tích tắc",
+      "grade": "S",
+      "storageBucket": "消耗品",
+      "category": "Đồ dùng hàng ngày",
+      "price": 158,
+      "rarity": "Cấp S",
+      "icon": "../assets/items/consumable-daily.png",
+      "description": "Chiếc đồng hồ bỏ túi bằng đồng cổ kính luôn phát ra tiếng tích tắc đều đặn. Khi nhấn nút trên cùng, thời gian xung quanh người dùng sẽ ngưng đọng trong 5 phút thực tế, cho phép tự do di chuyển và hành động mà không ai hay biết.",
+      "effect": "Chiếc đồng hồ bỏ túi bằng đồng cổ kính luôn phát ra tiếng tích tắc đều đặn. Khi nhấn nút trên cùng, thời gian xung quanh người dùng sẽ ngưng đọng trong 5 phút thực tế, cho phép tự do di chuyển và hành động mà không ai hay biết.",
+      "unlock": {
+        "minGames": 3,
+        "minAdvanced": 2
+      },
+      "goods": {
+        "名称": "Đồng hồ bỏ túi cơ học tích tắc",
+        "Tên": "Đồng hồ bỏ túi cơ học tích tắc",
+        "类别": "Đồ dùng hàng ngày",
+        "Phân loại": "Đồ dùng hàng ngày",
+        "数量": 1,
+        "Số lượng": 1,
+        "强度": 5,
+        "Cường độ": 5,
+        "描述": "Chiếc đồng hồ bỏ túi bằng đồng cổ kính luôn phát ra tiếng tích tắc đều đặn. Khi nhấn nút trên cùng, thời gian xung quanh người dùng sẽ ngưng đọng trong 5 phút thực tế, cho phép tự do di chuyển và hành động mà không ai hay biết.",
+        "Mô tả": "Chiếc đồng hồ bỏ túi bằng đồng cổ kính luôn phát ra tiếng tích tắc đều đặn. Khi nhấn nút trên cùng, thời gian xung quanh người dùng sẽ ngưng đọng trong 5 phút thực tế, cho phép tự do di chuyển và hành động mà không ai hay biết."
+      },
+      "referenceNonConsumablePrice": 158
+    },
+    {
+      "id": "item-11",
+      "name": "Kính gọng đen dày ngỡ như bình thường",
+      "grade": "B",
+      "storageBucket": "用品",
+      "category": "Thiết bị",
+      "price": 72,
+      "rarity": "Cấp B",
+      "icon": "../assets/items/goods-equipment-2.png",
+      "description": "Chiếc kính gọng đen trông có vẻ mộc mạc thư sinh, nhưng thực chất tích hợp thấu kính thấu thị đặc biệt. Khi đeo vào, có thể nhìn xuyên qua các lớp vải quần áo thông thường để quan sát nội y và đường nét cơ thể ẩn bên dưới.",
+      "effect": "Chiếc kính gọng đen trông có vẻ mộc mạc thư sinh, nhưng thực chất tích hợp thấu kính thấu thị đặc biệt. Khi đeo vào, có thể nhìn xuyên qua các lớp vải quần áo thông thường để quan sát nội y và đường nét cơ thể ẩn bên dưới.",
+      "unlock": {
+        "minGames": 2,
+        "minAdvanced": 0
+      },
+      "goods": {
+        "名称": "Kính gọng đen dày ngỡ như bình thường",
+        "Tên": "Kính gọng đen dày ngỡ như bình thường",
+        "类别": "Thiết bị",
+        "Phân loại": "Thiết bị",
+        "数量": 1,
+        "Số lượng": 1,
+        "强度": 1,
+        "Cường độ": 1,
+        "描述": "Chiếc kính gọng đen trông có vẻ mộc mạc thư sinh, nhưng thực chất tích hợp thấu kính thấu thị đặc biệt. Khi đeo vào, có thể nhìn xuyên qua các lớp vải quần áo thông thường để quan sát nội y và đường nét cơ thể ẩn bên dưới.",
+        "Mô tả": "Chiếc kính gọng đen trông có vẻ mộc mạc thư sinh, nhưng thực chất tích hợp thấu kính thấu thị đặc biệt. Khi đeo vào, có thể nhìn xuyên qua các lớp vải quần áo thông thường để quan sát nội y và đường nét cơ thể ẩn bên dưới.",
+        "佩戴": false,
+        "Đang đeo": false
+      },
+      "referenceNonConsumablePrice": 72
+    },
+    {
+      "id": "item-12",
+      "name": "Găng tay vô hình",
+      "grade": "A",
+      "storageBucket": "用品",
+      "category": "Thiết bị",
+      "price": 180,
+      "rarity": "Cấp A",
+      "icon": "../assets/items/goods-equipment-3.png",
+      "description": "Đôi găng tay mỏng nhẹ trong suốt như không khí. Khi đeo vào và vươn tay ra, có thể chạm, vuốt ve hoặc tác động lực lên mục tiêu ở khoảng cách lên tới 5 mét mà đối phương chỉ cảm nhận được cảm giác xúc giác kỳ lạ như có bàn tay ma vô hình đang mơn trớn.",
+      "effect": "Đôi găng tay mỏng nhẹ trong suốt như không khí. Khi đeo vào và vươn tay ra, có thể chạm, vuốt ve hoặc tác động lực lên mục tiêu ở khoảng cách lên tới 5 mét mà đối phương chỉ cảm nhận được cảm giác xúc giác kỳ lạ như có bàn tay ma vô hình đang mơn trớn.",
+      "unlock": {
+        "minGames": 3,
+        "minAdvanced": 1
+      },
+      "goods": {
+        "名称": "Găng tay vô hình",
+        "Tên": "Găng tay vô hình",
+        "类别": "Thiết bị",
+        "Phân loại": "Thiết bị",
+        "数量": 1,
+        "Số lượng": 1,
+        "强度": 1,
+        "Cường độ": 1,
+        "描述": "Đôi găng tay mỏng nhẹ trong suốt như không khí. Khi đeo vào và vươn tay ra, có thể chạm, vuốt ve hoặc tác động lực lên mục tiêu ở khoảng cách lên tới 5 mét mà đối phương chỉ cảm nhận được cảm giác xúc giác kỳ lạ như có bàn tay ma vô hình đang mơn trớn.",
+        "Mô tả": "Đôi găng tay mỏng nhẹ trong suốt như không khí. Khi đeo vào và vươn tay ra, có thể chạm, vuốt ve hoặc tác động lực lên mục tiêu ở khoảng cách lên tới 5 mét mà đối phương chỉ cảm nhận được cảm giác xúc giác kỳ lạ như có bàn tay ma vô hình đang mơn trớn.",
+        "佩戴": false,
+        "Đang đeo": false
+      },
+      "referenceNonConsumablePrice": 180
+    },
+    {
+      "id": "item-13",
+      "name": "Miếng dán chia sẻ cảm giác",
+      "grade": "B",
+      "storageBucket": "消耗品",
+      "category": "Thuốc",
+      "price": 30,
+      "rarity": "Cấp B",
+      "icon": "../assets/items/consumable-medicine.png",
+      "description": "Gồm hai miếng dán nano siêu mỏng. Dán một miếng lên cơ thể mình và một miếng lên người đối phương, mọi kích thích xúc giác, khoái cảm hoặc hưng phấn trên cơ thể người này sẽ được truyền dẫn nguyên vẹn sang hệ thần kinh của người kia theo thời gian thực.",
+      "effect": "Gồm hai miếng dán nano siêu mỏng. Dán một miếng lên cơ thể mình và một miếng lên người đối phương, mọi kích thích xúc giác, khoái cảm hoặc hưng phấn trên cơ thể người này sẽ được truyền dẫn nguyên vẹn sang hệ thần kinh của người kia theo thời gian thực.",
+      "unlock": {
+        "minGames": 2,
+        "minAdvanced": 0
+      },
+      "goods": {
+        "名称": "Miếng dán chia sẻ cảm giác",
+        "Tên": "Miếng dán chia sẻ cảm giác",
+        "类别": "Thuốc",
+        "Phân loại": "Thuốc",
+        "数量": 1,
+        "Số lượng": 1,
+        "强度": 3,
+        "Cường độ": 3,
+        "描述": "Gồm hai miếng dán nano siêu mỏng. Dán một miếng lên cơ thể mình và một miếng lên người đối phương, mọi kích thích xúc giác, khoái cảm hoặc hưng phấn trên cơ thể người này sẽ được truyền dẫn nguyên vẹn sang hệ thần kinh của người kia theo thời gian thực.",
+        "Mô tả": "Gồm hai miếng dán nano siêu mỏng. Dán một miếng lên cơ thể mình và một miếng lên người đối phương, mọi kích thích xúc giác, khoái cảm hoặc hưng phấn trên cơ thể người này sẽ được truyền dẫn nguyên vẹn sang hệ thần kinh của người kia theo thời gian thực."
+      },
+      "referenceNonConsumablePrice": 30
+    },
+    {
+      "id": "item-14",
+      "name": "Chìa khóa vạn năng dự phòng",
+      "grade": "B",
+      "storageBucket": "用品",
+      "category": "Khác",
+      "price": 66,
+      "rarity": "Cấp B",
+      "icon": "../assets/items/goods-other-2.png",
+      "description": "Chiếc chìa khóa hợp kim kỳ lạ có thể tự biến đổi rãnh răng cưa theo ổ khóa. Có thể mở được mọi cánh cửa phòng trọ, căn hộ chung cư hoặc phòng khách sạn bình thường tại thành phố Lâm Giang.",
+      "effect": "Chiếc chìa khóa hợp kim kỳ lạ có thể tự biến đổi rãnh răng cưa theo ổ khóa. Có thể mở được mọi cánh cửa phòng trọ, căn hộ chung cư hoặc phòng khách sạn bình thường tại thành phố Lâm Giang.",
+      "unlock": {
+        "minGames": 2,
+        "minAdvanced": 0
+      },
+      "goods": {
+        "名称": "Chìa khóa vạn năng dự phòng",
+        "Tên": "Chìa khóa vạn năng dự phòng",
+        "类别": "Khác",
+        "Phân loại": "Khác",
+        "数量": 1,
+        "Số lượng": 1,
+        "强度": 1,
+        "Cường độ": 1,
+        "描述": "Chiếc chìa khóa hợp kim kỳ lạ có thể tự biến đổi rãnh răng cưa theo ổ khóa. Có thể mở được mọi cánh cửa phòng trọ, căn hộ chung cư hoặc phòng khách sạn bình thường tại thành phố Lâm Giang.",
+        "Mô tả": "Chiếc chìa khóa hợp kim kỳ lạ có thể tự biến đổi rãnh răng cưa theo ổ khóa. Có thể mở được mọi cánh cửa phòng trọ, căn hộ chung cư hoặc phòng khách sạn bình thường tại thành phố Lâm Giang.",
+        "佩戴": false,
+        "Đang đeo": false
+      },
+      "referenceNonConsumablePrice": 66
+    },
+    {
+      "id": "item-15",
+      "name": "Bản đồ quy hoạch đô thị",
+      "grade": "A",
+      "storageBucket": "用品",
+      "category": "Thiết bị",
+      "price": 280,
+      "rarity": "Cấp A",
+      "icon": "../assets/items/goods-equipment-3.png",
+      "description": "Bản vẽ quy hoạch kiến trúc đặc biệt của Thành phố Lâm Giang. Khi mang theo bên mình, mọi chi phí di chuyển giao thông công cộng và bắt taxi giảm 50%, đồng thời mở khóa thêm các tuyến đường tắt bí mật giữa các khu vực.",
+      "effect": "Bản vẽ quy hoạch kiến trúc đặc biệt của Thành phố Lâm Giang. Khi mang theo bên mình, mọi chi phí di chuyển giao thông công cộng và bắt taxi giảm 50%, đồng thời mở khóa thêm các tuyến đường tắt bí mật giữa các khu vực.",
+      "unlock": {
+        "minGames": 3,
+        "minAdvanced": 1
+      },
+      "goods": {
+        "名称": "Bản đồ quy hoạch đô thị",
+        "Tên": "Bản đồ quy hoạch đô thị",
+        "类别": "Thiết bị",
+        "Phân loại": "Thiết bị",
+        "数量": 1,
+        "Số lượng": 1,
+        "强度": 1,
+        "Cường độ": 1,
+        "描述": "Bản vẽ quy hoạch kiến trúc đặc biệt của Thành phố Lâm Giang. Khi mang theo bên mình, mọi chi phí di chuyển giao thông công cộng và bắt taxi giảm 50%, đồng thời mở khóa thêm các tuyến đường tắt bí mật giữa các khu vực.",
+        "Mô tả": "Bản vẽ quy hoạch kiến trúc đặc biệt của Thành phố Lâm Giang. Khi mang theo bên mình, mọi chi phí di chuyển giao thông công cộng và bắt taxi giảm 50%, đồng thời mở khóa thêm các tuyến đường tắt bí mật giữa các khu vực.",
+        "佩戴": false,
+        "Đang đeo": false
+      },
+      "referenceNonConsumablePrice": 280
+    },
+    {
+      "id": "item-16",
+      "name": "Giày cao gót đầu lưỡi",
+      "grade": "C",
+      "storageBucket": "用品",
+      "category": "Thiết bị",
+      "price": 30,
+      "rarity": "Cấp C",
+      "icon": "../assets/items/goods-equipment.png",
+      "description": "Đôi giày cao gót màu đen bóng quyến rũ, phần đế lót bên trong được phủ một lớp đệm silicon mô phỏng đầu lưỡi mềm mại có khả năng tự rung nhẹ và liếm mút lòng bàn chân khi di chuyển, mang lại khoái cảm tê dại kích thích khắp sống lưng người mang.",
+      "effect": "Đôi giày cao gót màu đen bóng quyến rũ, phần đế lót bên trong được phủ một lớp đệm silicon mô phỏng đầu lưỡi mềm mại có khả năng tự rung nhẹ và liếm mút lòng bàn chân khi di chuyển, mang lại khoái cảm tê dại kích thích khắp sống lưng người mang.",
+      "unlock": {
+        "minGames": 1,
+        "minAdvanced": 0
+      },
+      "goods": {
+        "名称": "Giày cao gót đầu lưỡi",
+        "Tên": "Giày cao gót đầu lưỡi",
+        "类别": "Thiết bị",
+        "Phân loại": "Thiết bị",
+        "数量": 1,
+        "Số lượng": 1,
+        "强度": 1,
+        "Cường độ": 1,
+        "描述": "Đôi giày cao gót màu đen bóng quyến rũ, phần đế lót bên trong được phủ một lớp đệm silicon mô phỏng đầu lưỡi mềm mại có khả năng tự rung nhẹ và liếm mút lòng bàn chân khi di chuyển, mang lại khoái cảm tê dại kích thích khắp sống lưng người mang.",
+        "Mô tả": "Đôi giày cao gót màu đen bóng quyến rũ, phần đế lót bên trong được phủ một lớp đệm silicon mô phỏng đầu lưỡi mềm mại có khả năng tự rung nhẹ và liếm mút lòng bàn chân khi di chuyển, mang lại khoái cảm tê dại kích thích khắp sống lưng người mang.",
+        "佩戴": false,
+        "Đang đeo": false
+      },
+      "referenceNonConsumablePrice": 30
+    },
+    {
+      "id": "item-17",
+      "name": "Vách ngăn khoét lỗ tình dục tùy chỉnh",
+      "grade": "A",
+      "storageBucket": "消耗品",
+      "category": "Đồ dùng hàng ngày",
+      "price": 98,
+      "rarity": "Cấp A",
+      "icon": "../assets/items/consumable-daily-2.png",
+      "description": "Vách ngăn di động có thể gắn vào cửa phòng hoặc tường ngăn, ở giữa khoét một lỗ tròn có đệm nhung êm ái vừa vặn cho vòng ba hoặc vùng kín của nữ giới đưa qua, phục vụ các trò chơi giấu mặt kích thích và phơi bày riêng tư.",
+      "effect": "Vách ngăn di động có thể gắn vào cửa phòng hoặc tường ngăn, ở giữa khoét một lỗ tròn có đệm nhung êm ái vừa vặn cho vòng ba hoặc vùng kín của nữ giới đưa qua, phục vụ các trò chơi giấu mặt kích thích và phơi bày riêng tư.",
+      "unlock": {
+        "minGames": 3,
+        "minAdvanced": 1
+      },
+      "goods": {
+        "名称": "Vách ngăn khoét lỗ tình dục tùy chỉnh",
+        "Tên": "Vách ngăn khoét lỗ tình dục tùy chỉnh",
+        "类别": "Đồ dùng hàng ngày",
+        "Phân loại": "Đồ dùng hàng ngày",
+        "数量": 1,
+        "Số lượng": 1,
+        "强度": 4,
+        "Cường độ": 4,
+        "描述": "Vách ngăn di động có thể gắn vào cửa phòng hoặc tường ngăn, ở giữa khoét một lỗ tròn có đệm nhung êm ái vừa vặn cho vòng ba hoặc vùng kín của nữ giới đưa qua, phục vụ các trò chơi giấu mặt kích thích và phơi bày riêng tư.",
+        "Mô tả": "Vách ngăn di động có thể gắn vào cửa phòng hoặc tường ngăn, ở giữa khoét một lỗ tròn có đệm nhung êm ái vừa vặn cho vòng ba hoặc vùng kín của nữ giới đưa qua, phục vụ các trò chơi giấu mặt kích thích và phơi bày riêng tư."
+      },
+      "referenceNonConsumablePrice": 98
+    },
+    {
+      "id": "item-18",
+      "name": "Cốc thủ dâm từ xa - Dạng tiểu huyệt",
+      "grade": "A",
+      "storageBucket": "用品",
+      "category": "Dụng cụ",
+      "price": 158,
+      "rarity": "Cấp A",
+      "icon": "../assets/items/goods-implement-3.png",
+      "description": "Dụng cụ thủ dâm nam cao cấp kết nối cảm biến sinh học từ xa. Lớp lót silicon bên trong tái hiện 100% độ khít, nhiệt độ và độ ẩm của tiểu huyệt streamer được ghép đôi. Mỗi cử động co bóp của đối phương sẽ đồng bộ tức thì lên cốc.",
+      "effect": "Dụng cụ thủ dâm nam cao cấp kết nối cảm biến sinh học từ xa. Lớp lót silicon bên trong tái hiện 100% độ khít, nhiệt độ và độ ẩm của tiểu huyệt streamer được ghép đôi. Mỗi cử động co bóp của đối phương sẽ đồng bộ tức thì lên cốc.",
+      "unlock": {
+        "minGames": 3,
+        "minAdvanced": 1
+      },
+      "goods": {
+        "名称": "Cốc thủ dâm từ xa - Dạng tiểu huyệt",
+        "Tên": "Cốc thủ dâm từ xa - Dạng tiểu huyệt",
+        "类别": "Dụng cụ",
+        "Phân loại": "Dụng cụ",
+        "数量": 1,
+        "Số lượng": 1,
+        "强度": 1,
+        "Cường độ": 1,
+        "描述": "Dụng cụ thủ dâm nam cao cấp kết nối cảm biến sinh học từ xa. Lớp lót silicon bên trong tái hiện 100% độ khít, nhiệt độ và độ ẩm của tiểu huyệt streamer được ghép đôi. Mỗi cử động co bóp của đối phương sẽ đồng bộ tức thì lên cốc.",
+        "Mô tả": "Dụng cụ thủ dâm nam cao cấp kết nối cảm biến sinh học từ xa. Lớp lót silicon bên trong tái hiện 100% độ khít, nhiệt độ và độ ẩm của tiểu huyệt streamer được ghép đôi. Mỗi cử động co bóp của đối phương sẽ đồng bộ tức thì lên cốc.",
+        "佩戴": false,
+        "Đang đeo": false
+      },
+      "referenceNonConsumablePrice": 158
+    },
+    {
+      "id": "item-19",
+      "name": "Cốc thủ dâm từ xa - Dạng khoang miệng",
+      "grade": "A",
+      "storageBucket": "用品",
+      "category": "Dụng cụ",
+      "price": 158,
+      "rarity": "Cấp A",
+      "icon": "../assets/items/goods-implement.png",
+      "description": "Dụng cụ thủ dâm nam cao cấp kết nối cảm biến sinh học từ xa. Tái hiện trọn vẹn cảm giác ấm áp, độ mềm của lưỡi và lực mút của vòm miệng streamer được chỉ định, mang lại trải nghiệm khẩu dâm chân thực như đang ở ngay bên cạnh.",
+      "effect": "Dụng cụ thủ dâm nam cao cấp kết nối cảm biến sinh học từ xa. Tái hiện trọn vẹn cảm giác ấm áp, độ mềm của lưỡi và lực mút của vòm miệng streamer được chỉ định, mang lại trải nghiệm khẩu dâm chân thực như đang ở ngay bên cạnh.",
+      "unlock": {
+        "minGames": 3,
+        "minAdvanced": 1
+      },
+      "goods": {
+        "名称": "Cốc thủ dâm từ xa - Dạng khoang miệng",
+        "Tên": "Cốc thủ dâm từ xa - Dạng khoang miệng",
+        "类别": "Dụng cụ",
+        "Phân loại": "Dụng cụ",
+        "数量": 1,
+        "Số lượng": 1,
+        "强度": 1,
+        "Cường độ": 1,
+        "描述": "Dụng cụ thủ dâm nam cao cấp kết nối cảm biến sinh học từ xa. Tái hiện trọn vẹn cảm giác ấm áp, độ mềm của lưỡi và lực mút của vòm miệng streamer được chỉ định, mang lại trải nghiệm khẩu dâm chân thực như đang ở ngay bên cạnh.",
+        "Mô tả": "Dụng cụ thủ dâm nam cao cấp kết nối cảm biến sinh học từ xa. Tái hiện trọn vẹn cảm giác ấm áp, độ mềm của lưỡi và lực mút của vòm miệng streamer được chỉ định, mang lại trải nghiệm khẩu dâm chân thực như đang ở ngay bên cạnh.",
+        "佩戴": false,
+        "Đang đeo": false
+      },
+      "referenceNonConsumablePrice": 158
+    },
+    {
+      "id": "item-20",
+      "name": "Cuộn giấy cừu phong tỏa căn phòng",
+      "grade": "B",
+      "storageBucket": "消耗品",
+      "category": "Đồ dùng hàng ngày",
+      "price": 39,
+      "rarity": "Cấp B",
+      "icon": "../assets/items/consumable-daily-2.png",
+      "description": "Dán cuộn giấy cừu ma thuật này lên mép cửa phòng, căn phòng sẽ bị phong tỏa cách âm và khóa chặt trong 3 giờ. Mọi âm thanh rên rỉ la hét bên trong hoàn toàn không lọt ra ngoài, và không ai từ bên ngoài có thể mở cửa bước vào.",
+      "effect": "Dán cuộn giấy cừu ma thuật này lên mép cửa phòng, căn phòng sẽ bị phong tỏa cách âm và khóa chặt trong 3 giờ. Mọi âm thanh rên rỉ la hét bên trong hoàn toàn không lọt ra ngoài, và không ai từ bên ngoài có thể mở cửa bước vào.",
+      "unlock": {
+        "minGames": 2,
+        "minAdvanced": 0
+      },
+      "goods": {
+        "名称": "Cuộn giấy cừu phong tỏa căn phòng",
+        "Tên": "Cuộn giấy cừu phong tỏa căn phòng",
+        "类别": "Đồ dùng hàng ngày",
+        "Phân loại": "Đồ dùng hàng ngày",
+        "数量": 1,
+        "Số lượng": 1,
+        "强度": 3,
+        "Cường độ": 3,
+        "描述": "Dán cuộn giấy cừu ma thuật này lên mép cửa phòng, căn phòng sẽ bị phong tỏa cách âm và khóa chặt trong 3 giờ. Mọi âm thanh rên rỉ la hét bên trong hoàn toàn không lọt ra ngoài, và không ai từ bên ngoài có thể mở cửa bước vào.",
+        "Mô tả": "Dán cuộn giấy cừu ma thuật này lên mép cửa phòng, căn phòng sẽ bị phong tỏa cách âm và khóa chặt trong 3 giờ. Mọi âm thanh rên rỉ la hét bên trong hoàn toàn không lọt ra ngoài, và không ai từ bên ngoài có thể mở cửa bước vào."
+      },
+      "referenceNonConsumablePrice": 39
+    },
+    {
+      "id": "item-21",
+      "name": "Tinh dầu xoa bóp đặc chế",
+      "grade": "C",
+      "storageBucket": "消耗品",
+      "category": "Thuốc",
+      "price": 12,
+      "rarity": "Cấp C",
+      "icon": "../assets/items/consumable-medicine-3.png",
+      "description": "Tinh dầu hương thảo mộc ngọt ngào ấm áp. Dùng để massage cơ thể đối phương, giúp nhanh chóng xua tan nhức mỏi, thả lỏng cơ bắp và khiến làn da trở nên cực kỳ trơn láng, đồng thời làm tăng độ nhạy cảm của các điểm G khi chạm vào.",
+      "effect": "Tinh dầu hương thảo mộc ngọt ngào ấm áp. Dùng để massage cơ thể đối phương, giúp nhanh chóng xua tan nhức mỏi, thả lỏng cơ bắp và khiến làn da trở nên cực kỳ trơn láng, đồng thời làm tăng độ nhạy cảm của các điểm G khi chạm vào.",
+      "unlock": {
+        "minGames": 1,
+        "minAdvanced": 0
+      },
+      "goods": {
+        "名称": "Tinh dầu xoa bóp đặc chế",
+        "Tên": "Tinh dầu xoa bóp đặc chế",
+        "类别": "Thuốc",
+        "Phân loại": "Thuốc",
+        "数量": 1,
+        "Số lượng": 1,
+        "强度": 2,
+        "Cường độ": 2,
+        "描述": "Tinh dầu hương thảo mộc ngọt ngào ấm áp. Dùng để massage cơ thể đối phương, giúp nhanh chóng xua tan nhức mỏi, thả lỏng cơ bắp và khiến làn da trở nên cực kỳ trơn láng, đồng thời làm tăng độ nhạy cảm của các điểm G khi chạm vào.",
+        "Mô tả": "Tinh dầu hương thảo mộc ngọt ngào ấm áp. Dùng để massage cơ thể đối phương, giúp nhanh chóng xua tan nhức mỏi, thả lỏng cơ bắp và khiến làn da trở nên cực kỳ trơn láng, đồng thời làm tăng độ nhạy cảm của các điểm G khi chạm vào."
+      },
+      "referenceNonConsumablePrice": 12
+    },
+    {
+      "id": "item-22",
+      "name": "Thuốc an thần siêu chiều",
+      "grade": "B",
+      "storageBucket": "消耗品",
+      "category": "Thuốc",
+      "price": 32,
+      "rarity": "Cấp B",
+      "icon": "../assets/items/consumable-medicine.png",
+      "description": "Thuốc không màu không mùi, hòa tan lập tức vào nước. Đối phương sau khi uống sẽ chìm vào giấc ngủ say sâu lắng sau 15 phút và ngủ liền mạch 4 tiếng, dù có tác động cởi đồ hay chạm vào người cũng không tỉnh giấc.",
+      "effect": "Thuốc không màu không mùi, hòa tan lập tức vào nước. Đối phương sau khi uống sẽ chìm vào giấc ngủ say sâu lắng sau 15 phút và ngủ liền mạch 4 tiếng, dù có tác động cởi đồ hay chạm vào người cũng không tỉnh giấc.",
+      "unlock": {
+        "minGames": 2,
+        "minAdvanced": 0
+      },
+      "goods": {
+        "名称": "Thuốc an thần siêu chiều",
+        "Tên": "Thuốc an thần siêu chiều",
+        "类别": "Thuốc",
+        "Phân loại": "Thuốc",
+        "数量": 1,
+        "Số lượng": 1,
+        "强度": 3,
+        "Cường độ": 3,
+        "描述": "Thuốc không màu không mùi, hòa tan lập tức vào nước. Đối phương sau khi uống sẽ chìm vào giấc ngủ say sâu lắng sau 15 phút và ngủ liền mạch 4 tiếng, dù có tác động cởi đồ hay chạm vào người cũng không tỉnh giấc.",
+        "Mô tả": "Thuốc không màu không mùi, hòa tan lập tức vào nước. Đối phương sau khi uống sẽ chìm vào giấc ngủ say sâu lắng sau 15 phút và ngủ liền mạch 4 tiếng, dù có tác động cởi đồ hay chạm vào người cũng không tỉnh giấc."
+      },
+      "referenceNonConsumablePrice": 32
+    },
+    {
+      "id": "item-23",
+      "name": "Thuốc lợi tiểu siêu chiều",
+      "grade": "B",
+      "storageBucket": "消耗品",
+      "category": "Thuốc",
+      "price": 27,
+      "rarity": "Cấp B",
+      "icon": "../assets/items/consumable-medicine-2.png",
+      "description": "Viên thuốc nhỏ màu vàng nhạt. Sau khi uống 20 phút, bàng quang của mục tiêu sẽ nhanh chóng căng đầy, gây ra cảm giác buồn tiểu dữ dội khó cưỡng, buộc đối phương phải kẹp chặt hai chân, vặn vẹo cơ thể tìm cách nhịn tiểu trong xấu hổ.",
+      "effect": "Viên thuốc nhỏ màu vàng nhạt. Sau khi uống 20 phút, bàng quang của mục tiêu sẽ nhanh chóng căng đầy, gây ra cảm giác buồn tiểu dữ dội khó cưỡng, buộc đối phương phải kẹp chặt hai chân, vặn vẹo cơ thể tìm cách nhịn tiểu trong xấu hổ.",
+      "unlock": {
+        "minGames": 2,
+        "minAdvanced": 0
+      },
+      "goods": {
+        "名称": "Thuốc lợi tiểu siêu chiều",
+        "Tên": "Thuốc lợi tiểu siêu chiều",
+        "类别": "Thuốc",
+        "Phân loại": "Thuốc",
+        "数量": 1,
+        "Số lượng": 1,
+        "强度": 3,
+        "Cường độ": 3,
+        "描述": "Viên thuốc nhỏ màu vàng nhạt. Sau khi uống 20 phút, bàng quang của mục tiêu sẽ nhanh chóng căng đầy, gây ra cảm giác buồn tiểu dữ dội khó cưỡng, buộc đối phương phải kẹp chặt hai chân, vặn vẹo cơ thể tìm cách nhịn tiểu trong xấu hổ.",
+        "Mô tả": "Viên thuốc nhỏ màu vàng nhạt. Sau khi uống 20 phút, bàng quang của mục tiêu sẽ nhanh chóng căng đầy, gây ra cảm giác buồn tiểu dữ dội khó cưỡng, buộc đối phương phải kẹp chặt hai chân, vặn vẹo cơ thể tìm cách nhịn tiểu trong xấu hổ."
+      },
+      "referenceNonConsumablePrice": 27
+    },
+    {
+      "id": "item-24",
+      "name": "Nước thuốc tăng cường độ nhạy cảm siêu chiều",
+      "grade": "B",
+      "storageBucket": "消耗品",
+      "category": "Thuốc",
+      "price": 35,
+      "rarity": "Cấp B",
+      "icon": "../assets/items/consumable-medicine-3.png",
+      "description": "Dung dịch giọt tinh chất đậm đặc. Thoa lên nhũ hoa hoặc vùng kín của nữ giới, độ nhạy cảm của vùng da đó sẽ tăng vọt gấp 5 lần trong vòng 3 giờ, chỉ một làn gió nhẹ hay ma sát của vải áo lót cũng đủ làm cô ấy rùng mình thở dốc.",
+      "effect": "Dung dịch giọt tinh chất đậm đặc. Thoa lên nhũ hoa hoặc vùng kín của nữ giới, độ nhạy cảm của vùng da đó sẽ tăng vọt gấp 5 lần trong vòng 3 giờ, chỉ một làn gió nhẹ hay ma sát của vải áo lót cũng đủ làm cô ấy rùng mình thở dốc.",
+      "unlock": {
+        "minGames": 2,
+        "minAdvanced": 0
+      },
+      "goods": {
+        "名称": "Nước thuốc tăng cường độ nhạy cảm siêu chiều",
+        "Tên": "Nước thuốc tăng cường độ nhạy cảm siêu chiều",
+        "类别": "Thuốc",
+        "Phân loại": "Thuốc",
+        "数量": 1,
+        "Số lượng": 1,
+        "强度": 3,
+        "Cường độ": 3,
+        "描述": "Dung dịch giọt tinh chất đậm đặc. Thoa lên nhũ hoa hoặc vùng kín của nữ giới, độ nhạy cảm của vùng da đó sẽ tăng vọt gấp 5 lần trong vòng 3 giờ, chỉ một làn gió nhẹ hay ma sát của vải áo lót cũng đủ làm cô ấy rùng mình thở dốc.",
+        "Mô tả": "Dung dịch giọt tinh chất đậm đặc. Thoa lên nhũ hoa hoặc vùng kín của nữ giới, độ nhạy cảm của vùng da đó sẽ tăng vọt gấp 5 lần trong vòng 3 giờ, chỉ một làn gió nhẹ hay ma sát của vải áo lót cũng đủ làm cô ấy rùng mình thở dốc."
+      },
+      "referenceNonConsumablePrice": 35
+    },
+    {
+      "id": "item-25",
+      "name": "Gương đồng cổ hoán đổi linh hồn",
+      "grade": "S",
+      "storageBucket": "用品",
+      "category": "Khác",
+      "price": 330,
+      "rarity": "Cấp S",
+      "icon": "../assets/items/goods-other.png",
+      "description": "Chiếc gương đồng cổ khắc hoa văn huyền bí. Khi hai người cùng nhìn vào gương và chạm tay vào mặt kính, linh hồn của cả hai sẽ tạm thời tráo đổi thân xác cho nhau trong vòng 1 giờ, trải nghiệm trọn vẹn cảm giác cơ thể của đối phương.",
+      "effect": "Chiếc gương đồng cổ khắc hoa văn huyền bí. Khi hai người cùng nhìn vào gương và chạm tay vào mặt kính, linh hồn của cả hai sẽ tạm thời tráo đổi thân xác cho nhau trong vòng 1 giờ, trải nghiệm trọn vẹn cảm giác cơ thể của đối phương.",
+      "unlock": {
+        "minGames": 3,
+        "minAdvanced": 2
+      },
+      "goods": {
+        "名称": "Gương đồng cổ hoán đổi linh hồn",
+        "Tên": "Gương đồng cổ hoán đổi linh hồn",
+        "类别": "Khác",
+        "Phân loại": "Khác",
+        "数量": 1,
+        "Số lượng": 1,
+        "强度": 1,
+        "Cường độ": 1,
+        "描述": "Chiếc gương đồng cổ khắc hoa văn huyền bí. Khi hai người cùng nhìn vào gương và chạm tay vào mặt kính, linh hồn của cả hai sẽ tạm thời tráo đổi thân xác cho nhau trong vòng 1 giờ, trải nghiệm trọn vẹn cảm giác cơ thể của đối phương.",
+        "Mô tả": "Chiếc gương đồng cổ khắc hoa văn huyền bí. Khi hai người cùng nhìn vào gương và chạm tay vào mặt kính, linh hồn của cả hai sẽ tạm thời tráo đổi thân xác cho nhau trong vòng 1 giờ, trải nghiệm trọn vẹn cảm giác cơ thể của đối phương.",
+        "佩戴": false,
+        "Đang đeo": false
+      },
+      "referenceNonConsumablePrice": 330
+    },
+    {
+      "id": "item-26",
+      "name": "Trang phục thỏ ngọc gợi cảm",
+      "grade": "D",
+      "storageBucket": "用品",
+      "category": "Trang phục",
+      "price": 11,
+      "rarity": "Cấp D",
+      "icon": "../assets/items/goods-clothing-2.png",
+      "description": "Bộ đồ thỏ ngọc quyến rũ bằng chất liệu da bóng bó sát khoét ngực sâu, kèm bờm tai thỏ và đuôi lông tròn xoe phía sau mông, làm tôn lên vòng một đẫy đà và đôi chân thon thả của người mặc.",
+      "effect": "Bộ đồ thỏ ngọc quyến rũ bằng chất liệu da bóng bó sát khoét ngực sâu, kèm bờm tai thỏ và đuôi lông tròn xoe phía sau mông, làm tôn lên vòng một đẫy đà và đôi chân thon thả của người mặc.",
+      "unlock": {
+        "minGames": 0,
+        "minAdvanced": 0
+      },
+      "goods": {
+        "名称": "Trang phục thỏ ngọc gợi cảm",
+        "Tên": "Trang phục thỏ ngọc gợi cảm",
+        "类别": "Trang phục",
+        "Phân loại": "Trang phục",
+        "数量": 1,
+        "Số lượng": 1,
+        "强度": 1,
+        "Cường độ": 1,
+        "描述": "Bộ đồ thỏ ngọc quyến rũ bằng chất liệu da bóng bó sát khoét ngực sâu, kèm bờm tai thỏ và đuôi lông tròn xoe phía sau mông, làm tôn lên vòng một đẫy đà và đôi chân thon thả của người mặc.",
+        "Mô tả": "Bộ đồ thỏ ngọc quyến rũ bằng chất liệu da bóng bó sát khoét ngực sâu, kèm bờm tai thỏ và đuôi lông tròn xoe phía sau mông, làm tôn lên vòng một đẫy đà và đôi chân thon thả của người mặc.",
+        "佩戴": false,
+        "Đang đeo": false
+      },
+      "referenceNonConsumablePrice": 11
+    },
+    {
+      "id": "item-27",
+      "name": "Trang phục hầu gái miêu nữ",
+      "grade": "D",
+      "storageBucket": "用品",
+      "category": "Trang phục",
+      "price": 12,
+      "rarity": "Cấp D",
+      "icon": "../assets/items/goods-clothing-3.png",
+      "description": "Bộ váy hầu gái ren trắng đen phong cách Lolita đi kèm bờm tai mèo và vòng cổ gắn chuông nhỏ leng keng. Phần váy xòe ngắn cũn cỡn khiến mỗi lần cúi người phục vụ đều lấp ló nội y bên trong.",
+      "effect": "Bộ váy hầu gái ren trắng đen phong cách Lolita đi kèm bờm tai mèo và vòng cổ gắn chuông nhỏ leng keng. Phần váy xòe ngắn cũn cỡn khiến mỗi lần cúi người phục vụ đều lấp ló nội y bên trong.",
+      "unlock": {
+        "minGames": 0,
+        "minAdvanced": 0
+      },
+      "goods": {
+        "名称": "Trang phục hầu gái miêu nữ",
+        "Tên": "Trang phục hầu gái miêu nữ",
+        "类别": "Trang phục",
+        "Phân loại": "Trang phục",
+        "数量": 1,
+        "Số lượng": 1,
+        "强度": 1,
+        "Cường độ": 1,
+        "描述": "Bộ váy hầu gái ren trắng đen phong cách Lolita đi kèm bờm tai mèo và vòng cổ gắn chuông nhỏ leng keng. Phần váy xòe ngắn cũn cỡn khiến mỗi lần cúi người phục vụ đều lấp ló nội y bên trong.",
+        "Mô tả": "Bộ váy hầu gái ren trắng đen phong cách Lolita đi kèm bờm tai mèo và vòng cổ gắn chuông nhỏ leng keng. Phần váy xòe ngắn cũn cỡn khiến mỗi lần cúi người phục vụ đều lấp ló nội y bên trong.",
+        "佩戴": false,
+        "Đang đeo": false
+      },
+      "referenceNonConsumablePrice": 12
+    },
+    {
+      "id": "item-28",
+      "name": "Tạp dề sườn xám tình thú",
+      "grade": "D",
+      "storageBucket": "用品",
+      "category": "Trang phục",
+      "price": 14,
+      "rarity": "Cấp D",
+      "icon": "../assets/items/goods-clothing.png",
+      "description": "Thiết kế kết hợp giữa sườn xám cách tân xẻ tà cao đến tận hông và tạp dề nấu ăn hở trọn lưng trần. Phía trước mỏng manh nửa kín nửa hở, hai bên hông buộc dây ruy băng chỉ cần giật nhẹ là buông lơi.",
+      "effect": "Thiết kế kết hợp giữa sườn xám cách tân xẻ tà cao đến tận hông và tạp dề nấu ăn hở trọn lưng trần. Phía trước mỏng manh nửa kín nửa hở, hai bên hông buộc dây ruy băng chỉ cần giật nhẹ là buông lơi.",
+      "unlock": {
+        "minGames": 0,
+        "minAdvanced": 0
+      },
+      "goods": {
+        "名称": "Tạp dề sườn xám tình thú",
+        "Tên": "Tạp dề sườn xám tình thú",
+        "类别": "Trang phục",
+        "Phân loại": "Trang phục",
+        "数量": 1,
+        "Số lượng": 1,
+        "强度": 1,
+        "Cường độ": 1,
+        "描述": "Thiết kế kết hợp giữa sườn xám cách tân xẻ tà cao đến tận hông và tạp dề nấu ăn hở trọn lưng trần. Phía trước mỏng manh nửa kín nửa hở, hai bên hông buộc dây ruy băng chỉ cần giật nhẹ là buông lơi.",
+        "Mô tả": "Thiết kế kết hợp giữa sườn xám cách tân xẻ tà cao đến tận hông và tạp dề nấu ăn hở trọn lưng trần. Phía trước mỏng manh nửa kín nửa hở, hai bên hông buộc dây ruy băng chỉ cần giật nhẹ là buông lơi.",
+        "佩戴": false,
+        "Đang đeo": false
+      },
+      "referenceNonConsumablePrice": 14
+    },
+    {
+      "id": "item-29",
+      "name": "Bao cao su hương dâu cực dễ rách",
+      "grade": "D",
+      "storageBucket": "消耗品",
+      "category": "Đồ dùng hàng ngày",
+      "price": 5,
+      "rarity": "Cấp D",
+      "icon": "../assets/items/consumable-daily-2.png",
+      "description": "Hộp bao cao su vị dâu tây ngọt ngào nhưng được cố ý thiết kế với độ bền cực thấp. Trong lúc giao hợp cuồng nhiệt chỉ cần va chạm vài nhịp mạnh là màng cao su sẽ rách toạc, dẫn đến tình huống bất ngờ bắn thẳng tinh dịch vào sâu bên trong.",
+      "effect": "Hộp bao cao su vị dâu tây ngọt ngào nhưng được cố ý thiết kế với độ bền cực thấp. Trong lúc giao hợp cuồng nhiệt chỉ cần va chạm vài nhịp mạnh là màng cao su sẽ rách toạc, dẫn đến tình huống bất ngờ bắn thẳng tinh dịch vào sâu bên trong.",
+      "unlock": {
+        "minGames": 0,
+        "minAdvanced": 0
+      },
+      "goods": {
+        "名称": "Bao cao su hương dâu cực dễ rách",
+        "Tên": "Bao cao su hương dâu cực dễ rách",
+        "类别": "Đồ dùng hàng ngày",
+        "Phân loại": "Đồ dùng hàng ngày",
+        "数量": 1,
+        "Số lượng": 1,
+        "强度": 1,
+        "Cường độ": 1,
+        "描述": "Hộp bao cao su vị dâu tây ngọt ngào nhưng được cố ý thiết kế với độ bền cực thấp. Trong lúc giao hợp cuồng nhiệt chỉ cần va chạm vài nhịp mạnh là màng cao su sẽ rách toạc, dẫn đến tình huống bất ngờ bắn thẳng tinh dịch vào sâu bên trong.",
+        "Mô tả": "Hộp bao cao su vị dâu tây ngọt ngào nhưng được cố ý thiết kế với độ bền cực thấp. Trong lúc giao hợp cuồng nhiệt chỉ cần va chạm vài nhịp mạnh là màng cao su sẽ rách toạc, dẫn đến tình huống bất ngờ bắn thẳng tinh dịch vào sâu bên trong."
+      },
+      "referenceNonConsumablePrice": 5
+    },
+    {
+      "id": "item-30",
+      "name": "Gel bôi trơn giá rẻ cửa hàng tiện lợi",
+      "grade": "D",
+      "storageBucket": "消耗品",
+      "category": "Đồ dùng hàng ngày",
+      "price": 6,
+      "rarity": "Cấp D",
+      "icon": "../assets/items/consumable-daily-3.png",
+      "description": "Chai gel bôi trơn gốc nước mua tại cửa hàng tiện lợi Lawson, dung tích vừa phải, giúp giảm ma sát khi thâm nhập và hỗ trợ việc massage các vùng nhạy cảm trơn tru hơn.",
+      "effect": "Chai gel bôi trơn gốc nước mua tại cửa hàng tiện lợi Lawson, dung tích vừa phải, giúp giảm ma sát khi thâm nhập và hỗ trợ việc massage các vùng nhạy cảm trơn tru hơn.",
+      "unlock": {
+        "minGames": 0,
+        "minAdvanced": 0
+      },
+      "goods": {
+        "名称": "Gel bôi trơn giá rẻ cửa hàng tiện lợi",
+        "Tên": "Gel bôi trơn giá rẻ cửa hàng tiện lợi",
+        "类别": "Đồ dùng hàng ngày",
+        "Phân loại": "Đồ dùng hàng ngày",
+        "数量": 1,
+        "Số lượng": 1,
+        "强度": 1,
+        "Cường độ": 1,
+        "描述": "Chai gel bôi trơn gốc nước mua tại cửa hàng tiện lợi Lawson, dung tích vừa phải, giúp giảm ma sát khi thâm nhập và hỗ trợ việc massage các vùng nhạy cảm trơn tru hơn.",
+        "Mô tả": "Chai gel bôi trơn gốc nước mua tại cửa hàng tiện lợi Lawson, dung tích vừa phải, giúp giảm ma sát khi thâm nhập và hỗ trợ việc massage các vùng nhạy cảm trơn tru hơn."
+      },
+      "referenceNonConsumablePrice": 6
+    },
+    {
+      "id": "item-31",
+      "name": "Đá viên và cherry có cuống",
+      "grade": "D",
+      "storageBucket": "消耗品",
+      "category": "Thức ăn",
+      "price": 5,
+      "rarity": "Cấp D",
+      "icon": "../assets/items/consumable-food.png",
+      "description": "Hộp gồm những viên đá lạnh mát lạnh và những quả cherry chín mọng còn nguyên cuống dài, rất thích hợp dùng trong màn dạo đầu để mơn trớn nhũ hoa hoặc thử thách dùng lưỡi thắt nút cuống cherry trong miệng.",
+      "effect": "Hộp gồm những viên đá lạnh mát lạnh và những quả cherry chín mọng còn nguyên cuống dài, rất thích hợp dùng trong màn dạo đầu để mơn trớn nhũ hoa hoặc thử thách dùng lưỡi thắt nút cuống cherry trong miệng.",
+      "unlock": {
+        "minGames": 0,
+        "minAdvanced": 0
+      },
+      "goods": {
+        "名称": "Đá viên và cherry có cuống",
+        "Tên": "Đá viên và cherry có cuống",
+        "类别": "Thức ăn",
+        "Phân loại": "Thức ăn",
+        "数量": 1,
+        "Số lượng": 1,
+        "强度": 1,
+        "Cường độ": 1,
+        "描述": "Hộp gồm những viên đá lạnh mát lạnh và những quả cherry chín mọng còn nguyên cuống dài, rất thích hợp dùng trong màn dạo đầu để mơn trớn nhũ hoa hoặc thử thách dùng lưỡi thắt nút cuống cherry trong miệng.",
+        "Mô tả": "Hộp gồm những viên đá lạnh mát lạnh và những quả cherry chín mọng còn nguyên cuống dài, rất thích hợp dùng trong màn dạo đầu để mơn trớn nhũ hoa hoặc thử thách dùng lưỡi thắt nút cuống cherry trong miệng."
+      },
+      "referenceNonConsumablePrice": 5
+    },
+    {
+      "id": "item-32",
+      "name": "Truyện tranh sex giả gái biến trang",
+      "grade": "B",
+      "storageBucket": "用品",
+      "category": "Khác",
+      "price": 78,
+      "rarity": "Cấp B",
+      "icon": "../assets/items/goods-other-2.png",
+      "description": "Cuốn doujinshi R18 dày dặn kể về câu chuyện nam chính bị ép mặc đồ nữ và sa ngã thành nô lệ tình dục. Đọc sách giúp tăng cường hiểu biết về tâm lý phục tùng và mở khóa các sở thích tình thú mới lạ.",
+      "effect": "Cuốn doujinshi R18 dày dặn kể về câu chuyện nam chính bị ép mặc đồ nữ và sa ngã thành nô lệ tình dục. Đọc sách giúp tăng cường hiểu biết về tâm lý phục tùng và mở khóa các sở thích tình thú mới lạ.",
+      "unlock": {
+        "minGames": 2,
+        "minAdvanced": 0
+      },
+      "goods": {
+        "名称": "Truyện tranh sex giả gái biến trang",
+        "Tên": "Truyện tranh sex giả gái biến trang",
+        "类别": "Khác",
+        "Phân loại": "Khác",
+        "数量": 1,
+        "Số lượng": 1,
+        "强度": 1,
+        "Cường độ": 1,
+        "描述": "Cuốn doujinshi R18 dày dặn kể về câu chuyện nam chính bị ép mặc đồ nữ và sa ngã thành nô lệ tình dục. Đọc sách giúp tăng cường hiểu biết về tâm lý phục tùng và mở khóa các sở thích tình thú mới lạ.",
+        "Mô tả": "Cuốn doujinshi R18 dày dặn kể về câu chuyện nam chính bị ép mặc đồ nữ và sa ngã thành nô lệ tình dục. Đọc sách giúp tăng cường hiểu biết về tâm lý phục tùng và mở khóa các sở thích tình thú mới lạ.",
+        "佩戴": false,
+        "Đang đeo": false
+      },
+      "referenceNonConsumablePrice": 78
+    },
+    {
+      "id": "item-33",
+      "name": "Sữa tươi kích sữa",
+      "grade": "B",
+      "storageBucket": "消耗品",
+      "category": "Đồ uống",
+      "price": 36,
+      "rarity": "Cấp B",
+      "icon": "../assets/items/consumable-drink-3.png",
+      "description": "Hộp sữa bò tươi dinh dưỡng được điều chế theo công thức đặc biệt. Nữ giới sau khi uống đều đặn sẽ kích thích tuyến sữa phát triển, khiến bầu ngực căng tròn nở nang và bắt đầu tiết ra dòng sữa ngọt ngào khi được xoa bóp mút mát.",
+      "effect": "Hộp sữa bò tươi dinh dưỡng được điều chế theo công thức đặc biệt. Nữ giới sau khi uống đều đặn sẽ kích thích tuyến sữa phát triển, khiến bầu ngực căng tròn nở nang và bắt đầu tiết ra dòng sữa ngọt ngào khi được xoa bóp mút mát.",
+      "unlock": {
+        "minGames": 2,
+        "minAdvanced": 0
+      },
+      "goods": {
+        "名称": "Sữa tươi kích sữa",
+        "Tên": "Sữa tươi kích sữa",
+        "类别": "Đồ uống",
+        "Phân loại": "Đồ uống",
+        "数量": 1,
+        "Số lượng": 1,
+        "强度": 3,
+        "Cường độ": 3,
+        "描述": "Hộp sữa bò tươi dinh dưỡng được điều chế theo công thức đặc biệt. Nữ giới sau khi uống đều đặn sẽ kích thích tuyến sữa phát triển, khiến bầu ngực căng tròn nở nang và bắt đầu tiết ra dòng sữa ngọt ngào khi được xoa bóp mút mát.",
+        "Mô tả": "Hộp sữa bò tươi dinh dưỡng được điều chế theo công thức đặc biệt. Nữ giới sau khi uống đều đặn sẽ kích thích tuyến sữa phát triển, khiến bầu ngực căng tròn nở nang và bắt đầu tiết ra dòng sữa ngọt ngào khi được xoa bóp mút mát."
+      },
+      "referenceNonConsumablePrice": 72
+    },
+    {
+      "id": "item-34",
+      "name": "Bộ thiết bị Inception thâm nhập giấc mơ",
+      "grade": "A",
+      "storageBucket": "用品",
+      "category": "Thiết bị",
+      "price": 180,
+      "rarity": "Cấp A",
+      "icon": "../assets/items/goods-equipment.png",
+      "description": "Vali thiết bị điện tử tinh vi kết nối dây truyền tín hiệu thần kinh. Cho phép người dùng xâm nhập trực tiếp vào giấc mơ ban đêm của đối phương, tự do dàn dựng các kịch bản hoan lạc trong mơ mà đối phương cứ ngỡ là thực tế.",
+      "effect": "Vali thiết bị điện tử tinh vi kết nối dây truyền tín hiệu thần kinh. Cho phép người dùng xâm nhập trực tiếp vào giấc mơ ban đêm của đối phương, tự do dàn dựng các kịch bản hoan lạc trong mơ mà đối phương cứ ngỡ là thực tế.",
+      "unlock": {
+        "minGames": 3,
+        "minAdvanced": 1
+      },
+      "goods": {
+        "名称": "Bộ thiết bị Inception thâm nhập giấc mơ",
+        "Tên": "Bộ thiết bị Inception thâm nhập giấc mơ",
+        "类别": "Thiết bị",
+        "Phân loại": "Thiết bị",
+        "数量": 1,
+        "Số lượng": 1,
+        "强度": 1,
+        "Cường độ": 1,
+        "描述": "Vali thiết bị điện tử tinh vi kết nối dây truyền tín hiệu thần kinh. Cho phép người dùng xâm nhập trực tiếp vào giấc mơ ban đêm của đối phương, tự do dàn dựng các kịch bản hoan lạc trong mơ mà đối phương cứ ngỡ là thực tế.",
+        "Mô tả": "Vali thiết bị điện tử tinh vi kết nối dây truyền tín hiệu thần kinh. Cho phép người dùng xâm nhập trực tiếp vào giấc mơ ban đêm của đối phương, tự do dàn dựng các kịch bản hoan lạc trong mơ mà đối phương cứ ngỡ là thực tế.",
+        "佩戴": false,
+        "Đang đeo": false
+      },
+      "referenceNonConsumablePrice": 180
+    },
+    {
+      "id": "item-35",
+      "name": "Kẹo bạc hà miêu nữ",
+      "grade": "C",
+      "storageBucket": "消耗品",
+      "category": "Thuốc",
+      "price": 17,
+      "rarity": "Cấp C",
+      "icon": "../assets/items/consumable-medicine-2.png",
+      "description": "Hộp kẹo ngậm the mát chiết xuất từ cỏ bạc hà mèo. Nữ giới sau khi ngậm sẽ cảm thấy toàn thân ấm nóng, tính cách trở nên ngoan ngoãn nũng nịu như mèo con, thích được vuốt ve đầu và cọ má vào lòng người chơi.",
+      "effect": "Hộp kẹo ngậm the mát chiết xuất từ cỏ bạc hà mèo. Nữ giới sau khi ngậm sẽ cảm thấy toàn thân ấm nóng, tính cách trở nên ngoan ngoãn nũng nịu như mèo con, thích được vuốt ve đầu và cọ má vào lòng người chơi.",
+      "unlock": {
+        "minGames": 1,
+        "minAdvanced": 0
+      },
+      "goods": {
+        "名称": "Kẹo bạc hà miêu nữ",
+        "Tên": "Kẹo bạc hà miêu nữ",
+        "类别": "Thuốc",
+        "Phân loại": "Thuốc",
+        "数量": 1,
+        "Số lượng": 1,
+        "强度": 2,
+        "Cường độ": 2,
+        "描述": "Hộp kẹo ngậm the mát chiết xuất từ cỏ bạc hà mèo. Nữ giới sau khi ngậm sẽ cảm thấy toàn thân ấm nóng, tính cách trở nên ngoan ngoãn nũng nịu như mèo con, thích được vuốt ve đầu và cọ má vào lòng người chơi.",
+        "Mô tả": "Hộp kẹo ngậm the mát chiết xuất từ cỏ bạc hà mèo. Nữ giới sau khi ngậm sẽ cảm thấy toàn thân ấm nóng, tính cách trở nên ngoan ngoãn nũng nịu như mèo con, thích được vuốt ve đầu và cọ má vào lòng người chơi."
+      },
+      "referenceNonConsumablePrice": 34
+    }
+  ]
+}

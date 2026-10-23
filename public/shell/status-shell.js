@@ -663,35 +663,69 @@
 
   const purchaseShopProduct = (product) => {
     const bucket = String(product?.storageBucket || '用品').trim();
-    const name = String(product?.goods?.['名称'] || product?.name || '').trim();
-    const category = String(product?.goods?.['类别'] || '').trim();
-    const description = String(product?.goods?.['描述'] || product?.description || '').trim();
-    const goodsCats = ['服装', '饰品', '器具', '器材', '其他'];
-    const consumableCats = ['食物', '饮料', '药物', '日用', '其他'];
-    if (!name) throw new Error('商品名称为空');
-    if (bucket !== '用品' && bucket !== '消耗品') throw new Error('商品存储分类无效');
-    if (bucket === '用品' && !goodsCats.includes(category)) throw new Error('用品类别无效');
-    if (bucket === '消耗品' && !consumableCats.includes(category)) throw new Error('消耗品类别无效');
-    if (!mvuState.ready && !mvuState.check()) throw new Error('MVU 未就绪');
+    const name = String(product?.goods?.['名称'] || product?.goods?.['Tên'] || product?.name || '').trim();
+    const category = String(product?.goods?.['类别'] || product?.goods?.['Phân loại'] || product?.category || '').trim();
+    const description = String(product?.goods?.['描述'] || product?.goods?.['Mô tả'] || product?.description || '').trim();
+    const isConsumable = bucket === '消耗品' || bucket === 'Vật phẩm tiêu hao';
+    if (!name) throw new Error('Tên vật phẩm trống');
+    if (!mvuState.ready && !mvuState.check()) throw new Error('MVU chưa sẵn sàng');
     const mvuData = mvuState.mvu.getMvuData({ type: 'message', message_id: 'latest' });
-    if (!mvuData?.stat_data) throw new Error('MVU 数据为空');
+    if (!mvuData?.stat_data) throw new Error('Dữ liệu MVU trống');
     const stat = mvuData.stat_data;
-    stat.玩家信息 = stat.玩家信息 && typeof stat.玩家信息 === 'object' ? stat.玩家信息 : {};
-    stat.玩家信息.背包 = stat.玩家信息.背包 && typeof stat.玩家信息.背包 === 'object' ? stat.玩家信息.背包 : {};
-    const bag = stat.玩家信息.背包;
-    if (bucket === '消耗品') {
-      bag.消耗品 = bag.消耗品 && typeof bag.消耗品 === 'object' ? bag.消耗品 : {};
-      const current = bag.消耗品[name] && typeof bag.消耗品[name] === 'object' ? bag.消耗品[name] : null;
-      bag.消耗品[name] = { 名称: name, 类别: category, 数量: Math.max(0, Math.floor(Number(current?.数量) || 0)) + 1, 品级: String(product?.goods?.['品级'] || product?.rarity || current?.品级 || '').trim(), 强度: Math.max(1, Math.min(5, Math.floor(Number(product?.goods?.['强度']) || Number(current?.强度) || 1))), 描述: description || String(current?.描述 || '') };
+
+    const pInfo = stat['Thông tin người chơi'] || stat.玩家信息 || {};
+    stat['Thông tin người chơi'] = pInfo;
+    stat.玩家信息 = pInfo;
+
+    const bag = pInfo['Túi đồ'] || pInfo.背包 || {};
+    pInfo['Túi đồ'] = bag;
+    pInfo.背包 = bag;
+
+    if (isConsumable) {
+      const cBag = bag['Vật phẩm tiêu hao'] || bag.消耗品 || {};
+      bag['Vật phẩm tiêu hao'] = cBag;
+      bag.消耗品 = cBag;
+      const current = cBag[name] && typeof cBag[name] === 'object' ? cBag[name] : null;
+      const newItem = {
+        名称: name,
+        Tên: name,
+        类别: category,
+        Phân loại: category,
+        数量: Math.max(0, Math.floor(Number(current?.数量 || current?.['Số lượng']) || 0)) + 1,
+        'Số lượng': Math.max(0, Math.floor(Number(current?.数量 || current?.['Số lượng']) || 0)) + 1,
+        品级: String(product?.goods?.['品级'] || product?.rarity || current?.品级 || '').trim(),
+        强度: Math.max(1, Math.min(5, Math.floor(Number(product?.goods?.['强度'] || product?.goods?.['Cường độ']) || Number(current?.强度 || current?.['Cường độ']) || 1))),
+        'Cường độ': Math.max(1, Math.min(5, Math.floor(Number(product?.goods?.['强度'] || product?.goods?.['Cường độ']) || Number(current?.强度 || current?.['Cường độ']) || 1))),
+        描述: description || String(current?.描述 || current?.['Mô tả'] || ''),
+        'Mô tả': description || String(current?.描述 || current?.['Mô tả'] || '')
+      };
+      cBag[name] = newItem;
       mvuState.mvu.replaceMvuData(mvuData, { type: 'message', message_id: 'latest' });
-      return { bucket, item: bag.消耗品[name] };
+      return { bucket, item: newItem };
+    } else {
+      const uBag = bag['Vật dụng'] || bag.用品 || {};
+      bag['Vật dụng'] = uBag;
+      bag.用品 = uBag;
+      const current = uBag[name] && typeof uBag[name] === 'object' ? uBag[name] : null;
+      const newItem = {
+        名称: name,
+        Tên: name,
+        类别: category,
+        Phân loại: category,
+        数量: Math.max(0, Math.floor(Number(current?.数量 || current?.['Số lượng']) || 0)) + 1,
+        'Số lượng': Math.max(0, Math.floor(Number(current?.数量 || current?.['Số lượng']) || 0)) + 1,
+        品级: String(product?.goods?.['品级'] || product?.rarity || current?.品级 || '').trim(),
+        强度: Math.max(1, Math.min(5, Math.floor(Number(product?.goods?.['强度'] || product?.goods?.['Cường độ']) || Number(current?.强度 || current?.['Cường độ']) || 1))),
+        'Cường độ': Math.max(1, Math.min(5, Math.floor(Number(product?.goods?.['强度'] || product?.goods?.['Cường độ']) || Number(current?.强度 || current?.['Cường độ']) || 1))),
+        描述: description || String(current?.描述 || current?.['Mô tả'] || ''),
+        'Mô tả': description || String(current?.描述 || current?.['Mô tả'] || ''),
+        佩戴: false,
+        'Đang đeo': false
+      };
+      uBag[name] = newItem;
+      mvuState.mvu.replaceMvuData(mvuData, { type: 'message', message_id: 'latest' });
+      return { bucket, item: newItem };
     }
-    bag.用品 = bag.用品 && typeof bag.用品 === 'object' ? bag.用品 : {};
-    const current = bag.用品[name] && typeof bag.用品[name] === 'object' ? bag.用品[name] : null;
-    bag.用品[name] = { 名称: name, 类别: category, 数量: Math.max(0, Math.floor(Number(current?.数量) || 0)) + 1, 品级: String(product?.goods?.['品级'] || product?.rarity || current?.品级 || '').trim(), 佩戴: category === '器材' ? false : !!current?.佩戴, 描述: description || String(current?.描述 || '') };
-    syncBlueprintDescription(stat);
-    mvuState.mvu.replaceMvuData(mvuData, { type: 'message', message_id: 'latest' });
-    return { bucket, item: bag.用品[name] };
   };
 
   /* ============ 玩家自建地图节点 ============ */

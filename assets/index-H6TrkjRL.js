@@ -744,7 +744,7 @@ ${ct(B.rimSegments.filter(r=>!i.includes(r.id)))}
             <b><span class="unit">￥</span>${E.money.toLocaleString("en-US")}</b>
             <em>${e.daily?`+${Te(e.daily)} / ngày`:"Không có thu nhập ngày"}</em>
           </div>
-          ${We("体力",E.stamina,100,"blue",re.stamina,"clock")}
+          ${We("Thể lực",E.stamina,100,"blue",re.stamina,"clock")}
         </div>
         <p class="profile-hint">${d.full}（${d.weekday}）· ${d.season} · ${d.week} · ${T.time.clock} ${T.time.period}. Khi thể lực giảm xuống dưới ${re.stamina[0]} sẽ rơi vào trạng thái kiệt sức sâu.</p>
       </section>
