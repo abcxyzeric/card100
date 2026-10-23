@@ -19,7 +19,7 @@
   const TARGET_ORIGIN = (() => { try { return new URL(TARGET_URL).origin; } catch { return ''; } })();
   const CHANNEL = 'linjiang-workshop:bridge';
   const PANEL_ID = 'linjiang-workshop-panel';
-  const BUTTON_EVENT_NAME = '创意工坊';
+  const BUTTON_EVENT_NAME = 'Xưởng sáng tạo';
   const PREFIX = '🧩mod ';
   const START_NAME = '--/Mod开始';
   const END_NAME = '--/Mod结束';
@@ -633,6 +633,7 @@
   try {
     const core = wins().find((win) => typeof win.eventOn === 'function' && typeof win.getButtonEvent === 'function');
     if (core) core.eventOn(core.getButtonEvent(BUTTON_EVENT_NAME), openPanel);
+    try { core.eventOn(core.getButtonEvent('创意工坊'), openPanel); } catch(_) {}
   } catch {}
   hostWindow().LinjiangWorkshop = { open: openPanel, close: () => closeWorkshopPanel() };
   console.info('[临江创意工坊] 桥接已加载，调用 LinjiangWorkshop.open() 可打开面板');

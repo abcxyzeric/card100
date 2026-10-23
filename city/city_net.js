@@ -153,7 +153,7 @@
   const WAYS = [
     {
       // 环城高速：绕整片建成区，全程在江南岸
-      id: 'ring', name: '环城高速', kind: 'express',
+      id: 'ring', name: 'Cao tốc Vành Đai', kind: 'express',
       pts: [
         [0.060, 0.360], [0.050, 0.550], [0.060, 0.720], [0.160, 0.880],
         [0.400, 0.950], [0.660, 0.940], [0.860, 0.840], [0.960, 0.640],
@@ -162,7 +162,7 @@
       ]
     },
     {
-      id: 'hanzhong', name: '汉中路', kind: 'arterial',
+      id: 'hanzhong', name: 'Đường Hán Trung', kind: 'arterial',
       pts: [
         [0.060, 0.360], { n: 'xz_jiangyan' }, { n: 'gl_wutong' }, J.sanpailou,
         { a: 'gl_wutong', b: 'mh_plaza', t: 0.58 }, { n: 'mh_plaza' },
@@ -171,7 +171,7 @@
       ]
     },
     {
-      id: 'zhongshan', name: '中山路', kind: 'arterial',
+      id: 'zhongshan', name: 'Đường Trung Sơn', kind: 'arterial',
       pts: [
         J.sanpailou,
         { a: 'gl_wutong', b: 'wx_mendong', t: 0.34, s: 0.03 },
@@ -185,7 +185,7 @@
        绕行比 2.26，比现实（1.2~1.3）差了一倍。路网太稀就会这样：
        寻路没算错，是图上真的没有近路。 */
     {
-      id: 'yudao', name: '御道街', kind: 'arterial',
+      id: 'yudao', name: 'Phố Ngự Đạo', kind: 'arterial',
       pts: [
         { n: 'wx_mendong' },
         { a: 'wx_mendong', b: 'mh_plaza', t: 0.33, s: 0.02 },
@@ -194,7 +194,7 @@
       ]
     },
     {
-      id: 'huju', name: '虎踞路', kind: 'arterial',
+      id: 'huju', name: 'Đường Hổ Cứ', kind: 'arterial',
       pts: [
         { n: 'gl_wutong' },
         { a: 'gl_wutong', b: 'wx_dye', t: 0.36, s: -0.02 },
@@ -203,7 +203,7 @@
       ]
     },
     {
-      id: 'longpan', name: '龙蟠路', kind: 'arterial',
+      id: 'longpan', name: 'Đường Long Bàn', kind: 'arterial',
       pts: [
         { n: 'mh_lake' },
         { a: 'mh_lake', b: 'lx_bus', t: 0.34, s: 0.03 },
@@ -212,7 +212,7 @@
       ]
     },
     {
-      id: 'yingtian', name: '应天大街', kind: 'arterial',
+      id: 'yingtian', name: 'Đại lộ Ứng Thiên', kind: 'arterial',
       // 东端必须收到 J.luoxiaW 上去焊住汉中路。只到落霞枢纽为止的时候，
       // 城东那一片是个死胡同：枢纽和大学城之间图上没有路，
       // 于是坐地铁到枢纽再去图书馆只能走 1.7 km
@@ -228,7 +228,7 @@
       ]
     },
     {
-      id: 'huning', name: '沪宁连接线', kind: 'arterial',
+      id: 'huning', name: 'Đoạn nối Hỗ Ninh', kind: 'arterial',
       pts: [
         { n: 'mh_plaza' }, { n: 'mh_dept' },
         { a: 'mh_dept', b: 'ys_station', t: 0.28, s: -0.02 },
@@ -238,7 +238,7 @@
       ]
     },
     {
-      id: 'huanshan', name: '青屏环山路', kind: 'arterial',
+      id: 'huanshan', name: 'Đường quanh núi Thanh Bình', kind: 'arterial',
       pts: [
         { n: 'lx_library' },
         { a: 'lx_library', b: 'qp_visitor', t: 0.5, s: 0.03 },
@@ -248,14 +248,14 @@
       ]
     },
     {
-      id: 'xizhou', name: '西洲大道', kind: 'arterial',
+      id: 'xizhou', name: 'Đại lộ Tây Châu', kind: 'arterial',
       pts: [
         { n: 'xz_warehouse' }, { n: 'xz_zhoumen' }, { n: 'xz_sound_studio' },
         { n: 'gl_wutong' }
       ]
     },
     {
-      id: 'jiangbei', name: '江北大道', kind: 'arterial',
+      id: 'jiangbei', name: 'Đại lộ Giang Bắc', kind: 'arterial',
       pts: [
         J.qiaobei, { n: 'pj_village' }, { n: 'pj_apt' },
         { a: 'pj_village', b: 'pj_apt', t: 2.0 }
@@ -263,14 +263,14 @@
     },
     {
       // 跨江大桥。两个桥头都写成 J.*，好让江北大道和汉中路各自焊得上
-      id: 'daqiao', name: '临江大桥', kind: 'bridge',
+      id: 'daqiao', name: 'Cầu lớn Lâm Giang', kind: 'bridge',
       pts: [
         J.qiaobei, { a: 'pj_village', b: 'gl_wutong', t: 0.5 }, J.qiaonan,
         { n: 'gl_wutong' }
       ]
     },
     {
-      id: 'suidao', name: '过江隧道', kind: 'tunnel',
+      id: 'suidao', name: 'Hầm vượt sông', kind: 'tunnel',
       pts: [
         { a: 'pj_village', b: 'pj_apt', t: 2.0 },
         { a: 'pj_apt', b: 'mh_plaza', t: 0.34 },
@@ -279,7 +279,7 @@
       ]
     },
     {
-      id: 'airport', name: '机场高速', kind: 'express',
+      id: 'airport', name: 'Cao tốc Sân Bay', kind: 'express',
       pts: [
         { n: 'dt_airport' },
         { a: 'dt_airport', b: 'ys_station', t: 0.35, s: 0.04 },
@@ -327,59 +327,59 @@
    */
   const METRO = [
     {
-      id: 'l1', name: '1 号线', short: '1', color: '#e0453a', glow: '#ff9d8c',
+      id: 'l1', name: 'Tuyến số 1', short: '1', color: '#e0453a', glow: '#ff9d8c',
       stations: [
         { node: 'pj_apt' },
         { node: 'pj_village' },
-        { key: 'qiaobei', name: '大桥北', at: J.qiaobei },
-        { key: 'binjiang', name: '滨江路', at: J.qiaonan },
-        { key: 'sanpailou', name: '三牌楼', at: J.sanpailou },
+        { key: 'qiaobei', name: 'Bắc Cầu Lớn', at: J.qiaobei },
+        { key: 'binjiang', name: 'Đường Ven Sông', at: J.qiaonan },
+        { key: 'sanpailou', name: 'Tam Bài Lâu', at: J.sanpailou },
         // 老城这一段沿中山路走，所以侧向偏移和 zhongshan 那条路一致
-        { key: 'gulou', name: '鼓楼', at: { a: 'gl_wutong', b: 'wx_mendong', t: 0.26, s: 0.035 } },
-        { key: 'wenmiao', name: '文庙', at: { a: 'gl_wutong', b: 'wx_mendong', t: 0.52, s: 0.035 } },
-        { key: 'zhonghuamen', name: '中华门', at: { a: 'gl_wutong', b: 'wx_mendong', t: 0.78, s: 0.025 } },
+        { key: 'gulou', name: 'Cổ Lâu', at: { a: 'gl_wutong', b: 'wx_mendong', t: 0.26, s: 0.035 } },
+        { key: 'wenmiao', name: 'Văn Miếu', at: { a: 'gl_wutong', b: 'wx_mendong', t: 0.52, s: 0.035 } },
+        { key: 'zhonghuamen', name: 'Trung Hoa Môn', at: { a: 'gl_wutong', b: 'wx_mendong', t: 0.78, s: 0.025 } },
         { node: 'wx_mendong' },
         { node: 'wx_arch' },
-        { key: 'nanjiao', name: '南郊', at: { a: 'wx_mendong', b: 'wx_arch', t: 2.6 } }
+        { key: 'nanjiao', name: 'Ngoại ô Nam', at: { a: 'wx_mendong', b: 'wx_arch', t: 2.6 } }
       ]
     },
     {
-      id: 'l2', name: '2 号线', short: '2', color: '#2f7fd6', glow: '#8cc4ff',
+      id: 'l2', name: 'Tuyến số 2', short: '2', color: '#2f7fd6', glow: '#8cc4ff',
       stations: [
         { node: 'xz_theatre' },
         { node: 'xz_jiangyan' },
         { node: 'gl_wutong' },
-        { key: 'sanpailou', name: '三牌楼', at: J.sanpailou },
-        { key: 'shanghailu', name: '上海路', at: { a: 'gl_wutong', b: 'mh_plaza', t: 0.58 } },
+        { key: 'sanpailou', name: 'Tam Bài Lâu', at: J.sanpailou },
+        { key: 'shanghailu', name: 'Đường Thượng Hải', at: { a: 'gl_wutong', b: 'mh_plaza', t: 0.58 } },
         { node: 'mh_plaza' },
         { node: 'mh_dept' },
-        { key: 'hudong', name: '湖东', at: { a: 'mh_dept', b: 'mh_lake', t: 0.5 } },
+        { key: 'hudong', name: 'Đông Hồ', at: { a: 'mh_dept', b: 'mh_lake', t: 0.5 } },
         { node: 'mh_lake' },
-        { key: 'qilinmen', name: '麒麟门', at: { a: 'mh_lake', b: 'lx_library', t: 0.33 } },
-        { key: 'xianlin', name: '仙林', at: { a: 'mh_lake', b: 'lx_library', t: 0.66 } },
+        { key: 'qilinmen', name: 'Kỳ Lân Môn', at: { a: 'mh_lake', b: 'lx_library', t: 0.33 } },
+        { key: 'xianlin', name: 'Tiên Lâm', at: { a: 'mh_lake', b: 'lx_library', t: 0.66 } },
         { node: 'lx_library' },
         { node: 'lx_gym' }
       ]
     },
     {
-      id: 'l3', name: '3 号线', short: '3', color: '#2f9e5c', glow: '#84dfae',
+      id: 'l3', name: 'Tuyến số 3', short: '3', color: '#2f9e5c', glow: '#84dfae',
       stations: [
         { node: 'dt_outlet' },
         { node: 'dt_airport' },
-        { key: 'shuangzha', name: '双闸', at: { a: 'dt_airport', b: 'wx_dye', t: 0.5 } },
+        { key: 'shuangzha', name: 'Song Tráp', at: { a: 'dt_airport', b: 'wx_dye', t: 0.5 } },
         { node: 'wx_dye' },
         { node: 'wx_mendong' },
-        { key: 'yuhuatai', name: '雨花台', at: { a: 'wx_mendong', b: 'ys_fishmkt', t: 0.28, s: 0.02 } },
-        { key: 'kazimen', name: '卡子门', at: { a: 'wx_mendong', b: 'ys_fishmkt', t: 0.53, s: 0.025 } },
+        { key: 'yuhuatai', name: 'Vũ Hoa Đài', at: { a: 'wx_mendong', b: 'ys_fishmkt', t: 0.28, s: 0.02 } },
+        { key: 'kazimen', name: 'Tạp Tử Môn', at: { a: 'wx_mendong', b: 'ys_fishmkt', t: 0.53, s: 0.025 } },
         { key: 'yingtianjie', name: '应天街', at: { a: 'wx_mendong', b: 'ys_fishmkt', t: 0.78, s: 0.02 } },
         { node: 'ys_fishmkt' },
         { node: 'ys_station' },
-        { key: 'huashenmiao', name: '花神庙', at: { a: 'ys_station', b: 'lx_bus', t: 0.5, s: 0.02 } },
+        { key: 'huashenmiao', name: 'Hoa Thần Miếu', at: { a: 'ys_station', b: 'lx_bus', t: 0.5, s: 0.02 } },
         { node: 'lx_bus' }
       ]
     },
     {
-      id: 'l4', name: '4 号线', short: '4', color: '#7c5cd0', glow: '#bda6ff',
+      id: 'l4', name: 'Tuyến số 4', short: '4', color: '#7c5cd0', glow: '#bda6ff',
       stations: [
         { node: 'xz_warehouse' },
         { node: 'xz_zhoumen' },
@@ -388,22 +388,22 @@
            几乎重合成一条平行线，图上读不出是两条 */
         { key: 'caochangmen', name: '草场门', at: { a: 'xz_sound_studio', b: 'mh_plaza', t: 0.22, s: 0.030 } },
         { key: 'wutaishan', name: '五台山', at: { a: 'xz_sound_studio', b: 'mh_plaza', t: 0.47, s: 0.045 } },
-        { key: 'daxinggong', name: '大行宫', at: { a: 'xz_sound_studio', b: 'mh_plaza', t: 0.74, s: 0.032 } },
+        { key: 'daxinggong', name: 'Đại Hành Cung', at: { a: 'xz_sound_studio', b: 'mh_plaza', t: 0.74, s: 0.032 } },
         { node: 'mh_plaza' },
-        { key: 'zhongshanmen', name: '中山门', at: { a: 'mh_plaza', b: 'qp_visitor', t: 0.22, s: -0.020 } },
-        { key: 'muxuyuan', name: '苜蓿园', at: { a: 'mh_plaza', b: 'qp_visitor', t: 0.46, s: -0.028 } },
-        { key: 'qingpingxi', name: '青屏山西', at: { a: 'mh_plaza', b: 'qp_visitor', t: 0.71, s: -0.020 } },
+        { key: 'zhongshanmen', name: 'Trung Sơn Môn', at: { a: 'mh_plaza', b: 'qp_visitor', t: 0.22, s: -0.020 } },
+        { key: 'muxuyuan', name: 'Mục Túc Viên', at: { a: 'mh_plaza', b: 'qp_visitor', t: 0.46, s: -0.028 } },
+        { key: 'qingpingxi', name: 'Tây Núi Thanh Bình', at: { a: 'mh_plaza', b: 'qp_visitor', t: 0.71, s: -0.020 } },
         { node: 'qp_visitor' }
       ]
     },
     {
-      id: 'l5', name: '5 号线', short: '5', color: '#dd7a2b', glow: '#ffc484',
+      id: 'l5', name: 'Tuyến số 5', short: '5', color: '#dd7a2b', glow: '#ffc484',
       stations: [
         { node: 'ys_station' },
-        { key: 'shuanglong', name: '双龙大道', at: { a: 'ys_station', b: 'mh_dept', t: 0.25, s: 0.020 } },
-        { key: 'guanghuamen', name: '光华门', at: { a: 'ys_station', b: 'mh_dept', t: 0.47, s: 0.025 } },
-        { key: 'minggugong', name: '明故宫', at: { a: 'ys_station', b: 'mh_dept', t: 0.68, s: 0.020 } },
-        { key: 'daxinggongdong', name: '大行宫东', at: { a: 'ys_station', b: 'mh_dept', t: 0.86, s: 0.012 } },
+        { key: 'shuanglong', name: 'Đại lộ Song Long', at: { a: 'ys_station', b: 'mh_dept', t: 0.25, s: 0.020 } },
+        { key: 'guanghuamen', name: 'Quang Hoa Môn', at: { a: 'ys_station', b: 'mh_dept', t: 0.47, s: 0.025 } },
+        { key: 'minggugong', name: 'Minh Cố Cung', at: { a: 'ys_station', b: 'mh_dept', t: 0.68, s: 0.020 } },
+        { key: 'daxinggongdong', name: 'Đông Đại Hành Cung', at: { a: 'ys_station', b: 'mh_dept', t: 0.86, s: 0.012 } },
         { node: 'mh_dept' },
         { node: 'mh_yunque' }
       ]
@@ -450,10 +450,10 @@
   const MODE_OVERHEAD = { walk: 0, car: 8, taxi: 4, transit: 0 };
 
   const MODES = [
-    { id: 'walk', label: '步行', icon: 'walk' },
-    { id: 'car', label: '开车', icon: 'car' },
-    { id: 'taxi', label: '打车', icon: 'taxi' },
-    { id: 'transit', label: '地铁公交', icon: 'metro' }
+    { id: 'walk', label: 'Đi bộ', icon: 'walk' },
+    { id: 'car', label: 'Lái xe', icon: 'car' },
+    { id: 'taxi', label: 'Gọi xe (Taxi)', icon: 'taxi' },
+    { id: 'transit', label: 'Tàu điện & Buýt', icon: 'metro' }
   ];
 
   // ============================================================

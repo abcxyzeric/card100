@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>临江市 · 地图（底板 + 节点层）</title>
+  <title>Thành phố Lâm Giang · Bản đồ (Mặt nền + Điểm địa danh)</title>
   <script>
     setTimeout(() => {
       const link = document.createElement('link');
@@ -13,8 +13,8 @@
       document.head.appendChild(link);
     }, 0);
   </script>
-  <script src="./city_mapdata.js?v=20260823-opening-map-v2"></script>
-  <script src="./city_net.js?v=20260823-opening-map-v2"></script>
+  <script src="./city_mapdata.js?v=20261024-vi-v1"></script>
+  <script src="./city_net.js?v=20261024-vi-v1"></script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -1195,19 +1195,19 @@ html.custom-placing #plates{cursor:crosshair}.np.custom .ni{box-shadow:0 0 0 2px
     <div id="trip" hidden>
       <div class="trip-head">
         <div id="trip-od"></div>
-        <button class="trip-x" type="button" id="trip-close" aria-label="取消行程">×</button>
+        <button class="trip-x" type="button" id="trip-close" aria-label="Hủy hành trình">×</button>
       </div>
       <div id="trip-modes"></div>
       <div id="trip-sum"></div>
       <div id="trip-legs"></div>
       <!-- 默认 disabled：没算出行程之前这个按钮不该是可点的绿色 -->
-      <button id="trip-go" type="button" disabled>出发</button>
+      <button id="trip-go" type="button" disabled>Xuất phát</button>
     </div>
 
     <div id="ctl">
-      <button id="c-in" title="放大">+</button>
-      <button id="c-out" title="缩小">−</button>
-      <button id="c-fit" class="fit" title="回到全城">全城</button>
+      <button id="c-in" title="Phóng to">+</button>
+      <button id="c-out" title="Thu nhỏ">−</button>
+      <button id="c-fit" class="fit" title="Quay lại toàn thành">Toàn thành</button>
     </div>
 
     <!-- 开发用：底板跳转和 z / r 读数。默认不出，加 ?dev=1 才显示 -->
@@ -1218,35 +1218,35 @@ html.custom-placing #plates{cursor:crosshair}.np.custom .ni{box-shadow:0 0 0 2px
 
 
     <div id="custom-modebar" hidden>
-      <div class="custom-mode-copy"><b>登记新地点</b><span>点击区底板放置节点；拖动与缩放仍可使用</span></div>
+      <div class="custom-mode-copy"><b>Đăng ký địa điểm mới</b><span>Nhấp vào bản đồ khu vực để đặt điểm; vẫn có thể kéo và thu phóng</span></div>
       <span class="custom-mode-cost" hidden></span>
-      <button class="custom-mode-x" type="button" id="custom-mode-close" aria-label="退出标记模式">×</button>
+      <button class="custom-mode-x" type="button" id="custom-mode-close" aria-label="Thoát chế độ đánh dấu">×</button>
     </div>
 
     <div id="custom-editor" hidden>
       <section class="custom-sheet" role="dialog" aria-modal="true" aria-labelledby="custom-title">
-        <h2 id="custom-title">登记玩家地点</h2>
-        <p id="custom-anchor-note">选择名称与资料，保存后会写入当前存档及地点世界书。</p>
+        <h2 id="custom-title">Đăng ký địa điểm người chơi</h2>
+        <p id="custom-anchor-note">Chọn tên và tư liệu, sau khi lưu sẽ được ghi vào file lưu hiện tại và Lorebook địa điểm.</p>
         <div class="custom-grid">
-          <label class="custom-field wide"><span>地点名称</span><input id="custom-name" maxlength="30" placeholder="例如：海风旧仓库"></label>
-          <label class="custom-field wide"><span>别名（逗号分隔，用作世界书触发词）</span><input id="custom-aliases" maxlength="160" placeholder="旧仓库，海风仓库"></label>
-          <label class="custom-field"><span>地点类型</span><select id="custom-type"><option value="living">生活起居</option><option value="commercial">商业</option><option value="nature">自然山水</option><option value="academy">院校科研</option><option value="live">演艺直播</option><option value="medical">医疗</option><option value="hotspring">温泉汤院</option><option value="adult">成人场所</option></select></label>
-          <label class="custom-field"><span>私密度 0–5</span><input id="custom-privacy" type="number" min="0" max="5" value="3"></label>
+          <label class="custom-field wide"><span>Tên địa điểm</span><input id="custom-name" maxlength="30" placeholder="Ví dụ: Nhà kho cũ Hải Phong"></label>
+          <label class="custom-field wide"><span>Biệt danh (cách nhau bởi dấu phẩy, dùng làm từ khóa Lorebook)</span><input id="custom-aliases" maxlength="160" placeholder="Kho cũ, Nhà kho Hải Phong"></label>
+          <label class="custom-field"><span>Loại địa điểm</span><select id="custom-type"><option value="living">Sinh hoạt thường nhật</option><option value="commercial">Thương mại</option><option value="nature">Cảnh quan thiên nhiên</option><option value="academy">Học viện nghiên cứu</option><option value="live">Trình diễn livestream</option><option value="medical">Y tế</option><option value="hotspring">Suối khoáng nóng</option><option value="adult">Địa điểm người lớn</option></select></label>
+          <label class="custom-field"><span>Độ riêng tư 0–5</span><input id="custom-privacy" type="number" min="0" max="5" value="3"></label>
           <label class="custom-field wide custom-worldbook">
-            <span class="custom-worldbook-head"><b>地点详情（原文写入世界书）</b><span>支持直接粘贴完整设定，不拼接功能、接驳等地图参数</span></span>
-            <textarea id="custom-detail" spellcheck="false" placeholder="在这里直接粘贴完整地点文本。格式与层级会原样保留，例如：&#10;&#10;乐园概述:&#10;  名称: &quot;幻雾海岸·伊甸水上乐园&quot;&#10;  本质: &quot;……&quot;"></textarea>
-            <span class="custom-worldbook-foot"><span>世界书条目内容只使用这块文本</span><span id="custom-detail-count">0 字</span></span>
+            <span class="custom-worldbook-head"><b>Chi tiết địa điểm (viết nguyên văn vào Lorebook)</b><span>Hỗ trợ dán trực tiếp toàn bộ thiết lập, không ghép nối các tham số bản đồ như công năng, kết nối</span></span>
+            <textarea id="custom-detail" spellcheck="false" placeholder="Dán trực tiếp toàn bộ văn bản thiết lập địa điểm vào đây. Định dạng và cấp bậc sẽ được giữ nguyên..."></textarea>
+            <span class="custom-worldbook-foot"><span>Nội dung mục Lorebook chỉ sử dụng khối văn bản này</span><span id="custom-detail-count">0 chữ</span></span>
           </label>
-          <section class="custom-map-options" aria-label="地图显示设置">
-            <div class="custom-map-options-head"><b>地图显示设置</b><span>以下内容只服务地图界面，不写入世界书正文</span></div>
-            <label class="custom-field wide"><span>地图简介</span><textarea id="custom-draw" maxlength="300" placeholder="用一两句话概括这里，显示在地图地点详情中。"></textarea></label>
-            <label class="custom-field wide"><span>地图备注（每行一条）</span><textarea id="custom-special" maxlength="600" placeholder="门能从内部反锁&#10;二层可以临时休息"></textarea></label>
-            <div class="custom-field wide"><span>地图功能</span><div class="custom-flags"><label><input id="custom-date" type="checkbox">可约会</label><label><input id="custom-gather" type="checkbox">可采集</label><label><input id="custom-work" type="checkbox">可工作</label><label><input id="custom-shop" type="checkbox">有商店</label></div></div>
+          <section class="custom-map-options" aria-label="Cài đặt hiển thị bản đồ">
+            <div class="custom-map-options-head"><b>Cài đặt hiển thị bản đồ</b><span>Nội dung dưới đây chỉ phục vụ giao diện bản đồ, không ghi vào chính văn Lorebook</span></div>
+            <label class="custom-field wide"><span>Giới thiệu bản đồ</span><textarea id="custom-draw" maxlength="300" placeholder="Tóm tắt nơi này trong 1-2 câu, hiển thị trong chi tiết địa điểm trên bản đồ."></textarea></label>
+            <label class="custom-field wide"><span>Ghi chú bản đồ (mỗi dòng một mục)</span><textarea id="custom-special" maxlength="600" placeholder="Cửa có thể chốt trong&#10;Tầng hai có thể nghỉ ngơi tạm thời"></textarea></label>
+            <div class="custom-field wide"><span>Tính năng bản đồ</span><div class="custom-flags"><label><input id="custom-date" type="checkbox">Có thể hẹn hò</label><label><input id="custom-gather" type="checkbox">Có thể thu thập</label><label><input id="custom-work" type="checkbox">Có thể làm việc</label><label><input id="custom-shop" type="checkbox">Có cửa hàng</label></div></div>
           </section>
         </div>
         <!-- 建设费。内容由 plate_map.js 的 renderBuildCost 按宿主推来的金钱生成 -->
         <div class="custom-cost" id="custom-cost" hidden></div>
-        <div class="custom-actions"><button class="custom-cancel" id="custom-cancel" type="button">取消</button><button class="custom-save" id="custom-save" type="button">保存节点</button></div>
+        <div class="custom-actions"><button class="custom-cancel" id="custom-cancel" type="button">Hủy</button><button class="custom-save" id="custom-save" type="button">Lưu địa điểm</button></div>
       </section>
     </div>
 
@@ -1255,7 +1255,7 @@ html.custom-placing #plates{cursor:crosshair}.np.custom .ni{box-shadow:0 0 0 2px
       <section class="spot-sheet" role="dialog" aria-modal="true" aria-labelledby="spot-title">
         <div class="spot-frost"></div>
         <div class="spot-edge"></div>
-        <button class="spot-close" type="button" id="spot-close" aria-label="关闭">×</button>
+        <button class="spot-close" type="button" id="spot-close" aria-label="Đóng">×</button>
         <header class="spot-head" id="spot-head"></header>
         <div class="spot-body" id="spot-body"></div>
       </section>

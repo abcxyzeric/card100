@@ -68,52 +68,52 @@
    */
   const PLATES = {
     overview: {
-      label: '全城', file: 'plate/overview_night.webp', kind: 'city',
+      label: 'Toàn thành', file: 'plate/overview_night.webp', kind: 'city',
       correct: 'brightness(1.0) saturate(1.0) contrast(1.0)'
     },
     wuxi: {
-      label: '乌溪区', file: 'plate/wuxi_night.webp', kind: 'district',
-      district: '乌溪区', frame: { x: 0.172, y: 0.475, w: 0.330 },
+      label: 'Khu Ô Khê', file: 'plate/wuxi_night.webp', kind: 'district',
+      district: 'Khu Ô Khê', frame: { x: 0.172, y: 0.475, w: 0.330 },
       correct: 'brightness(1.04) saturate(1.06) contrast(1.02)'
     },
     minghu: {
-      label: '明湖区', file: 'plate/minghu_night.webp', kind: 'district',
-      district: '明湖区', frame: { x: 0.470, y: 0.280, w: 0.320 },
+      label: 'Khu Minh Hồ', file: 'plate/minghu_night.webp', kind: 'district',
+      district: 'Khu Minh Hồ', frame: { x: 0.470, y: 0.280, w: 0.320 },
       correct: 'brightness(0.98) saturate(1.02) contrast(1.03)'
     },
     guling: {
-      label: '鼓岭区', file: 'plate/guling_night.webp', kind: 'district',
-      district: '鼓岭区', frame: { x: 0.155, y: 0.295, w: 0.250 },
+      label: 'Khu Cổ Lĩnh', file: 'plate/guling_night.webp', kind: 'district',
+      district: 'Khu Cổ Lĩnh', frame: { x: 0.155, y: 0.295, w: 0.250 },
       correct: 'brightness(1.0) saturate(1.04) contrast(1.0)'
     },
     xizhou: {
-      label: '西洲区', file: 'plate/xizhou_night.webp', kind: 'district',
-      district: '西洲区', frame: { x: -0.005, y: 0.295, w: 0.230 },
+      label: 'Khu Tây Châu', file: 'plate/xizhou_night.webp', kind: 'district',
+      district: 'Khu Tây Châu', frame: { x: -0.005, y: 0.295, w: 0.230 },
       correct: 'brightness(1.02) saturate(1.0) contrast(1.0)'
     },
     luoxia: {
-      label: '落霞区', file: 'plate/luoxia_night.webp', kind: 'district',
-      district: '落霞区', frame: { x: 0.705, y: 0.520, w: 0.320 },
+      label: 'Khu Lạc Hà', file: 'plate/luoxia_night.webp', kind: 'district',
+      district: 'Khu Lạc Hà', frame: { x: 0.705, y: 0.520, w: 0.320 },
       correct: 'brightness(1.0) saturate(1.02) contrast(1.0)'
     },
     pujiang: {
-      label: '浦江区', file: 'plate/pujiang_night.webp', kind: 'district',
-      district: '浦江区', frame: { x: 0.080, y: 0.013, w: 0.340 },
+      label: 'Khu Phố Giang', file: 'plate/pujiang_night.webp', kind: 'district',
+      district: 'Khu Phố Giang', frame: { x: 0.080, y: 0.013, w: 0.340 },
       correct: 'brightness(1.0) saturate(1.0) contrast(1.0)'
     },
     yushi: {
-      label: '雨石区', file: 'plate/yushi_night.webp', kind: 'district',
-      district: '雨石区', frame: { x: 0.455, y: 0.615, w: 0.310 },
+      label: 'Khu Vũ Thạch', file: 'plate/yushi_night.webp', kind: 'district',
+      district: 'Khu Vũ Thạch', frame: { x: 0.455, y: 0.615, w: 0.310 },
       correct: 'brightness(0.96) saturate(1.08) contrast(1.05)'
     },
     qingping: {
-      label: '青屏山', file: 'plate/qingpingshan_night.webp', kind: 'district',
-      district: '青屏山风景区', frame: { x: 0.795, y: 0.310, w: 0.260 },
+      label: 'Núi Thanh Bình', file: 'plate/qingpingshan_night.webp', kind: 'district',
+      district: 'Khu thắng cảnh núi Thanh Bình', frame: { x: 0.795, y: 0.310, w: 0.260 },
       correct: 'brightness(1.02) saturate(1.08) contrast(1.02)'
     },
     dongtang: {
-      label: '东塘区', file: 'plate/dongtang_night.webp', kind: 'district',
-      district: '东塘区', frame: { x: 0.025, y: 0.655, w: 0.250 },
+      label: 'Khu Đông Đường', file: 'plate/dongtang_night.webp', kind: 'district',
+      district: 'Khu Đông Đường', frame: { x: 0.025, y: 0.655, w: 0.250 },
       correct: 'brightness(0.98) saturate(0.98) contrast(1.04)'
     }
   };
@@ -306,21 +306,21 @@
     // 放在 0.112 的建成带中央，2:1 窗口就看不见了。
     // 网格量出来江北一侧最靠下的落脚点是过江桥的北端桥头（nx≈0.118, ny≈0.172），
     // 在岸上、又刚好进 2:1 的可用带，而且"过江去浦江"这层意思也对
-    { key: 'pujiang', name: '浦江区', sub: '江北新区', at: [0.118, 0.172], c: '#4a63c8', i: 'office' },
-    { key: 'qingping', name: '青屏山', sub: '城东山林', at: [0.900, 0.290], c: '#189e90', i: 'tree' },
-    { key: 'minghu', name: '明湖区', sub: '市中心', at: [0.478, 0.360], c: '#dd7a2b', i: 'market' },
-    { key: 'xizhou', name: '西洲区', sub: '直播产业带', at: [0.085, 0.372], c: '#c93f8f', i: 'depot' },
-    { key: 'guling', name: '鼓岭区', sub: '文化街区', at: [0.228, 0.430], c: '#7c5cd0', i: 'heritage' },
-    { key: 'wuxi', name: '乌溪区', sub: '老城南', at: [0.340, 0.612], c: '#2f9e5c', i: 'house' },
-    { key: 'luoxia', name: '落霞区', sub: '大学城', at: [0.830, 0.640], c: '#2f7fd6', i: 'book' },
-    { key: 'yushi', name: '雨石区', sub: '城南枢纽', at: [0.610, 0.752], c: '#3f7ea8', i: 'train' },
+    { key: 'pujiang', name: 'Khu Phố Giang', sub: 'Khu mới Giang Bắc', at: [0.118, 0.172], c: '#4a63c8', i: 'office' },
+    { key: 'qingping', name: 'Núi Thanh Bình', sub: 'Rừng núi phía Đông', at: [0.900, 0.290], c: '#189e90', i: 'tree' },
+    { key: 'minghu', name: 'Khu Minh Hồ', sub: 'Trung tâm thành phố', at: [0.478, 0.360], c: '#dd7a2b', i: 'market' },
+    { key: 'xizhou', name: 'Khu Tây Châu', sub: 'Vành đai livestream', at: [0.085, 0.372], c: '#c93f8f', i: 'depot' },
+    { key: 'guling', name: 'Khu Cổ Lĩnh', sub: 'Khu phố văn hóa', at: [0.228, 0.430], c: '#7c5cd0', i: 'heritage' },
+    { key: 'wuxi', name: 'Khu Ô Khê', sub: 'Phía nam phố cổ', at: [0.340, 0.612], c: '#2f9e5c', i: 'house' },
+    { key: 'luoxia', name: 'Khu Lạc Hà', sub: 'Làng Đại học', at: [0.830, 0.640], c: '#2f7fd6', i: 'book' },
+    { key: 'yushi', name: 'Khu Vũ Thạch', sub: 'Đầu mối phía nam', at: [0.610, 0.752], c: '#3f7ea8', i: 'train' },
     // 原来在 0.640，那是照片左侧那片仓库——「南郊空港」放在城西，
     // 加了地铁之后这个错读得很清楚（从乌溪家到空港直线只有 3.3 km）。
     // 现在挪到照片左下那片农田与出城高速，方位说得通，也进得了 z=1 可见带
     // （真正的南郊在照片下边界外面，摆过去在总览档就看不见了）。
     // 注意别再往下：0.785 会压着左下角的时段条，标签只能往上让，
     // 一屏九张卡里唯一一个朝上的，看着就是"没规律"
-    { key: 'dongtang', name: '东塘区', sub: '空港与温泉', at: [0.110, 0.755], c: '#c2673a', i: 'water' }
+    { key: 'dongtang', name: 'Khu Đông Đường', sub: 'Sân bay & Suối khoáng', at: [0.110, 0.755], c: '#c2673a', i: 'water' }
   ];
 
   /**
@@ -339,25 +339,25 @@
    */
   const PHASES = {
     朝: {
-      label: '朝',
+      label: 'Sáng',
       plate: 'brightness(1.1) saturate(0.86) contrast(0.94) hue-rotate(-6deg)',
       // 上方压冷天光，下方留一线暖——拂晓的光是从天上来的
       tint: 'linear-gradient(180deg, rgba(150,186,232,.42) 0%, rgba(150,186,232,.16) 42%, rgba(255,196,150,.12) 100%)',
       tint2: 'linear-gradient(180deg, rgba(96,128,180,.20) 0%, transparent 55%)'
     },
     暮: {
-      label: '暮',
+      label: 'Chiều',
       plate: 'brightness(1.1) saturate(1.06) contrast(0.98) hue-rotate(-10deg)',
       tint: 'linear-gradient(165deg, rgba(255,176,116,.44) 0%, rgba(196,128,150,.26) 55%, rgba(120,110,170,.28) 100%)',
       tint2: 'radial-gradient(80% 60% at 14% 16%, rgba(255,162,98,.20), transparent 64%)'
     },
     夜: {
-      label: '夜',
+      label: 'Tối',
       plate: 'brightness(1.0) saturate(1.0) contrast(1.0)',
       tint: 'none', tint2: 'none'
     },
     深夜: {
-      label: '深夜',
+      label: 'Đêm',
       plate: 'brightness(0.78) saturate(0.88) contrast(1.05)',
       tint: 'none',
       tint2: 'linear-gradient(180deg, rgba(6,12,34,.40), rgba(4,8,26,.48))'
@@ -446,49 +446,49 @@
   const OPENING_MODE = new URLSearchParams(location.search).get('mode') === 'opening';
   let openingTarget = new URLSearchParams(location.search).get('target') || 'home';
   const OPENING_HOME_META = {
-    lx_share: { cost: '月租 RMB 1,800 / 押二付一', note: '普通合租 / 大学城南侧通勤', tier: 'starter' },
-    pj_apt: { cost: '月租 RMB 2,600 / 押二付一', note: '园区人才公寓 / 配套完整', tier: 'starter' },
-    gl_yunting: { cost: '月租 RMB 3,200 / 押二付一', note: '私厨后院厢房 / 安静', tier: 'starter' },
-    xz_jiayuan: { cost: '月租 RMB 3,900 / 押二付一', note: '大平层分租主卧 / 靠近直播产业带', tier: 'starter' },
-    gl_wutong: { cost: '月租 RMB 2,200 / 押二付一', note: '老洋房步行房 / 离生活配套近', tier: 'starter' },
-    pj_village: { cost: '月租 RMB 1,500 / 押二付一', note: '城中村自建房 / 公共空间紧凑', tier: 'starter' },
-    wx_home: { cost: '自有房产 / 无月租', note: '前店后住的康养馆 / 无初始租金', tier: 'starter' },
-    mh_youth_apt: { cost: '月租 RMB 3,200 / 押一付一', note: '城区小单间 / 公交与生活配套方便', tier: 'starter' },
-    dt_town_rental: { cost: '月租 RMB 1,400 / 押一付一', note: '镇口低租单间 / 进城通勤较长', tier: 'starter' },
-    qp_foothill_share: { cost: '月租 RMB 1,800 / 押一付一', note: '山脚合租卧室 / 末班公交较早', tier: 'starter' },
-    // 五种"住法不同"的补充档，cost 与 opening.js 的 HOMES.cost 逐字一致
-    lx_capsule: { cost: '月租 RMB 900 / 押一付一', note: '胶囊舱铺位 / 洗漱全公用', tier: 'starter' },
-    dt_stay: { cost: '月租 RMB 2,000 / 押一付一', note: '民宿长包厢房 / 旺季要腾房', tier: 'starter' },
-    wx_inn: { cost: '月租 RMB 1,900 / 押一付一', note: '临水客栈包月房 / 邻居换得勤', tier: 'starter' },
-    qp_farm: { cost: '月租 RMB 800 / 押一付一 / 含三餐', note: '农家乐帮工房 / 早晚要搭手', tier: 'starter' },
-    pj_nightshift: { cost: '月租 RMB 700 / 押一付一', note: '司机驿站铺位 / 通宵有人进出', tier: 'starter' }
+    lx_share: { cost: 'Thuê tháng RMB 1,800 / Cọc 2 đóng 1', note: 'Căn hộ hai phòng ngủ ghép ở phía nam Làng Đại học, tiền thuê thấp, cách âm bình thường', tier: 'starter' },
+    pj_apt: { cost: 'Thuê tháng RMB 2,600 / Cọc 2 đóng 1', note: 'Chung cư nhân tài diện tích nhỏ ngoài khu công nghệ, thuận tiện đi làm trong khu', tier: 'starter' },
+    gl_yunting: { cost: 'Thuê tháng RMB 3,200 / Cọc 2 đóng 1', note: 'Phòng phụ độc lập cho thuê lại ở sân sau quán bếp tư nhân rừng trúc, yên tĩnh, gần tiện ích phố cổ', tier: 'starter' },
+    xz_jiayuan: { cost: 'Thuê tháng RMB 3,900 / Cọc 2 đóng 1', note: 'Phòng ngủ chính tách thuê trong căn hộ lớn ven sông, ngay dưới lầu là vành đai công nghiệp livestream', tier: 'starter' },
+    gl_wutong: { cost: 'Thuê tháng RMB 2,200 / Cọc 2 đóng 1', note: 'Phòng ngăn ra trong biệt thự cổ thời Dân Quốc, sinh hoạt tiện lợi, tiếng cầu thang và hàng xóm khá gần', tier: 'starter' },
+    pj_village: { cost: 'Thuê tháng RMB 1,500 / Cọc 2 đóng 1', note: 'Phòng đơn nhà tự xây trong xóm lao động, tiền thuê thấp nhất, gần khu công nghệ, không gian chung nhỏ hẹp', tier: 'starter' },
+    wx_home: { cost: 'Bất động sản riêng / Không mất tiền thuê', note: 'Phòng khám trị liệu dưỡng sinh Đông y nhỏ của gia đình, phía trước mở tiệm phía sau để ở, không mất tiền thuê', tier: 'starter' },
+    mh_youth_apt: { cost: 'Thuê tháng RMB 3,200 / Cọc 1 đóng 1', note: 'Phòng đơn nhỏ trung tâm thành phố, xe buýt và tiện ích sinh hoạt thuận tiện', tier: 'starter' },
+    dt_town_rental: { cost: 'Thuê tháng RMB 1,400 / Cọc 1 đóng 1', note: 'Phòng đơn giá rẻ đầu thị trấn, chi phí sinh hoạt thấp nhưng vào nội thành khá xa', tier: 'starter' },
+    qp_foothill_share: { cost: 'Thuê tháng RMB 1,800 / Cọc 1 đóng 1', note: 'Phòng ngủ riêng, bếp dùng chung, chuyến xe buýt cuối ngày kết thúc khá sớm', tier: 'starter' },
+    // 5 phương án ở bổ sung
+    lx_capsule: { cost: 'Thuê tháng RMB 900 / Cọc 1 đóng 1', note: 'Giường khoang capsule thuê theo tháng, rẻ nhất, chỉ có một giường và một tủ đồ, khu vệ sinh dùng chung', tier: 'starter' },
+    dt_stay: { cost: 'Thuê tháng RMB 2,000 / Cọc 1 đóng 1', note: 'Phòng phụ thuê dài hạn mùa thấp điểm trong homestay, sân viện yên tĩnh, mùa cao điểm phải nhường phòng, khá xa nội thành', tier: 'starter' },
+    wx_inn: { cost: 'Thuê tháng RMB 1,900 / Cọc 1 đóng 1', note: 'Phòng tầng hai thuê theo tháng tại khách điếm ven sông trong ngõ cổ, mở cửa sổ là thấy sông, khách phòng bên thay đổi liên tục', tier: 'starter' },
+    qp_farm: { cost: 'Thuê tháng RMB 800 / Cọc 1 đóng 1 / Bao 3 bữa', note: 'Phòng phụ việc ở sân sau quán nông gia, bao ba bữa ăn, đổi lại sáng tối phải phụ việc vặt, xe buýt cuối rất sớm', tier: 'starter' },
+    pj_nightshift: { cost: 'Thuê tháng RMB 700 / Cọc 1 đóng 1', note: 'Giường thuê dài hạn tại trạm dừng chân tài xế chở hàng, có người ra vào suốt đêm, gần khu công nghệ và bến cảng', tier: 'starter' }
   };
   const OPENING_JOB_META = {
-    lx_print: { label: '\u6253\u5370\u5e97\u5e97\u5458', pay: 'RMB 4,500 / \u6708', hours: '09:00-18:00' },
-    gl_parcel: { label: '\u5feb\u9012\u9a7f\u7ad9\u5e97\u5458', pay: 'RMB 4,800 / \u6708', hours: '08:30-18:30' },
-    mh_mart: { label: '\u4fbf\u5229\u5e97\u5e97\u5458', pay: 'RMB 4,700 / \u6708', hours: '14:00-22:00' },
-    xz_esports: { label: '\u7535\u7ade\u8231\u503c\u73ed\u5458', pay: 'RMB 5,200 / \u6708', hours: '16:00-00:00' },
-    dt_gas: { label: '\u52a0\u6cb9\u7ad9\u591c\u73ed\u5e97\u5458', pay: 'RMB 5,600 / \u6708', hours: '20:00-06:00' },
-    xz_sound_studio: { label: '\u5f55\u97f3\u68da\u52a9\u7406', pay: 'RMB 5,400 / \u6708', hours: '11:00-20:00' },
-    xz_theatre: { label: '\u5267\u9662\u573a\u52a1', pay: 'RMB 4,600 / \u6708', hours: '13:00-22:00' },
-    gl_pet: { label: '\u5ba0\u7269\u8bca\u7597\u6240\u52a9\u7406', pay: 'RMB 5,000 / \u6708', hours: '10:00-19:00' },
-    mh_hospital: { label: '\u533b\u9662\u524d\u53f0\u52a9\u7406', pay: 'RMB 5,800 / \u6708', hours: '08:00-17:00' },
-    lx_lab: { label: '\u5b9e\u9a8c\u697c\u503c\u73ed\u52a9\u7406', pay: 'RMB 6,000 / \u6708', hours: '18:00-02:00' },
-    ys_rdpark: { label: '\u7814\u521b\u56ed\u884c\u653f\u52a9\u7406', pay: 'RMB 6,200 / \u6708', hours: '09:30-18:30' },
-    wx_dye: { label: '\u624e\u67d3\u4f5c\u574a\u5b66\u5f92', pay: 'RMB 4,200 / \u6708', hours: '10:00-19:00' },
-    // 每区补到 3 个岗位；label/pay/hours 与 opening.js 的 JOBS 逐字一致
-    dt_outlet: { label: '奥莱店铺导购', pay: 'RMB 4,300 / 月', hours: '10:00-19:00' },
-    dt_airport: { label: '航站楼地服引导员', pay: 'RMB 5,200 / 月', hours: '06:00-14:00' },
-    wx_teahouse: { label: '茶馆跑堂', pay: 'RMB 4,000 / 月', hours: '09:00-18:00' },
-    wx_script: { label: '实景剧场NPC演员', pay: 'RMB 4,800 / 月', hours: '14:00-23:00' },
-    mh_cinema: { label: '影城放映助理', pay: 'RMB 4,400 / 月', hours: '12:00-21:00' },
-    lx_canteen: { label: '食堂帮厨', pay: 'RMB 4,100 / 月', hours: '06:00-14:00' },
-    ys_station: { label: '高铁站务引导员', pay: 'RMB 5,000 / 月', hours: '07:00-16:00' },
-    pj_morning: { label: '生煎馆早班帮工', pay: 'RMB 4,300 / 月', hours: '05:00-13:00' },
-    qp_visitor: { label: '游客中心咨询员', pay: 'RMB 4,500 / 月', hours: '08:30-17:30' },
-    qp_cable: { label: '索道值守员', pay: 'RMB 4,700 / 月', hours: '08:00-17:00' },
-    qp_teahouse: { label: '半山茶舍服务员', pay: 'RMB 4,200 / 月', hours: '09:00-18:00' },
-    gl_cafe: { label: '洋房咖啡师', pay: 'RMB 4,600 / 月', hours: '08:00-17:00' }
+    lx_print: { label: 'Nhân viên tiệm in ấn', pay: 'RMB 4,500 / Tháng', hours: '09:00-18:00' },
+    gl_parcel: { label: 'Nhân viên trạm chuyển phát', pay: 'RMB 4,800 / Tháng', hours: '08:30-18:30' },
+    mh_mart: { label: 'Nhân viên cửa hàng tiện lợi', pay: 'RMB 4,700 / Tháng', hours: '14:00-22:00' },
+    xz_esports: { label: 'Nhân viên trực phòng Esports', pay: 'RMB 5,200 / Tháng', hours: '16:00-00:00' },
+    dt_gas: { label: 'Nhân viên ca đêm trạm xăng', pay: 'RMB 5,600 / Tháng', hours: '20:00-06:00' },
+    xz_sound_studio: { label: 'Trợ lý phòng thu âm', pay: 'RMB 5,400 / Tháng', hours: '11:00-20:00' },
+    xz_theatre: { label: 'Nhân viên hậu đài nhà hát', pay: 'RMB 4,600 / Tháng', hours: '13:00-22:00' },
+    gl_pet: { label: 'Trợ lý phòng khám thú y', pay: 'RMB 5,000 / Tháng', hours: '10:00-19:00' },
+    mh_hospital: { label: 'Trợ lý lễ tân bệnh viện', pay: 'RMB 5,800 / Tháng', hours: '08:00-17:00' },
+    lx_lab: { label: 'Trợ lý trực tòa thí nghiệm', pay: 'RMB 6,000 / Tháng', hours: '18:00-02:00' },
+    ys_rdpark: { label: 'Trợ lý hành chính khu nghiên cứu', pay: 'RMB 6,200 / Tháng', hours: '09:30-18:30' },
+    wx_dye: { label: 'Học việc xưởng nhuộm vải thủ công', pay: 'RMB 4,200 / Tháng', hours: '10:00-19:00' },
+    // Mỗi khu 3 vị trí; label/pay/hours khớp opening.js
+    dt_outlet: { label: 'Nhân viên tư vấn cửa hàng Outlet', pay: 'RMB 4,300 / Tháng', hours: '10:00-19:00' },
+    dt_airport: { label: 'Nhân viên hướng dẫn mặt đất sân bay', pay: 'RMB 5,200 / Tháng', hours: '06:00-14:00' },
+    wx_teahouse: { label: 'Phục vụ quán trà cổ', pay: 'RMB 4,000 / Tháng', hours: '09:00-18:00' },
+    wx_script: { label: 'Diễn viên NPC nhà hát thực cảnh', pay: 'RMB 4,800 / Tháng', hours: '14:00-23:00' },
+    mh_cinema: { label: 'Trợ lý chiếu phim rạp IMAX', pay: 'RMB 4,400 / Tháng', hours: '12:00-21:00' },
+    lx_canteen: { label: 'Phụ bếp nhà ăn đại học', pay: 'RMB 4,100 / Tháng', hours: '06:00-14:00' },
+    ys_station: { label: 'Nhân viên hướng dẫn ga tàu cao tốc', pay: 'RMB 5,000 / Tháng', hours: '07:00-16:00' },
+    pj_morning: { label: 'Phụ việc ca sáng tiệm bánh áp chảo', pay: 'RMB 4,300 / Tháng', hours: '05:00-13:00' },
+    qp_visitor: { label: 'Nhân viên tư vấn trung tâm du khách', pay: 'RMB 4,500 / Tháng', hours: '08:30-17:30' },
+    qp_cable: { label: 'Nhân viên trực cáp treo', pay: 'RMB 4,700 / Tháng', hours: '08:00-17:00' },
+    qp_teahouse: { label: 'Phục vụ quán trà lưng đồi', pay: 'RMB 4,200 / Tháng', hours: '09:00-18:00' },
+    gl_cafe: { label: 'Pha chế cà phê biệt thự cổ', pay: 'RMB 4,600 / Tháng', hours: '08:00-17:00' }
   };
   function openingNodeAllowed(n) {
     if (!OPENING_MODE) return true;
@@ -1059,7 +1059,7 @@
       const here = d.key === STATE.district;
       const it = acquire('D:' + d.key, 'major',
         `<div class="ni"><svg viewBox="0 0 32 32"><use href="#i-${d.i}"/></svg></div>` +
-        `<div class="nl"><b>${esc(d.name)}</b><i>${esc(d.sub)}</i><em class="nh">你在这</em></div>`);
+        `<div class="nl"><b>${esc(d.name)}</b><i>${esc(d.sub)}</i><em class="nh">Bạn ở đây</em></div>`);
       it.el.style.setProperty('--nc', d.c);
       // 绿环 + 卡上另起一行「你在这」，不顶掉城区介绍。
       if (it._here !== here) {
@@ -1757,18 +1757,18 @@
       `<div class="lg-row">${line(l.glow || l.color, 2.4, 'solid')}<span>${esc(l.name)}</span></div>`
     ).join('');
     const ways = [
-      ['express', '快速路 · 高速'], ['arterial', '主干道'],
-      ['bridge', '跨江桥'], ['tunnel', '过江隧道']
+      ['express', 'Đường cao tốc'], ['arterial', 'Trục đường chính'],
+      ['bridge', 'Cầu vượt sông'], ['tunnel', 'Hầm vượt sông']
     ].map(([k, label]) => {
       const st = WAY_STYLE[k];
       return `<div class="lg-row">${line(st.c + '0.95)', st.w + 0.6, 'dashed')}` +
         `<span>${label}</span></div>`;
     }).join('');
     lg.innerHTML =
-      `<h4>轨道交通</h4>${rows}` +
-      `<hr><h4>道路</h4>${ways}` +
-      `<div class="lg-row">${line('rgba(198,216,246,.9)', 1.6, 'dotted')}<span>步行可达</span></div>` +
-      `<hr><div class="lg-row"><i class="lg-ring"></i><span>换乘站</span></div>`;
+      `<h4>Đường ray / Tàu điện</h4>${rows}` +
+      `<hr><h4>Đường bộ</h4>${ways}` +
+      `<div class="lg-row">${line('rgba(198,216,246,.9)', 1.6, 'dotted')}<span>Có thể đi bộ đến</span></div>` +
+      `<hr><div class="lg-row"><i class="lg-ring"></i><span>Trạm trung chuyển</span></div>`;
   }
   function drawStations() {
     if (!NET || !showNet || !showStNames) {
@@ -1875,15 +1875,15 @@
     if (customSaving || customEditor.hidden) return;
     const broke = !canAffordBuild();
     customSave.disabled = broke;
-    customSave.textContent = customEditing ? '保存修改' : broke ? '金钱不足，无法建设'
-      : buildCost ? `支付 ${yuan(buildCost)} 并建设` : '保存节点';
+    customSave.textContent = customEditing ? 'Lưu sửa đổi' : broke ? 'Không đủ tiền, không thể xây'
+      : buildCost ? `Thanh toán ${yuan(buildCost)} và xây dựng` : 'Lưu địa điểm';
   }
 
   function renderBuildCost() {
     const chip = customModebar.querySelector('.custom-mode-cost');
     if (chip) {
       chip.hidden = !buildCost;
-      chip.textContent = buildCost ? `建设费 ${yuan(buildCost)} · 持有 ${yuan(buildFunds)}` : '';
+      chip.textContent = buildCost ? `Phí xây dựng ${yuan(buildCost)} · Hiện có ${yuan(buildFunds)}` : '';
       chip.classList.toggle('is-broke', !canAffordBuild());
     }
     const row = document.getElementById('custom-cost');
@@ -1892,8 +1892,8 @@
       row.classList.toggle('is-broke', !canAffordBuild());
       if (buildCost) {
         row.innerHTML = canAffordBuild()
-          ? `<span>建设费</span><b>${yuan(buildCost)}</b><small>确定建设时从金钱扣除，建成后余 ${yuan(buildFunds - buildCost)}。蓝图不消耗，可继续使用。</small>`
-          : `<span>建设费</span><b>${yuan(buildCost)}</b><small>金钱不足，还差 ${yuan(buildCost - buildFunds)}（当前持有 ${yuan(buildFunds)}）。攒够钱再回来，草稿不会保存。</small>`;
+          ? `<span>Phí xây dựng</span><b>${yuan(buildCost)}</b><small>Sẽ trừ tiền khi xác nhận xây dựng, xây xong còn lại ${yuan(buildFunds - buildCost)}. Bản vẽ không bị tiêu hao, có thể tiếp tục sử dụng.</small>`
+          : `<span>Phí xây dựng</span><b>${yuan(buildCost)}</b><small>Không đủ tiền, còn thiếu ${yuan(buildCost - buildFunds)} (hiện có ${yuan(buildFunds)}). Hãy tích đủ tiền rồi quay lại, bản nháp sẽ không được lưu.</small>`;
       }
     }
     syncCustomSave();
@@ -1931,7 +1931,7 @@
     customEditing = false;
     customDraft = null;
     customSaving = false;
-    document.getElementById('custom-title').textContent = '登记玩家地点';
+    document.getElementById('custom-title').textContent = 'Đăng ký địa điểm người chơi';
     document.getElementById('custom-name').disabled = false;
   }
 
@@ -1952,7 +1952,7 @@
     const w = toWorld(sx, sy);
     const hit = plateAtWorld(w);
     if (!hit) {
-      customModebar.querySelector('span').textContent = '请先放大并点击某个城区的底板';
+      customModebar.querySelector('span').textContent = 'Vui lòng phóng to và nhấp vào bản đồ khu vực';
       return false;
     }
     const [plate, pl] = hit;
@@ -1969,13 +1969,13 @@
     document.getElementById('custom-type').value = 'living';
     document.getElementById('custom-privacy').value = '3';
     document.getElementById('custom-detail').value = '';
-    document.getElementById('custom-detail-count').textContent = '0 字';
+    document.getElementById('custom-detail-count').textContent = '0 chữ';
     document.getElementById('custom-draw').value = '';
     document.getElementById('custom-special').value = '';
     ['custom-date', 'custom-gather', 'custom-work', 'custom-shop'].forEach(id => { document.getElementById(id).checked = false; });
     document.getElementById('custom-anchor-note').textContent = anchor
       ? `${customDraft.district} · 接驳到「${customDraft.anchorName}」，约 ${customDraft.accessKm} km`
-      : `${customDraft.district} · 附近没有可用接驳节点`;
+      : `${customDraft.district} · Gần đây không có điểm kết nối khả dụng`;
     /* 先取消隐藏再排版：syncCustomSave 在面板隐藏时会直接返回，
        顺序颠倒的话按钮文案就停在上一次的状态。 */
     customSaving = false;
@@ -1998,7 +1998,7 @@
       anchorName: n.anchorName,
       accessKm: n.accessKm,
     };
-    document.getElementById('custom-title').textContent = '编辑玩家地点';
+    document.getElementById('custom-title').textContent = 'Chỉnh sửa địa điểm người chơi';
     const nameInput = document.getElementById('custom-name');
     nameInput.value = n.name;
     nameInput.disabled = true;
@@ -2012,7 +2012,7 @@
     document.getElementById('custom-gather').checked = !!n.features?.canGather;
     document.getElementById('custom-work').checked = !!n.features?.canWork;
     document.getElementById('custom-shop').checked = !!n.features?.hasShop;
-    document.getElementById('custom-anchor-note').textContent = '编辑现有地点资料；保存修改不会再次收取建设费。';
+    document.getElementById('custom-anchor-note').textContent = 'Chỉnh sửa tư liệu địa điểm hiện có; lưu sửa đổi không thu thêm phí xây dựng.';
     updateCustomDetailCount();
     customEditor.hidden = false;
     renderBuildCost();
@@ -2032,7 +2032,7 @@
   const customDetailInput = document.getElementById('custom-detail');
   const customDetailCount = document.getElementById('custom-detail-count');
   const updateCustomDetailCount = () => {
-    if (customDetailCount) customDetailCount.textContent = `${customDetailInput?.value.length || 0} 字`;
+    if (customDetailCount) customDetailCount.textContent = `${customDetailInput?.value.length || 0} chữ`;
   };
   customDetailInput?.addEventListener('input', updateCustomDetailCount);
 
@@ -2044,14 +2044,14 @@
     const conflict = Object.values(byId).find(n => n && n.id !== customDraft.id && n.name
       && String(n.name).normalize('NFKC').replace(/\s+/g, '').toLowerCase() === normalized);
     if (conflict) {
-      document.getElementById('custom-anchor-note').textContent = `名称已被「${conflict.name}」使用，请换一个名称。`;
+      document.getElementById('custom-anchor-note').textContent = `Tên đã được sử dụng bởi「${conflict.name}」, vui lòng đổi tên khác.`;
       return;
     }
     /* 钱不够就别过桥。宿主还会自己再查一遍（那边才是权威），
        这一道只是让拒绝就地发生，不用等一次往返。 */
     if (!customEditing && !canAffordBuild()) {
       document.getElementById('custom-anchor-note').textContent =
-        `金钱不足：建设需要 ${yuan(buildCost)}，当前只有 ${yuan(buildFunds)}，还差 ${yuan(buildCost - buildFunds)}。`;
+        `Không đủ tiền: Cần có ${yuan(buildCost)}, hiện chỉ có ${yuan(buildFunds)}, còn thiếu ${yuan(buildCost - buildFunds)}.`;
       renderBuildCost();
       return;
     }
@@ -2074,11 +2074,11 @@
     };
     customSaving = true;
     customSave.disabled = true;
-    customSave.textContent = customEditing ? '正在保存修改…' : buildCost ? `正在支付 ${yuan(buildCost)}…` : '正在写入…';
+    customSave.textContent = customEditing ? 'Đang lưu sửa đổi…' : buildCost ? `Đang thanh toán ${yuan(buildCost)}…` : 'Đang ghi dữ liệu…';
     try {
       const saved = onCustomCreate ? await onCustomCreate(draft) : { ...draft, id: `usr_${Date.now().toString(36)}` };
       const node = normalizeCustomNode(saved);
-      if (!node) throw new Error('宿主返回的节点资料不完整');
+      if (!node) throw new Error('Dữ liệu địa điểm không hoàn chỉnh');
       /* 宿主已经扣过了。本地镜像跟着减，免得在下一次快照到达之前
          面板还显示着扣款前的金额、把第二次建设错判成付得起。 */
       if (!customEditing && buildCost) buildFunds = Math.max(0, buildFunds - buildCost);
@@ -2104,17 +2104,17 @@
 
   async function deleteCustomNode(n) {
     if (!n?.custom || !customIds.has(n.id)) return false;
-    if (!confirm(`删除玩家节点「${n.name}」？地图与对应地点世界书会一起停用。`)) return false;
+    if (!confirm(`Xóa địa điểm người chơi「${n.name}」? Bản đồ và mục Lorebook tương ứng sẽ ngừng hoạt động.`)) return false;
     const button = document.getElementById('spot-delete');
-    if (button) { button.disabled = true; button.textContent = '删除中…'; }
+    if (button) { button.disabled = true; button.textContent = 'Đang xóa...'; }
     try {
       if (onCustomDelete) await onCustomDelete(n);
       setCustomNodes(customRowsWith(null, n.id));
       closeSpot();
       return true;
     } catch (error) {
-      if (button) { button.disabled = false; button.textContent = '删除节点'; }
-      alert(`删除失败：${error?.message || error}`);
+      if (button) { button.disabled = false; button.textContent = 'Xóa địa điểm'; }
+      alert(`Xóa thất bại: ${error?.message || error}`);
       return false;
     }
   }
@@ -2393,10 +2393,10 @@
 
   // ============ 地点详情 ============
   const ARCH_LABEL = {
-    nature: '郊野', hotspring: '汤苑', medical: '医疗', commercial: '商圈',
-    adult: '成人', academy: '文教', live: '演播', living: '生活'
+    nature: 'Ngoại ô / Thiên nhiên', hotspring: 'Suối khoáng', medical: 'Y tế', commercial: 'Thương mại',
+    adult: 'Người lớn', academy: 'Văn hóa giáo dục', live: 'Truyền hình & Diễn xuất', living: 'Sinh hoạt'
   };
-  const PRIVACY_LABEL = ['公开', '街面', '转角', '僻静', '私密', '独用'];
+  const PRIVACY_LABEL = ['Công khai', 'Mặt phố', 'Góc phố', 'Thanh tịnh', 'Riêng tư', 'Biệt lập'];
   const CARD_KIND = {
     pureLove: 'love', mischief: 'mischief', sexAction: 'sex'
   };
@@ -2405,10 +2405,10 @@
   function featChips(n) {
     const f = n.features || {};
     const bits = [];
-    if (f.canDate) bits.push('约会');
-    if (f.canGather) bits.push('采集');
-    if (f.canWork) bits.push('打工');
-    if (f.hasShop) bits.push('店面');
+    if (f.canDate) bits.push('Hẹn hò');
+    if (f.canGather) bits.push('Thu thập');
+    if (f.canWork) bits.push('Làm việc');
+    if (f.hasShop) bits.push('Cửa hàng');
     return bits;
   }
 
@@ -2421,16 +2421,20 @@
       const [a, b] = v;
       out.push(b == null || b >= 100 ? `${label} ≥${a}` : `${label} ${a}–${b}`);
     };
-    if (Array.isArray(t['时段']) && t['时段'].length) out.push(t['时段'].join(' / '));
-    rng(t['好感度'], '好感');
-    rng(t['顺从度'], '顺从');
-    rng(t['性欲度'], '性欲');
-    rng(t['尿意'], '尿意');
-    if (t['体力上限'] != null) out.push(`体力 ≤${t['体力上限']}`);
-    if (t['异常状态含']) out.push(`前置:${t['异常状态含']}`);
-    if (t['需携带道具']) out.push(`需要:${t['需携带道具']}`);
-    if (t['需同行']) out.push('需同行');
-    else out.push('可独行');
+    const times = t['时段'] || t['Buổi'];
+    if (Array.isArray(times) && times.length) out.push(times.join(' / '));
+    rng(t['Độ hảo cảm'] || t['好感度'], 'Hảo cảm');
+    rng(t['Độ thuận tùng'] || t['顺从度'], 'Thuận tùng');
+    rng(t['Độ ham muốn'] || t['性欲度'], 'Ham muốn');
+    rng(t['Buồn tiểu'] || t['尿意'], 'Buồn tiểu');
+    const stam = t['Thể lực tối đa'] != null ? t['Thể lực tối đa'] : t['体力上限'];
+    if (stam != null) out.push(`Thể lực ≤${stam}`);
+    const cond = t['Trạng thái bất thường gồm'] || t['异常状态含'];
+    if (cond) out.push(`Tiền đề:${cond}`);
+    const item = t['Cần mang đạo cụ'] || t['需携带道具'];
+    if (item) out.push(`Cần:${item}`);
+    if (t['Cần đồng hành'] || t['需同行']) out.push('Cần đi cùng');
+    else out.push('Có thể đi một mình');
     return out.length
       ? `<div class="spot-req">${out.map(s => `<em>${esc(s)}</em>`).join('')}</div>`
       : '';
@@ -2445,16 +2449,19 @@
     return ['pureLove', 'mischief', 'sexAction'].map(key => {
       const c = card[key];
       if (!c) return '';
-      const label = esc(c['分类'] || { pureLove: '纯爱', mischief: '调教', sexAction: '欲望' }[key]);
-      const kind = TAG_KIND[c['分类']] || CARD_KIND[key] || 'daily';
-      const gate = c['门槛']
-        ? splitFacts(c['门槛']).map(s => `<em>${esc(s)}</em>`).join('')
-        : `<em class="free">无额外门槛</em>`;
-      const result = splitFacts(c['结算']);
+      const label = esc(c['Phân loại'] || c['分类'] || { pureLove: 'Thuần ái', mischief: 'Điều giáo', sexAction: 'Dục vọng' }[key]);
+      const kind = TAG_KIND[c['Phân loại']] || TAG_KIND[c['分类']] || CARD_KIND[key] || 'daily';
+      const gateVal = c['Điều kiện'] || c['门槛'];
+      const gate = gateVal
+        ? splitFacts(gateVal).map(s => `<em>${esc(s)}</em>`).join('')
+        : `<em class="free">Không yêu cầu thêm</em>`;
+      const resultVal = c['Kết toán'] || c['结算'];
+      const result = splitFacts(resultVal);
+      const actionText = c['Lựa chọn'] || c['选项'];
       return `<div class="spot-opt ${kind}">` +
-        `<div class="spot-opt-head"><em class="spot-tag ${kind}">${label}</em><span>行动路线</span></div>` +
-        (c['选项'] ? `<p class="spot-action">${esc(c['选项'])}</p>` : '') +
-        `<div class="spot-opt-foot"><div class="spot-gate-label">需要</div><div class="spot-gate">${gate}</div>` +
+        `<div class="spot-opt-head"><em class="spot-tag ${kind}">${label}</em><span>Hướng hành động</span></div>` +
+        (actionText ? `<p class="spot-action">${esc(actionText)}</p>` : '') +
+        `<div class="spot-opt-foot"><div class="spot-gate-label">Yêu cầu</div><div class="spot-gate">${gate}</div>` +
         (result.length ? `<div class="spot-result">${result.map(s => `<em>${esc(s)}</em>`).join('')}</div>` : '') +
         `</div></div>`;
     }).join('');
@@ -2464,8 +2471,8 @@
     if (!h) return '';
     const parts = [];
     if (h.sale) parts.push('RMB ' + Number(h.sale).toLocaleString());
-    if (h.rent) parts.push('RMB ' + Number(h.rent).toLocaleString() + ' / 月');
-    if (h.deposit) parts.push('押金 RMB ' + Number(h.deposit).toLocaleString());
+    if (h.rent) parts.push('RMB ' + Number(h.rent).toLocaleString() + ' / Tháng');
+    if (h.deposit) parts.push('Tiền cọc RMB ' + Number(h.deposit).toLocaleString());
     return parts.join(' / ');
   }
   function openingInfo(n) {
@@ -2476,26 +2483,27 @@
       const h = raw;
       const tier = HOUSING_TIER_LABEL[h.tier] || '住宅';
       const cost = h.cost || housingCost(h);
-      const unlock = h.unlock && h.unlock.minMoney ? ' / 解锁资金 RMB ' + Number(h.unlock.minMoney).toLocaleString() : '';
+      const unlock = h.unlock && h.unlock.minMoney ? ' / Mở khóa vốn RMB ' + Number(h.unlock.minMoney).toLocaleString() : '';
       return '<section class="spot-opening"><div class="spot-opening-top"><span>Housing</span><b>'+esc(tier)+'</b></div><strong>'+esc(cost)+'</strong><p>'+esc((h.note || n.draw || '') + unlock)+'</p></section>';
     }
-    if (job) return '<section class="spot-opening spot-opening-job"><div class="spot-opening-top"><span>Opening</span><b>可选工作</b></div><strong>'+esc(job.label)+'</strong><p>'+esc(job.pay)+' / '+esc(job.hours)+'</p></section>';
+    if (job) return '<section class="spot-opening spot-opening-job"><div class="spot-opening-top"><span>Opening</span><b>Công việc có thể chọn</b></div><strong>'+esc(job.label)+'</strong><p>'+esc(job.pay)+' / '+esc(job.hours)+'</p></section>';
     return '';
   }
   function renderSpot(n) {
+    const HOUR_NAMES = { '朝': 'Sáng', '昼': 'Trưa', '暮': 'Chiều', '夜': 'Tối', '深夜': 'Đêm' };
     const hours = (n.openHours || []).map(h =>
-      `<em class="${h === phase || (h === '昼' && phase === '朝') ? 'on' : ''}">${esc(h)}</em>`
+      `<em class="${h === phase || (h === '昼' && phase === '朝') ? 'on' : ''}">${esc(HOUR_NAMES[h] || h)}</em>`
     ).join('');
     const priv = Math.max(0, Math.min(5, n.privacy == null ? 2 : n.privacy));
     const chips = featChips(n).map(t => `<em class="spot-chip">${esc(t)}</em>`).join('');
     /* special：一条一句的门道清单，直白功能性。shop 已废除。 */
     const spec = Array.isArray(n.special) ? n.special.filter(Boolean) : [];
     const shopHtml = spec.length ? (
-      `<section class="spot-sec"><div class="spot-k"><span>Special</span><b>门道</b></div>` +
+      `<section class="spot-sec"><div class="spot-k"><span>Special</span><b>Đặc điểm</b></div>` +
       `<ul class="spot-spec">${spec.map(s => `<li>${esc(s)}</li>`).join('')}</ul></section>`
     ) : '';
     const gather = n.gather ? (
-      `<section class="spot-sec"><div class="spot-k"><span>Gather</span><b>采集</b></div>` +
+      `<section class="spot-sec"><div class="spot-k"><span>Gather</span><b>Thu thập</b></div>` +
       `<p class="spot-gather">${esc(n.gather.desc || '')}</p>` +
       (n.gather.materials && n.gather.materials.length
         ? `<div class="spot-mats">${n.gather.materials.map(m => `<em class="spot-chip">${esc(m)}</em>`).join('')}</div>`
@@ -2511,17 +2519,17 @@
       (ev['场所'] ? `<div class="where">${esc(ev['场所'])}</div>` : '') +
       `</div><span class="spot-evt-toggle" aria-hidden="true"></span></summary>` +
       `<div class="spot-evt-content">` +
-      (ev.opportunity ? `<div class="spot-scene"><span>现场</span><p>${esc(ev.opportunity)}</p></div>` : '') +
-      `<div class="spot-conditions"><span>条件</span>${trigChips(ev.trigger)}</div>` +
-      `<div class="spot-routes"><div class="spot-routes-title"><span>Choose</span><b>怎么做</b></div>${cardRows(ev.card)}</div>` +
+      (ev.opportunity ? `<div class="spot-scene"><span>Hiện trường</span><p>${esc(ev.opportunity)}</p></div>` : '') +
+      `<div class="spot-conditions"><span>Điều kiện</span>${trigChips(ev.trigger)}</div>` +
+      `<div class="spot-routes"><div class="spot-routes-title"><span>Choose</span><b>Làm thế nào</b></div>${cardRows(ev.card)}</div>` +
       `</div></details>`
     ).join('');
     const evHtml = events
-      ? `<section class="spot-sec spot-events-sec"><div class="spot-k"><span>Play</span><b>在场事件</b><small>${eventList.length} 个</small></div>${events}</section>`
+      ? `<section class="spot-sec spot-events-sec"><div class="spot-k"><span>Play</span><b>Sự kiện tại chỗ</b><small>${eventList.length} sự kiện</small></div>${events}</section>`
       : '';
 
     const placeInfo = (n.intro || shopHtml || gather)
-      ? `<details class="spot-more"><summary><span>Info</span><b>\u5730\u70b9\u4fe1\u606f</b><i>\u5c55\u5f00</i></summary><div class="spot-more-body">` +
+      ? `<details class="spot-more"><summary><span>Info</span><b>Thông tin địa điểm</b><i>Mở rộng</i></summary><div class="spot-more-body">` +
         (n.intro ? `<p class="spot-intro">${esc(n.intro)}</p>` : '') +
         shopHtml + gather +
         `</div></details>`
@@ -2534,10 +2542,10 @@
        埋在商店和事件后面等于藏起来。已经在这儿了就不给按钮，给一行状态。 */
     const here = n.id === STATE.player.at;
     const nav = here
-      ? `<span class="spot-nav-here">你在这里</span>`
-      : (G && NODE_W[n.id] ? `<button class="spot-nav" type="button" id="spot-nav">到这里去</button>` : '');
+      ? `<span class="spot-nav-here">Bạn đang ở đây</span>`
+      : (G && NODE_W[n.id] ? `<button class="spot-nav" type="button" id="spot-nav">Đến nơi này</button>` : '');
     const customActions = n.custom
-      ? `<div class="spot-custom-actions"><button class="spot-edit" type="button" id="spot-edit">编辑资料</button><button class="spot-delete" type="button" id="spot-delete">删除节点</button></div>`
+      ? `<div class="spot-custom-actions"><button class="spot-edit" type="button" id="spot-edit">Sửa thông tin</button><button class="spot-delete" type="button" id="spot-delete">Xóa địa điểm</button></div>`
       : '';
 
     document.getElementById('spot-head').innerHTML =
@@ -2641,14 +2649,14 @@
     if (l.carrier === 'rail') {
       const line = NET.lineOf(l.line);
       return `<em style="--lc:${line ? line.color : '#888'}">${esc(line ? line.name : '轨道')}</em>` +
-        `<span>${esc(l.fromLabel)} → ${esc(l.toLabel)}　${l.stops} 站</span><i>${l.min} 分</i>`;
+        `<span>${esc(l.fromLabel)} → ${esc(l.toLabel)}　${l.stops} trạm</span><i>${l.min} phút</i>`;
     }
     if (l.carrier === 'bus') {
-      return `<em style="--lc:#4a8fd6">公交</em><span>${fmtKm(l.km)}</span><i>${l.min} 分</i>`;
+      return `<em style="--lc:#4a8fd6">Xe buýt</em><span>${fmtKm(l.km)}</span><i>${l.min} phút</i>`;
     }
-    const tag = { foot: '步行', taxi: '出租车', car: '驾车' }[l.carrier] || l.label;
+    const tag = { foot: 'Đi bộ', taxi: 'Taxi', car: 'Lái xe' }[l.carrier] || l.label;
     const col = { foot: '#8fa3c0', taxi: '#dd9a2b', car: '#4a63c8' }[l.carrier] || '#8fa3c0';
-    return `<em style="--lc:${col}">${tag}</em><span>${fmtKm(l.km)}</span><i>${l.min} 分</i>`;
+    return `<em style="--lc:${col}">${tag}</em><span>${fmtKm(l.km)}</span><i>${l.min} phút</i>`;
   }
 
   function renderTrip() {
@@ -2672,7 +2680,7 @@
     document.getElementById('trip-modes').innerHTML = NET.MODES.map(m => {
       const r = TRIP.all[m.id];
       return `<button data-m="${m.id}" class="${m.id === TRIP.mode ? 'on' : ''}"${r ? '' : ' disabled'}>` +
-        `<b>${m.label}</b><i>${r ? r.min + ' 分' : '不通'}</i></button>`;
+        `<b>${m.label}</b><i>${r ? r.min + ' phút' : 'Không có đường'}</i></button>`;
     }).join('');
 
     const r = TRIP.result;
@@ -2680,17 +2688,17 @@
     const legs = document.getElementById('trip-legs');
     const go = document.getElementById('trip-go');
     if (!r) {
-      sum.innerHTML = '<span class="trip-none">这种方式到不了</span>';
+      sum.innerHTML = '<span class="trip-none">Không thể đi bằng phương thức này</span>';
       legs.innerHTML = '';
       go.disabled = true;
       return;
     }
     go.disabled = false;
     sum.innerHTML =
-      `<strong>${r.min}<u>分</u></strong>` +
+      `<strong>${r.min}<u>phút</u></strong>` +
       `<span>${fmtKm(r.km)}</span>` +
       `<span>¥ ${r.yuan}</span>` +
-      `<span class="trip-stam">体力 −${r.stamina}</span>`;
+      `<span class="trip-stam">Thể lực −${r.stamina}</span>`;
     legs.innerHTML = r.legs.map(l => `<div class="trip-leg">${legText(l)}</div>`).join('');
   }
 
@@ -2841,7 +2849,7 @@
     hb.appendChild(nb);
     const netBtn = document.createElement('button');
     netBtn.className = 'net';
-    netBtn.textContent = '路网';
+    netBtn.textContent = 'Tuyến đường'; netBtn.title = 'Bản đồ giao thông';
     netBtn.onclick = () => setNetView(!netView);
     hb.appendChild(netBtn);
     buildLegend();
