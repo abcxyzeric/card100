@@ -2725,7 +2725,7 @@
         legs: r.legs.map(leg => ({
           ...leg,
           lineName: leg.carrier === 'rail'
-            ? (NET.lineOf(leg.line)?.name || '\u5730\u94c1')
+            ? (NET.lineOf(leg.line)?.name || 'Tàu điện')
             : '',
         })),
       });
@@ -2831,9 +2831,10 @@
     document.getElementById('c-fit').onclick = fitAll;
 
     const hb = document.getElementById('phase');
+    const PHASE_NAMES = { '朝': 'Sáng', '暮': 'Chiều', '夜': 'Tối', '深夜': 'Đêm' };
     M.PHASE_ORDER.forEach(k => {
       const b = document.createElement('button');
-      b.textContent = k;
+      b.textContent = PHASE_NAMES[k] || k;
       b.dataset.ph = k;          // applyPhase 只认带 data-ph 的，别把路网那个也点亮
       b.onclick = () => { phase = k; applyPhase(); };
       hb.appendChild(b);

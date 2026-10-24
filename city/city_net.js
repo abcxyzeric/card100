@@ -101,7 +101,7 @@
        比上一版（0.315 → 0.02）平得多也南得多——上一版右半段整个跑到
        对岸去了，于是跨江检查基本没在工作（穿水剔除只剩 1 条）。 */
     river: {
-      name: '临江',
+      name: 'Sông Lâm Giang',
       width: 0.052,
       pts: [
         [-0.030, 0.335], [0.100, 0.305], [0.250, 0.272], [0.400, 0.252],
@@ -119,7 +119,7 @@
         // 圈进来——湖心岛本来就该在湖里。岸线位置直接决定哪些自动生成的
         // 支路会被剔掉，所以这不是纯装饰；圈错了会把湖心岛变成孤岛
         // （靠 LINKS 里那条栈桥兜住）。
-        name: '明湖',
+        name: 'Hồ Minh Hồ',
         pts: [
           [0.740, 0.408], [0.752, 0.372], [0.782, 0.352], [0.818, 0.358],
           [0.836, 0.388], [0.828, 0.428], [0.798, 0.452], [0.762, 0.442]
@@ -296,7 +296,7 @@
    * 谁要加渡轮或缆车，加在这儿。
    */
   const LINKS = [
-    { a: 'mh_lake', b: 'mh_lake_island', kind: 'local', name: '湖心岛栈桥' }
+    { a: 'mh_lake', b: 'mh_lake_island', kind: 'local', name: 'Cầu phao đảo giữa hồ' }
   ];
 
   // ============================================================
@@ -371,7 +371,7 @@
         { node: 'wx_mendong' },
         { key: 'yuhuatai', name: 'Vũ Hoa Đài', at: { a: 'wx_mendong', b: 'ys_fishmkt', t: 0.28, s: 0.02 } },
         { key: 'kazimen', name: 'Tạp Tử Môn', at: { a: 'wx_mendong', b: 'ys_fishmkt', t: 0.53, s: 0.025 } },
-        { key: 'yingtianjie', name: '应天街', at: { a: 'wx_mendong', b: 'ys_fishmkt', t: 0.78, s: 0.02 } },
+        { key: 'yingtianjie', name: 'Phố Ứng Thiên', at: { a: 'wx_mendong', b: 'ys_fishmkt', t: 0.78, s: 0.02 } },
         { node: 'ys_fishmkt' },
         { node: 'ys_station' },
         { key: 'huashenmiao', name: 'Hoa Thần Miếu', at: { a: 'ys_station', b: 'lx_bus', t: 0.5, s: 0.02 } },
@@ -386,8 +386,8 @@
         { node: 'xz_sound_studio' },
         /* 西段往南鼓一点。不给 s 的话这一段和 2 号线（梧桐里→明湖广场）
            几乎重合成一条平行线，图上读不出是两条 */
-        { key: 'caochangmen', name: '草场门', at: { a: 'xz_sound_studio', b: 'mh_plaza', t: 0.22, s: 0.030 } },
-        { key: 'wutaishan', name: '五台山', at: { a: 'xz_sound_studio', b: 'mh_plaza', t: 0.47, s: 0.045 } },
+        { key: 'caochangmen', name: 'Thảo Trường Môn', at: { a: 'xz_sound_studio', b: 'mh_plaza', t: 0.22, s: 0.030 } },
+        { key: 'wutaishan', name: 'Ngũ Đài Sơn', at: { a: 'xz_sound_studio', b: 'mh_plaza', t: 0.47, s: 0.045 } },
         { key: 'daxinggong', name: 'Đại Hành Cung', at: { a: 'xz_sound_studio', b: 'mh_plaza', t: 0.74, s: 0.032 } },
         { node: 'mh_plaza' },
         { key: 'zhongshanmen', name: 'Trung Sơn Môn', at: { a: 'mh_plaza', b: 'qp_visitor', t: 0.22, s: -0.020 } },
@@ -801,7 +801,7 @@
     return mode === 'taxi' ? 'taxi' : 'car';
   }
 
-  const CARRIER_LABEL = { foot: '步行', bus: '公交', taxi: '出租车', car: '驾车', rail: '' };
+  const CARRIER_LABEL = { foot: 'Đi bộ', bus: 'Xe buýt', taxi: 'Taxi', car: 'Lái xe', rail: '' };
 
   function legsOf(G, path, mode) {
     const legs = [];

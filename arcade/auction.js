@@ -122,7 +122,7 @@ function paintRoundPresentation(p,actual){
   const resolution=E.resolveRound(row.bids,p.round),high=Math.max(0,...row.bids.filter(n=>n!==null));
   const winner=resolution.winner===0?'Bạn':resolution.winner!=null?D.hosts[p.before.rivals[resolution.winner-1]].name:null;
   const title=resolution.done?(winner?`${winner} thắng · ${fmt(resolution.price)}`:'Đấu giá bất thành'):`Báo giá cao nhất ${fmt(high)}`;
-  const detail=resolution.done?'Sắp hé lộ bảo vật':resolution.ties?'Giá cao nhất bằng nhau · Sắp vào vòng phụ':`Chưa đạt điều kiện gõ búa · Sắp vào vòng ${p.round+1}`'';
+  const detail=resolution.done?'Sắp hé lộ bảo vật':resolution.ties?'Giá cao nhất bằng nhau · Sắp vào vòng phụ':`Chưa đạt điều kiện gõ búa · Sắp vào vòng ${p.round+1}`;
   feedback.innerHTML=`<strong><small>Vòng ${p.round}</small>${escapeHTML(title)}</strong><span>${detail}</span>`;
  }else feedback.innerHTML=`<strong>Đang đợi người đấu giá khác <small>${ready} / ${total}</small></strong><span>Mức giá sẽ công bố sau khi toàn bộ nộp</span>`;
  $('btnBid').textContent=revealed?'Kết toán vòng':'Đợi đặt giá';

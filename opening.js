@@ -1,5 +1,5 @@
 (()=>{
-const MAP_REV='custom-home-map-v23-vi';
+const MAP_REV='custom-home-map-v24-vi';
 const DEFAULT_MAP=`./city/plate_map.html?mode=opening&v=${MAP_REV}`;
 const MAP_URL=new URLSearchParams(location.search).get('map')||DEFAULT_MAP;
 const STEPS=['Về bạn','Chỗ ở & Việc làm','Streamer yêu thích','Streamer tùy chỉnh','Xác nhận'];
