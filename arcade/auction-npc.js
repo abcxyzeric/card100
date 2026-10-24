@@ -6,12 +6,12 @@ const BID_STRENGTH=1; // Offline sensitivity probe may override; production is f
 const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
 const pick=(xs,rng)=>xs[Math.floor(rng()*xs.length)];
 const TYPES={
- collector:{name:'收藏补全',hint:'愿为缺藏多出一点，但重复藏品吸引力低',margin:.015,risk:.12,premium:.22,exposure:.84},
- dealer:{name:'保守捡漏',hint:'先算利润；价格过热时倾向离场',margin:.15,risk:.28,premium:0,exposure:.65},
- specialist:{name:'品类行家',hint:'偏爱熟悉的门类，跨品类更谨慎',margin:.075,risk:.20,premium:.16,exposure:.77},
- analyst:{name:'稳健估值',hint:'先补情报，再按自己的估值出价',margin:.065,risk:.14,premium:0,exposure:.76},
- gambler:{name:'冒险押宝',hint:'愿意为未知品质下注，仍留有止损预算',margin:-.025,risk:-.07,premium:0,exposure:.80},
- tactician:{name:'试探博弈',hint:'观察历史报价，择机抢拍或抽身',margin:.065,risk:.12,premium:0,exposure:.76}
+ collector:{name:'Sưu tầm toàn bộ',hint:'Sẵn sàng chi thêm để bù món còn thiếu, nhưng bảo vật trùng lặp ít hấp dẫn',margin:.015,risk:.12,premium:.22,exposure:.84},
+ dealer:{name:'Săn món hời cẩn trọng',hint:'Tính lợi nhuận trước; khi giá quá nóng có xu hướng rời cuộc chơi',margin:.15,risk:.28,premium:0,exposure:.65},
+ specialist:{name:'Chuyên gia ngành hàng',hint:'Ưa chuộng ngành hàng quen thuộc, thận trọng hơn với ngành hàng lạ',margin:.075,risk:.20,premium:.16,exposure:.77},
+ analyst:{name:'Định giá vững chắc',hint:'Bổ sung tình báo trước, rồi mới đặt giá theo định giá của bản thân',margin:.065,risk:.14,premium:0,exposure:.76},
+ gambler:{name:'Mạo hiểm đặt cược',hint:'Sẵn lòng cược vào phẩm cấp chưa biết, nhưng vẫn giữ ngân sách cắt lỗ',margin:-.025,risk:-.07,premium:0,exposure:.80},
+ tactician:{name:'Dò xét tranh đua',hint:'Quan sát lịch sử báo giá, chọn thời cơ giành giật hoặc rút lui',margin:.065,risk:.12,premium:0,exposure:.76}
 };
 const qualityCounts=D.qualities.map((_,q)=>D.catalog.filter(x=>x.quality===q).length);
 const poolCache=new Map();
@@ -43,7 +43,7 @@ function beginLot(bot,rng){
  for(const id of wishes){const t=D.tools.find(t=>t.id===id);if(!(bot.stock[id]>0)&&t.cost<=procurement&&t.cost<=bot.bank){bot.bank-=t.cost;procurement-=t.cost;bot.stock[id]=1;bot.memory.toolPurchases=(bot.memory.toolPurchases||0)+t.cost;}}
  const amplitude=(1-bot.traits.accuracy)*.45;
  bot.lot={usedTools:[],failedTools:[],toolRound:0,instrumentCost:0,toolUsed:false,skillUsed:false,usedRound:null,error:1+(rng()-.5)*2*amplitude,
-  urgency:rng(),opportunity:rng(),lastDecision:null,lastAction:'正在观察仓库',previousEstimate:null,decisions:[]};
+  urgency:rng(),opportunity:rng(),lastDecision:null,lastAction:'Đang quan sát kho',previousEstimate:null,decisions:[]};
 }
 function assess(bot,ctx){
  const owned=new Set(bot.inventory);let mean=0,variance=0,floor=0,ceiling=0,desired=0,special=0,known=0;
@@ -90,14 +90,14 @@ function planTool(bot,ctx){
  // A paid scan competes with cash reserved for the actual auction; sunk purchase cost does not force use.
  if(!ranked.length)return null;
  if(ctx.round===1&&bot.traits.patience>.6&&bot.type!=='analyst')return null;
- return {...ranked[0],reason:'预期情报收益超过消耗成本，且历史报价仍在承受区间'};
+ return {...ranked[0],reason:'Lợi ích tình báo dự kiến vượt chi phí tiêu hao, và mức giá lịch sử vẫn trong khoảng chịu đựng'};
 }
 function decide(bot,ctx,rng){
- const path=[contextTrace('root','检查参与资格')];
- const finish=(amount,node,reason,extra={})=>{path.push(contextTrace(node,reason));const decision={amount,node,reason,path,...extra};bot.lot.lastDecision=decision;bot.lot.decisions.push(decision);bot.lot.lastAction=amount===null?'选择退出本箱':node==='early-close'?'尝试提前落槌':node==='pressure'?'试探性报价':node==='wait-info'?'谨慎观察':'提交密封报价';return decision;};
- if(!ctx.active[ctx.seat])return finish(null,'inactive','已退出或未取得加赛资格');
- if(bot.bank<1)return finish(null,'no-cash','流动资金已用尽');
- const a=assess(bot,ctx),t=TYPES[bot.type];path.push(contextTrace('appraise','仅使用自己的技能、仪器情报和公开历史'));
+ const path=[contextTrace('root','Kiểm tra tư cách tham gia')];
+ const finish=(amount,node,reason,extra={})=>{path.push(contextTrace(node,reason));const decision={amount,node,reason,path,...extra};bot.lot.lastDecision=decision;bot.lot.decisions.push(decision);bot.lot.lastAction=amount===null?'Chọn rút khỏi kiện này':node==='early-close'?'Thử chốt giá sớm':node==='pressure'?'Đặt giá thăm dò':node==='wait-info'?'Thận trọng quan sát':'Gửi mức giá kín';return decision;};
+ if(!ctx.active[ctx.seat])return finish(null,'inactive','Đã rút lui hoặc chưa đủ tư cách đấu phụ');
+ if(bot.bank<1)return finish(null,'no-cash','Vốn lưu động đã cạn kiệt');
+ const a=assess(bot,ctx),t=TYPES[bot.type];path.push(contextTrace('appraise','Chỉ sử dụng kỹ năng bản thân, tình báo thiết bị và lịch sử công khai'));
  const familiarRatio=a.special/Math.max(1,a.objectiveMean);
  const premium=bot.type==='collector'?a.desired*bot.traits.premium:bot.type==='specialist'?a.special*bot.traits.premium:0;
  const margin=bot.traits.margin+(bot.type==='specialist'?(1-familiarRatio)*.075:0);
@@ -114,32 +114,32 @@ function decide(bot,ctx,rng){
  const prudentCap=modern?Math.min(a.ceiling+premium,a.mean+Math.min(premium,lossBudget)):valueCap;
  const cap=Math.max(0,Math.floor(Math.min(willingness,valueCap,prudentCap,cashCap)));
  bot.lot.previousEstimate=a.objectiveMean;
- path.push(contextTrace('risk-gates','估值上限、收藏溢价、留存现金与连续亏损降温'));
+ path.push(contextTrace('risk-gates','Trần định giá, phụ phí sưu tập, tiền mặt giữ lại và hạ nhiệt khi thua lỗ liên tục'));
  const details={estimate:Math.round(a.mean),uncertainty:a.uncertainty,premium:Math.round(premium),cap,cashCap};
- if(cap<1)return finish(null,'reserve-cash','可承担的出价不足',details);
+ if(cap<1)return finish(null,'reserve-cash','Mức giá có thể chi trả không đủ',details);
  const previous=ctx.history.at(-1)?.bids||[];
  const others=previous.filter((x,i)=>i!==ctx.seat&&ctx.active[i]&&x!=null);
  const high=others.length?Math.max(...others):0;
  const competition=ctx.active.filter((active,i)=>active&&i!==ctx.seat).length;
  const tooHot=high>cap*(1.03+(1-bot.traits.patience)*.08);
  // A sealed historical offer is not a standing ask: hold our limit instead of handing the lot to a token bid.
- if(modern&&ctx.round>1&&high>cap)return finish(Math.max(1,Math.floor(cap*.95)),'hold-cap','不跟随历史高价；仅提交自身止损价以内的报价',details);
- if(!modern&&ctx.round>1&&tooHot&&(bot.type==='dealer'||bot.type==='specialist'||ctx.round>=4||rng()>bot.traits.patience*.65))return finish(null,'walk-away','历史价格已超过自身承受区间；不追逐沉没成本',details);
+ if(modern&&ctx.round>1&&high>cap)return finish(Math.max(1,Math.floor(cap*.95)),'hold-cap','Không bám theo mức giá cao lịch sử；Chỉ gửi mức giá trong phạm vi giá cắt lỗ của bản thân',details);
+ if(!modern&&ctx.round>1&&tooHot&&(bot.type==='dealer'||bot.type==='specialist'||ctx.round>=4||rng()>bot.traits.patience*.65))return finish(null,'walk-away','Mức giá lịch sử đã vượt quá ngưỡng chịu đựng của bản thân；Không đuổi theo chi phí chìm',details);
  const fractions=[0,.69,.79,.89,.96,1,1];
  let fraction=fractions[ctx.round]+(bot.lot.urgency-.5)*.10;
  if(bot.type==='collector'&&premium>a.mean*.04)fraction+=.07;
  if(bot.type==='dealer')fraction-=ctx.round<3?.07:0;
  if(bot.type==='gambler')fraction+=.08;
  if(bot.type==='analyst'&&a.uncertainty>.25&&ctx.round<3)fraction-=.07;
- let quote=cap*clamp(fraction,.45,1),node='value-bid',reason='按估值、竞争和预算提交报价';
- if(competition===0){quote=Math.min(cap,Math.max(1,a.floor*.45));node='sole-bidder';reason='只剩自己，保留议价空间';}
- else if(ctx.round<=2&&a.uncertainty>.30&&bot.traits.patience>.62){quote=Math.min(quote,cap*.62);node='wait-info';reason='未知价值占比较大，等待后续公开情报';}
+ let quote=cap*clamp(fraction,.45,1),node='value-bid',reason='Gửi mức giá theo định giá, cạnh tranh và ngân sách';
+ if(competition===0){quote=Math.min(cap,Math.max(1,a.floor*.45));node='sole-bidder';reason='Chỉ còn lại mình, giữ lại dư địa trả giá';}
+ else if(ctx.round<=2&&a.uncertainty>.30&&bot.traits.patience>.62){quote=Math.min(quote,cap*.62);node='wait-info';reason='Tỷ lệ giá trị chưa biết khá lớn, chờ đợi tình báo công khai tiếp theo';}
  const predicted=high*(.94+bot.memory.heat*.10);
  if(ctx.round>=2&&predicted>0&&predicted<cap){quote=Math.max(quote,Math.min(cap,predicted*(1.005+rng()*.025)));}
- if(bot.type==='tactician'&&ctx.round<=3&&rng()<bot.traits.bluff&&!tooHot){quote=Math.min(cap,quote*(1.03+rng()*.07));node='pressure';reason='在自己愿意接盘的价格内施压，并承担中拍风险';}
+ if(bot.type==='tactician'&&ctx.round<=3&&rng()<bot.traits.bluff&&!tooHot){quote=Math.min(cap,quote*(1.03+rng()*.07));node='pressure';reason='Gây áp lực trong mức giá bản thân sẵn sàng ôm hàng, đồng thời chấp nhận rủi ro trúng thầu';}
  // Early-close attempt uses only last round's visible bids; never guarantees the unknown current outcome.
  const thresholds=[0,2,1.6,1.3,1.1];
- if(ctx.round>=2&&ctx.round<=4&&high>0){const target=Math.floor(predicted*thresholds[ctx.round]+1);if(target<=cap&&rng()<.25+bot.lot.urgency*.4){quote=Math.max(quote,target);node='early-close';reason='根据历史竞争预测尝试抢拍，不突破止损线';}}
+ if(ctx.round>=2&&ctx.round<=4&&high>0){const target=Math.floor(predicted*thresholds[ctx.round]+1);if(target<=cap&&rng()<.25+bot.lot.urgency*.4){quote=Math.max(quote,target);node='early-close';reason='Dự đoán cạnh tranh lịch sử để thử cướp quyền chốt giá, không phá vỡ ngưỡng cắt lỗ';}}
  quote=Math.min(cap,quote*BID_STRENGTH*(.98+rng()*.04));
  const step=quote>=1500?10:quote>=250?5:1;
  quote=Math.max(1,Math.min(cap,Math.floor(quote/step)*step));
@@ -164,6 +164,6 @@ function settle(bot,ctx){
  const entryFee=ctx.policyVersion>=2?(ctx.entryFee||0):0,instrumentCost=bot.lot.instrumentCost||0;
  return {host:bot.host,role:'npc',net:(winner===seat?trueValue-price:received)-entryFee-instrumentCost,entryFee,instrumentCost,compensation:received};
 }
-function publicProfile(bot){const series=D.series.find(s=>s.id===bot.series),tool=D.tools.find(t=>t.id===bot.tool);return {host:bot.host,tendency:TYPES[bot.type].name,hint:TYPES[bot.type].hint,interest:series.name,tool:tool?.name||'未配仪器',toolUsed:!!bot.lot?.toolUsed,skillUsed:!!bot.lot?.skillUsed,action:bot.lot?.lastAction||'等待入场'};}
+function publicProfile(bot){const series=D.series.find(s=>s.id===bot.series),tool=D.tools.find(t=>t.id===bot.tool);return {host:bot.host,tendency:TYPES[bot.type].name,hint:TYPES[bot.type].hint,interest:series.name,tool:tool?.name||'Chưa trang bị thiết bị',toolUsed:!!bot.lot?.toolUsed,skillUsed:!!bot.lot?.skillUsed,action:bot.lot?.lastAction||'Đang chờ vào hội trường'};}
 root.AuctionNPC=Object.freeze({TYPES,create,beginLot,assess,chooseSkillSlots,planTool,decide,settle,publicProfile});
 })(globalThis);

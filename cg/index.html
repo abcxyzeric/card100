@@ -8,7 +8,7 @@
 <!-- 必须是 testingcf 而不是 cdn.jsdelivr.net：后者在国内被墙。这一条是样式，
      挂了只是图标变空白；下面那条 jQuery 是同步阻塞的，挂了整页白屏。 -->
 <link rel="stylesheet" href="https://testingcf.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
-<link rel="stylesheet" href="./cg-shell.css">
+<link rel="stylesheet" href="./cg-shell.css?v=20261024-vi-v3">
 </head>
 <body>
 <!-- 外壳：一条头部 + 一个滚动容器。容器的 id 沿用小手机的 #phone-app-body / #phone-app-title，
@@ -52,8 +52,8 @@
 <!-- 同步阻塞：这一条取不到，后面 cg-shell.js / cg-app.js / CGShell.boot() 全都不执行，
      整页白屏。cdn.jsdelivr.net 被墙，务必保持 testingcf。 -->
 <script src="https://testingcf.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
-<script src="./cg-shell.js"></script>
-<script src="./cg-app.js"></script>
+<script src="./cg-shell.js?v=20261024-vi-v3"></script>
+<script src="./cg-app.js?v=20261024-vi-v3"></script>
 <script>CGShell.boot();</script>
 </body>
 </html>

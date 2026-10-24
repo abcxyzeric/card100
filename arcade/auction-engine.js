@@ -1,4 +1,4 @@
-/* 临江拍卖行 3.0 — deterministic sealed-round auction. No DOM/network dependencies.
+/* Nhà Đấu Giá Lâm Giang 3.0 — deterministic sealed-round auction. No DOM/network dependencies.
  * NPC bids are computed from a frozen previous-round snapshot, never player input.
  * v0.2 saves are intentionally not reused. See arcade/AUCTION.md for exact rules. */
 (function(root){
@@ -9,11 +9,11 @@ const price=(item,scale)=>Math.max(1,Math.round(item.base*scale));
 const candidates=I.candidates;
 function resolveRound(bids,round){
  const entries=bids.map((amount,seat)=>({amount,seat})).filter(x=>x.amount!=null&&x.amount>0).sort((a,b)=>b.amount-a.amount);
- if(!entries.length)return {done:true,winner:null,price:0,reason:'所有竞拍人退出，本箱流拍'};
+ if(!entries.length)return {done:true,winner:null,price:0,reason:'Tất cả người tham gia đã rút lui, kiện này đấu giá bất thành'};
  const top=entries[0],second=entries[1]?.amount||0,ties=entries.filter(e=>e.amount===top.amount).map(e=>e.seat);
- if(round<=4&&top.amount>second*THRESHOLDS[round-1])return {done:true,winner:top.seat,price:top.amount,reason:`第 ${round} 轮领先超过 ${THRESHOLDS[round-1]} 倍，提前落槌`};
- if(round>=5&&ties.length===1)return {done:true,winner:top.seat,price:top.amount,reason:round===6?'加赛唯一最高价成交':'最终轮最高价成交'};
- if(round===6)return {done:true,winner:null,price:0,reason:'加赛最高价仍相同，本箱流拍'};
+ if(round<=4&&top.amount>second*THRESHOLDS[round-1])return {done:true,winner:top.seat,price:top.amount,reason:`Vòng ${round} dẫn trước hơn ${THRESHOLDS[round-1]} lần, chốt giá sớm`};
+ if(round>=5&&ties.length===1)return {done:true,winner:top.seat,price:top.amount,reason:round===6?'Đấu phụ mức giá cao nhất duy nhất thành công chốt giá':'Vòng chung cuộc mức giá cao nhất thành công chốt giá'};
+ if(round===6)return {done:true,winner:null,price:0,reason:'Đấu phụ giá cao nhất vẫn bằng nhau, kiện này đấu giá bất thành'};
  return {done:false,ties:round===5?ties:null};
 }
 // One shared pool; unused shares are not redistributed. Bids qualify before their round is revealed.
@@ -50,7 +50,7 @@ function createSession(options={}, saved=null){
  const choose=a=>a[Math.floor(rand()*a.length)];
  function clue(text,privateClue=false){s.current.clues.unshift({round:s.current.round,text,private:privateClue});}
  function beginLot(){
-  if(s.current&&s.current.phase!=='closed')throw Error('先处理当前拍品');
+  if(s.current&&s.current.phase!=='closed')throw Error('Hãy xử lý kiện đấu giá hiện tại trước');
   if(s.lotIndex>=s.lots)return null;
   const used=new Set(),items=[];let attempts=0;
   const count=6+Math.floor(rand()*3);
@@ -84,7 +84,7 @@ function createSession(options={}, saved=null){
   if([1,3].includes(c.round)){
    const spec={kind:'shape',count:c.round===1?1:2},seen=c.publicIntel??=c.items.map(I.empty);
    const res=I.apply(c.items,seen,[],spec,publicRand,c.scale);
-   if(res){for(const slot of res.slots){const raw=c.items.find(i=>i.slot===slot);for(const intel of [c.playerIntel,...c.npcIntel])Object.assign(intel.find(i=>i.slot===slot),{x:raw.x,y:raw.y,w:raw.w,h:raw.h});}clue(`公开 ${res.slots.length} 件轮廓。`);}
+   if(res){for(const slot of res.slots){const raw=c.items.find(i=>i.slot===slot);for(const intel of [c.playerIntel,...c.npcIntel])Object.assign(intel.find(i=>i.slot===slot),{x:raw.x,y:raw.y,w:raw.w,h:raw.h});}clue(`Công khai đường nét ${res.slots.length} món.`);}
   }
   const host=D.hosts[s.host];
   if(c.active[0])for(const r of I.skill(host.effect,c.round,c.items,c.playerIntel,c.playerFacts,c.playerMemory,intelRand,c.scale))clue(`${host.name} · ${host.skill}：${r.text}`,true);
@@ -96,7 +96,7 @@ function createSession(options={}, saved=null){
  if(s.current&&!s.current.playerIntel){const c=s.current;c.playerIntel=c.items.map(i=>({...I.empty(i),x:i.x,y:i.y,w:i.w,h:i.h,quality:i.qualityKnown?i.quality:null,category:i.categoryKnown?i.category:null,identified:i.known?i.id:null}));c.playerFacts=[];c.playerMemory={};c.usedTools=[];c.toolRound=c.toolUsed?c.round:0;c.instrumentCost=0;c.playerTools=[];
   if(!s.bots)s.bots=c.rivals.map(id=>B.create(id,venue,npcRand));
   const oldIntel=c.npcIntel;initNPCs();if(oldIntel)c.npcIntel=oldIntel;
-  clue('旧版进度已保留；免费仪器已退役。付费库存从零开始。',true);
+  clue('Tiến trình phiên bản cũ đã được bảo lưu; thiết bị miễn phí đã ngừng sử dụng. Kho trả phí bắt đầu từ đầu.',true);
  }
  function npcBids(){
   const c=s.current;
@@ -114,9 +114,9 @@ function createSession(options={}, saved=null){
  }
  function npcRngSnapshot(){return s.npcRng;}
  function bid(amount){
-  const c=s.current;if(!c||c.phase!=='bidding')throw Error('当前阶段没有开放竞拍');
-  if(amount!==null&&(!Number.isSafeInteger(amount)||amount<1||amount>s.bank))throw Error('请输入预算范围内的整数报价');
-  if(!c.active[0]&&amount!==null)throw Error('本箱已退出竞拍');
+  const c=s.current;if(!c||c.phase!=='bidding')throw Error('Giai đoạn hiện tại chưa mở đặt giá');
+  if(amount!==null&&(!Number.isSafeInteger(amount)||amount<1||amount>s.bank))throw Error('Vui lòng nhập mức giá số nguyên trong phạm vi ngân sách');
+  if(!c.active[0]&&amount!==null)throw Error('Đã rút khỏi đấu giá kiện này');
   const other=npcBids(); // all decisions before publishing any new bids
   const bids=[amount,...other];bids.forEach((v,i)=>{if(v===null)c.active[i]=false;});
   c.history.push({round:c.round,bids});const resolution=resolveRound(bids,c.round);
@@ -131,28 +131,28 @@ function createSession(options={}, saved=null){
    if(resolution.ties)c.active=c.active.map((active,i)=>active&&resolution.ties.includes(i));
    c.round++;c.deadline=null;
    roundInfo();
-   if(c.round===5)clue('最终轮：唯一最高报价直接成交。同价者进入第六轮加赛。');
-   if(c.round===6)clue('同价加赛：仅最高价并列者参与。仍同价则流拍。');
+   if(c.round===5)clue('Vòng chung cuộc: Mức giá cao nhất duy nhất chốt giá trực tiếp. Những người bằng giá bước vào vòng 6 đấu phụ.');
+   if(c.round===6)clue('Đấu phụ bằng giá: Chỉ những người đồng giá cao nhất tham gia. Vẫn bằng giá sẽ đấu giá bất thành.');
   }
   return view();
  }
  function useTool(id){
   const c=s.current,tool=D.tools.find(t=>t.id===id);
-  if(!c||c.phase!=='bidding'||!c.active[0])throw Error('当前阶段未开放仪器');
-  if(!tool||!s.loadout.includes(id))throw Error('仪器未装入本场的三个槽位');
-  if(c.round<(tool.minRound||1))throw Error(`该仪器第${tool.minRound}轮起可用`);
-  if(c.toolRound===c.round)throw Error('每轮至多消耗一件仪器');
-  if(c.usedTools.includes(id))throw Error('同款仪器每箱至多使用一次');
-  if(!(s.stock[id]>0))throw Error('库存不足，请先购买');
+  if(!c||c.phase!=='bidding'||!c.active[0])throw Error('Giai đoạn hiện tại chưa mở dùng thiết bị');
+  if(!tool||!s.loadout.includes(id))throw Error('Thiết bị chưa được lắp vào 3 ô trang bị của trận này');
+  if(c.round<(tool.minRound||1))throw Error(`Thiết bị này có thể dùng từ vòng ${tool.minRound}`);
+  if(c.toolRound===c.round)throw Error('Mỗi vòng tiêu hao tối đa 1 thiết bị');
+  if(c.usedTools.includes(id))throw Error('Thiết bị cùng loại mỗi kiện chỉ dùng tối đa 1 lần');
+  if(!(s.stock[id]>0))throw Error('Kho không đủ, vui lòng mua trước');
   const rngBefore=s.intelRng,result=I.apply(c.items,c.playerIntel,c.playerFacts,tool.effect,intelRand,c.scale);
-  if(!result){s.intelRng=rngBefore;throw Error('该仪器没有新增情报，库存未消耗');}
+  if(!result){s.intelRng=rngBefore;throw Error('Thiết bị này không có tình báo mới, không tiêu hao kho');}
   s.stock[id]--;c.usedTools.push(id);c.toolRound=c.round;c.toolUsed=true;c.instrumentCost+=tool.cost;c.playerTools.push({id,cost:tool.cost,round:c.round});
-  clue(`${tool.name}（消耗 1，成本 ${tool.cost}）：${result.text}`,true);return view();
+  clue(`${tool.name} (Tiêu hao 1, Chi phí ${tool.cost}）：${result.text}`,true);return view();
  }
- function addStock(id,count=1){if(!D.tools.some(t=>t.id===id)||!Number.isSafeInteger(count)||count<1||count>99)throw Error('采购参数异常');s.stock[id]=(s.stock[id]||0)+count;s.purchaseCost=(s.purchaseCost||0)+D.tools.find(t=>t.id===id).cost*count;}
+ function addStock(id,count=1){if(!D.tools.some(t=>t.id===id)||!Number.isSafeInteger(count)||count<1||count>99)throw Error('Tham số mua sắm bất thường');s.stock[id]=(s.stock[id]||0)+count;s.purchaseCost=(s.purchaseCost||0)+D.tools.find(t=>t.id===id).cost*count;}
  function closeLot(choice,balance,options={}){
-  const c=s.current;if(!c||c.phase!=='result')throw Error('本箱尚未落槌');
-  const r=c.result;if(r.won&&!['sell','keep'].includes(choice))throw Error('请选择出售或留藏');
+  const c=s.current;if(!c||c.phase!=='result')throw Error('Kiện này chưa gõ búa chốt giá');
+  const r=c.result;if(r.won&&!['sell','keep'].includes(choice))throw Error('Vui lòng chọn bán hoặc giữ lại bộ sưu tập');
   const compensation=r.won?0:Math.min(r.compensation||0,Math.max(0,Math.floor(s.policyVersion>=2?Number.MAX_SAFE_INTEGER:(options.compensationLimit??D.economy.compensationDaily))));
   const entry={id:c.id,lot:s.lotIndex,...r,compensation,profit:(r.won?r.trueValue-r.price:compensation)-c.instrumentCost,instrumentCost:c.instrumentCost,choice:r.won?choice:'none',cashDelta:r.won?(choice==='sell'?r.trueValue-r.price:-r.price):compensation};
   entry.hostResults=[{host:s.host,role:'partner',net:entry.profit-(s.entryFee||0),entryFee:s.entryFee||0,instrumentCost:c.instrumentCost,compensation},...s.bots.map((bot,index)=>B.settle(bot,{seat:index+1,winner:r.winner,price:r.price,trueValue:r.trueValue,items:c.items.map(i=>({...i,value:price(i,c.scale)})),compensation:s.policyVersion>=2?(r.compensationDetails?.payouts[index+1]||0):Math.min(D.economy.compensationPerLot,r.rawCompensation||0),policyVersion:s.policyVersion,entryFee:s.entryFee,history:c.history}))];
@@ -166,8 +166,8 @@ function createSession(options={}, saved=null){
   const {low:estimate,high:ceiling}=I.bounds(items,c.playerFacts,c.scale,s.pricingVersion);
   return {version:VERSION,policyVersion:s.policyVersion,id:c.id,phase:c.phase,lotIndex:s.lotIndex,lots:s.lots,round:c.round,bank:s.bank,venue:s.venue,host:s.host,tool:s.loadout[0]||null,loadout:[...s.loadout],stock:clone(s.stock),usedTools:[...c.usedTools],toolRound:c.toolRound,instrumentCost:c.instrumentCost,entryFee:s.entryFee,purchaseCost:s.purchaseCost||0,toolUsed:c.toolRound===c.round,facts:clone(c.playerFacts),scale:c.scale,pricingVersion:s.pricingVersion,items,estimate,ceiling,clues:clone(c.clues),history:clone(c.history),active:[...c.active],rivals:[...c.rivals],opponents:s.bots.map(B.publicProfile),npcEvents:clone(c.npcEvents),result:clone(c.result),ledger:clone(s.ledger),deadline:c.deadline};
  }
- function setBudget(value){if(!Number.isFinite(value)||value<0)throw Error('预算数据异常');s.bank=Math.floor(value);}
+ function setBudget(value){if(!Number.isFinite(value)||value<0)throw Error('Dữ liệu ngân sách bất thường');s.bank=Math.floor(value);}
  return {beginLot,bid,useTool,addStock,closeLot,view,setBudget,export:()=>clone(s)};
 }
-root.AIRPAuctionEngine=Object.freeze({VERSION,THRESHOLDS,createSession,restore:s=>{if(![VERSION,'3.1.0','3.0.0'].includes(s?.version))throw Error('存档版本不同');return createSession({},s);},resolveRound,compensationPool,candidates,price});
+root.AIRPAuctionEngine=Object.freeze({VERSION,THRESHOLDS,createSession,restore:s=>{if(![VERSION,'3.1.0','3.0.0'].includes(s?.version))throw Error('Phiên bản bản lưu khác biệt');return createSession({},s);},resolveRound,compensationPool,candidates,price});
 })(globalThis);

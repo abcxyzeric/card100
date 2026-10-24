@@ -2,18 +2,18 @@
 (()=>{
 'use strict';
 const bank={
- '收藏补全':['就差一件凑齐了。','先看看有没有眼缘。','喜欢归喜欢，得看价。','这箱像有我要的。','为收藏多留一点预算。','重复的我可不想收。','心动了，再想想。','不便宜也得有个限度。'],
- '保守捡漏':['我就等个合适的价。','别急，先算算账。','留点利润再说。','便宜才值得出手。','这箱再看看。','钱得花在刀刃上。','不跟自己钱包过不去。','机会多着呢，不急。'],
- '品类行家':['这轮廓有点眼熟。','像是我常看的那类。','先把线索对一下。','这细节值得琢磨。','看着熟也得防看走眼。','有几件还真不好认。','我有点想法了。','只押自己看得懂的。'],
- '稳健估值':['等我再算一遍。','线索还差一点。','先留点余地。','这个范围得再缩缩。','想好了再出手。','估错一点就白忙了。','先排掉几种可能。','稳一点，总没错。'],
- '冒险押宝':['呵呵，这局我想拿下。','这箱有点意思啊。','搏一把？让我想想。','感觉能开出好东西。','这次信一下直觉。','胆子大也得留退路。','好东西可别藏太深。','我先掂量一下钱包。'],
- '试探博弈':['你们都想好了？','这轮会怎么出呢。','谁先沉不住气？','别急，好戏还在后头。','这场挺有意思。','让我猜猜你们的打算。','这回得换个思路。','都挺沉得住气啊。'],
- thinking:['让我想一会儿。','这个价得斟酌一下。','先不急着按。','嗯……再看一眼线索。','差点就冲动了。','这箱真让人纠结。','好像有点眉目了。','稍等，最后算一下。'],
- submitted:['就这个价了。','想好了，交卷。','看你们的了。','落子无悔。','我这边定了。','等揭晓吧。','看看谁猜得准。','行，赌这个判断。'],
- high:['你这价，赚得回来吗？','可恶，出得这么高。','这轮你是真敢啊。','抬这么高，得有好货。','这价格我得再想想。','我可不跟着上头。','钱包挺有底气啊。','再高就有点悬了。'],
- lead:['暂时领先，别急。','呵呵，这轮我在前面。','这价是我认真想过的。','先别庆祝，还没开呢。','就看里面值不值了。','拿下也得能回本。','我是不是有点冲了？','但愿这眼光没错。'],
- pass:['这箱你们来吧。','超过我的打算了。','留点钱等下一箱。','不争了，看看结果。','这次就当看个热闹。','再喜欢也得看预算。','我先收手了。','今天不硬追。'],
- tie:['居然想到一块去了。','这都能撞价？','还真是不分上下。','下一轮再见分晓。','都挺会算啊。','有意思，居然一样。','看来都盯上这箱了。','加赛就再琢磨一下。']
+ 'Sưu tầm toàn bộ':['Chỉ còn thiếu một món là đủ bộ rồi.','Để xem có duyên mắt không đã.','Thích thì thích, nhưng phải xem giá.','Kiện này có vẻ có món mình cần.','Dành thêm chút ngân sách cho bộ sưu tập.','Món trùng thì tôi không muốn thu.','Rung động rồi, nhưng phải nghĩ thêm.','Không rẻ thì cũng phải có giới hạn.'],
+ 'Săn món hời cẩn trọng':['Tôi chỉ đợi một mức giá hợp lý.','Đừng vội, tính toán một chút đã.','Để lại chút lợi nhuận rồi hãy nói.','Rẻ mới đáng để ra tay.','Kiện này xem thêm chút nữa.','Tiền phải tiêu vào chỗ xứng đáng.','Không việc gì phải làm khó ví tiền của mình.','Cơ hội còn nhiều, không vội.'],
+ 'Chuyên gia ngành hàng':['Đường nét này trông quen quen.','Hình như là loại mình hay xem.','Đối chiếu lại manh mối trước đã.','Chi tiết này đáng để suy ngẫm.','Trông quen cũng phải cẩn thận nhìn nhầm.','Có vài món thực sự khó nhận ra.','Tôi có chút ý tưởng rồi.','Chỉ cược vào thứ mình hiểu rõ.'],
+ 'Định giá vững chắc':['Đợi tôi tính lại một lần nữa.','Manh mối vẫn còn thiếu một chút.','Chừa lại chút đường lui đã.','Khoảng giá này phải thu hẹp lại.','Nghĩ kỹ rồi mới ra tay.','Định giá sai một ly là công cốc.','Loại trừ vài khả năng trước.','Vững vàng một chút, không bao giờ thừa.'],
+ 'Mạo hiểm đặt cược':['Haha, ván này tôi muốn đoạt lấy.','Kiện này có vẻ thú vị đấy.','Liều một phen? Để tôi nghĩ xem.','Cảm giác có thể mở ra đồ tốt.','Lần này tin vào trực giác xem sao.','Gan dạ thì cũng phải chừa đường lui.','Đồ tốt thì đừng trốn kỹ quá nhé.','Để tôi cân nhắc lại ví tiền đã.'],
+ 'Dò xét tranh đua':['Các người đã tính xong chưa?','Vòng này sẽ ra giá thế nào đây.','Ai sẽ mất bình tĩnh trước?','Đừng vội, kịch hay còn ở phía sau.','Trận này khá thú vị đấy.','Để tôi đoán xem ý định của các người.','Lần này phải đổi cách nghĩ thôi.','Ai nấy đều giữ bình tĩnh ghê nhỉ.'],
+ thinking:['Để tôi nghĩ một lát.','Mức giá này phải cân nhắc kỹ.','Khoan vội bấm.','Ừm... xem lại manh mối một lần nữa.','Suýt chút nữa là bốc đồng rồi.','Kiện này thật khiến người ta đắn đo.','Hình như có chút manh mối rồi.','Chờ chút, tính toán lần cuối đã.'],
+ submitted:['Chốt giá này thôi.','Nghĩ kỹ rồi, nộp bài.','Trông chờ vào các người đấy.','Đặt cờ không hối hận.','Bên tôi đã quyết định.','Chờ hé lộ xem sao.','Xem ai đoán chuẩn nhất.','Được, cược vào phán đoán này.'],
+ high:['Mức giá này của bạn kiếm lại nổi không?','Đáng ghét, đặt giá cao thế.','Vòng này bạn liều thật đấy.','Đẩy giá cao thế chắc phải có hàng ngon.','Mức giá này tôi phải nghĩ lại.','Tôi không hùa theo đâu.','Ví tiền vững vàng ghê nhỉ.','Cao hơn nữa là nguy hiểm đấy.'],
+ lead:['Tạm thời dẫn trước, đừng vội.','Hehe, vòng này tôi đi trước rồi.','Mức giá này tôi đã suy nghĩ nghiêm túc.','Khoan ăn mừng, còn chưa mở mà.','Chỉ xem bên trong có đáng giá không thôi.','Giành được cũng phải hồi vốn đã.','Có phải tôi hơi bốc đồng không nhỉ?','Mong là mắt nhìn không sai.'],
+ pass:['Kiện này nhường các bạn đấy.','Vượt quá dự tính của tôi rồi.','Chừa lại chút tiền chờ kiện sau.','Không tranh nữa, xem kết quả thôi.','Lần này coi như đứng ngoài xem kịch.','Có thích đến mấy cũng phải nhìn ngân sách.','Tôi dừng tay trước đây.','Hôm nay không cố đuổi theo nữa.'],
+ tie:['Không ngờ lại cùng ý tưởng.','Thế này mà cũng trùng giá ư?','Đúng là bất phân thắng bại.','Vòng sau sẽ rõ hồi kết.','Ai cũng biết tính toán ghê.','Thú vị thật, lại giống hệt nhau.','Xem ra đều nhắm vào kiện này rồi.','Đấu phụ thì phải suy ngẫm thêm thôi.']
 };
 const pick=(xs,r)=>xs[Math.min(xs.length-1,Math.floor(r()*xs.length))];
 function create(before,random=Math.random,now=Date.now()){
@@ -51,7 +51,7 @@ function dragScroll(el){
   const step=now=>{const dt=Math.min(32,now-last);last=now;const top=el.scrollTop;el.scrollTop-=velocity*dt;velocity*=Math.pow(.91,dt/16.67);if(Math.abs(velocity)>.025&&Math.abs(el.scrollTop-top)>.1)motion=requestAnimationFrame(step);};
   motion=requestAnimationFrame(step);
  };
- el.tabIndex=0;el.setAttribute('aria-label','鉴宝情报，可拖动或滚动查看');
+ el.tabIndex=0;el.setAttribute('aria-label','Tình báo giám định bảo vật, có thể kéo hoặc cuộn để xem');
  el.addEventListener('pointerdown',e=>{
   if(e.button!==0||!e.isPrimary||e.target.closest('button,a,input,select,textarea'))return;
   stop();drag={id:e.pointerId,y:e.clientY,top:el.scrollTop,lastY:e.clientY,lastAt:e.timeStamp,velocity:0,moved:false,touch:e.pointerType!=='mouse'};suppress=false;
