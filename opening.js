@@ -529,25 +529,22 @@ function openingPayload(){var pname=value('#player-name'),job=state.job,commute=
   return{mvu:mvu,oshi:picked.map(function(o){return{name:o.name,medal:o.medal,badge:OSHI_BADGE,favor:80+OSHI_FAVOR,tipped:OSHI_TIPPED}}),opening:resolvedOpening(),worldbook:books[books.length-1]||null,worldbooks:books,ui:uis[0]||null,uis:uis}}
 function playerOriginConfig(payload){var info=payload.mvu['Thông tin người chơi'],world=payload.mvu['Thông tin thế giới'];return{'Hồ sơ người chơi':info['Hồ sơ'],'Ngày khởi đầu':world['Niên lịch'],'Thời gian khởi đầu':world['Thời gian'],'Vị trí khởi đầu':world['Vị trí'],'Thể lực ban đầu':info['Thể lực'],'Tiền bạc ban đầu':info['Tiền bạc'],'Nơi ở ban đầu':info['Nơi ở'],'Bất động sản ban đầu':info['Bất động sản'],'Công việc ban đầu':info['Công việc'],'Streamer yêu thích':payload.oshi.map(function(o){return o.name}),'Streamer tùy chỉnh':payload.uis.map(function(u){return{name:u.name,'Nghệ danh':u.handle}})}}
 function buildStartMessage(payload){var opening=payload.opening,target=opening.targetStreamer?opening.targetStreamer.name:'Chưa chỉ định';return[
-'Vui lòng dựa vào cấu hình xuất thân của người chơi và nội dung mở đầu dưới đây để hoàn tất khởi tạo và bắt đầu câu chuyện tại Thành phố Lâm Giang.',
-'```arduino',
-'【Cấu hình xuất thân người chơi】',
-JSON.stringify(playerOriginConfig(payload),null,2),
-'```',
-'',
-'【Kịch bản mở đầu đã chọn】',
-'Tiêu đề: '+opening.title,
-'Tóm tắt: '+opening.summary,
-'Streamer mục tiêu: '+target,
-'Nội dung chi tiết:',
-'',
-opening.detail,
-'',
-'【YÊU CẦU ĐỊNH DẠNG BẮT BUỘC】',
-'- BẮT BUỘC viết toàn bộ nội dung diễn biến câu chuyện / chính văn mở đầu nằm bên trong cặp thẻ <now_plot>...</now_plot> (tối thiểu 1500 chữ). Tuyệt đối không được bỏ sót cặp thẻ <now_plot>...</now_plot>!',
-'- Khối cập nhật biến số <update>...</update> bắt buộc phải đặt ở CUỐI CÙNG, sau khi đã viết xong và đóng thẻ </now_plot>. Tuyệt đối KHÔNG ĐƯỢC chỉ xuất khối <update> mà bỏ qua phần chính văn <now_plot>!',
-'- Vui lòng triển khai cốt truyện sống động đến thời điểm cần người chơi phản hồi.'
-].join('\n')}
+  'Vui lòng dựa vào cấu hình xuất thân của người chơi và nội dung mở đầu dưới đây để hoàn tất khởi tạo và bắt đầu câu chuyện tại Thành phố Lâm Giang.',
+  '```arduino',
+  '【Cấu hình xuất thân người chơi】',
+  JSON.stringify(playerOriginConfig(payload),null,2),
+  '```',
+  '',
+  '【Kịch bản mở đầu đã chọn】',
+  'Tiêu đề: '+opening.title,
+  'Tóm tắt: '+opening.summary,
+  'Streamer mục tiêu: '+target,
+  'Nội dung chi tiết:',
+  '',
+  opening.detail,
+  '',
+  'Vui lòng triển khai cốt truyện đến thời điểm cần người chơi phản hồi. Nội dung chính không dưới 1500 chữ.'
+  ].join('\n')}
 function sendMessageToChat(message){try{var doc=document;if(window.parent&&window.parent!==window){try{doc=window.parent.document}catch(_){}}var area=doc.getElementById('send_textarea'),button=doc.getElementById('send_but');if(!area||!button)return false;area.value=message;area.dispatchEvent(new Event('input',{bubbles:true}));area.dispatchEvent(new Event('change',{bubbles:true}));button.click();return true}catch(_){return false}}
 function finish(){const payload=openingPayload();payload.startMessage=buildStartMessage(payload);if(window.parent!==window)parent.postMessage({channel:'linjiang-opening',kind:'event',type:'commitPreview',payload},'*');else sendMessageToChat(payload.startMessage);navigator.clipboard?.writeText(payload.startMessage).catch(()=>{});console.log('[Cấu hình mở đầu Lâm Giang]',payload);toast('Đã gửi cấu hình mở đầu, cuộc sống tại Lâm Giang sắp bắt đầu')}
 loadArchives();renderSteps();renderMapInspector();renderOshi();renderOpenings();clearCustomEditor();go(1)
