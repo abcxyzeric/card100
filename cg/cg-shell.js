@@ -64,7 +64,7 @@ const toastr = {
 
 const CGShell = (() => {
   const CHANNEL = 'linjiang-cg';
-  const ROOT_TITLE = 'CG收集';
+  const ROOT_TITLE = 'Bộ Sưu Tập CG';
 
   const body = () => $('#phone-app-body');
   const viewerOpen = () => $('#wallpaper-fullscreen-viewer').hasClass('active');

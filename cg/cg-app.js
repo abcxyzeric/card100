@@ -1,36 +1,94 @@
 
 const CHAR_NAME_MAP_TO_CN = {
   "Shigure Ui": "时雨羽衣",
+  "Thời Vũ Vũ Y": "时雨羽衣",
   "Sakamata Chloe": "沙花叉",
+  "Sa Hoa Xoa": "沙花叉",
   "Ace Taffy": "塔菲",
+  "Tạ Phỉ": "塔菲",
   "Taffy": "塔菲",
   "Yumemi Riamu": "璃亚梦",
+  "Lưu Á Mộng": "璃亚梦",
   "Azuma Seren": "东雪莲",
+  "Đông Tuyết Liên": "东雪莲",
   "Hồng Tường Vi": "红蔷薇",
   "Stella": "斯黛拉",
+  "Tư Đại Lạp": "斯黛拉",
   "Miku Rabbit Hole": "兔子洞初音",
+  "Thỏ Hang Miku": "兔子洞初音",
   "Kagura Nana": "神乐七奈",
+  "Thần Nhạc Thất Nại": "神乐七奈",
   "Bé Cá Voi": "鲸鱼娘",
-  "Neuro": "牛肉"
+  "Nàng Cá Voi": "鲸鱼娘",
+  "Neuro": "牛肉",
+  "Bò Con": "牛肉",
+  "Ngưu Nhục": "牛肉"
 };
 const CHAR_NAME_MAP_TO_VI = {
-  "时雨羽衣": "Shigure Ui",
-  "沙花叉": "Sakamata Chloe",
-  "塔菲": "Ace Taffy",
-  "璃亚梦": "Yumemi Riamu",
-  "东雪莲": "Azuma Seren",
+  "时雨羽衣": "Thời Vũ Vũ Y",
+  "Shigure Ui": "Thời Vũ Vũ Y",
+  "沙花叉": "Sa Hoa Xoa",
+  "Sakamata Chloe": "Sa Hoa Xoa",
+  "塔菲": "Tạ Phỉ",
+  "Ace Taffy": "Tạ Phỉ",
+  "Taffy": "Tạ Phỉ",
+  "璃亚梦": "Lưu Á Mộng",
+  "Yumemi Riamu": "Lưu Á Mộng",
+  "东雪莲": "Đông Tuyết Liên",
+  "Azuma Seren": "Đông Tuyết Liên",
   "红蔷薇": "Hồng Tường Vi",
   "斯黛拉": "Stella",
+  "Tư Đại Lạp": "Stella",
   "兔子洞初音": "Miku Rabbit Hole",
+  "Thỏ Hang Miku": "Miku Rabbit Hole",
   "神乐七奈": "Kagura Nana",
-  "鲸鱼娘": "Bé Cá Voi",
-  "牛肉": "Neuro"
+  "Thần Nhạc Thất Nại": "Kagura Nana",
+  "鲸鱼娘": "Nàng Cá Voi",
+  "Bé Cá Voi": "Nàng Cá Voi",
+  "牛肉": "Bò Con",
+  "Neuro": "Bò Con",
+  "Ngưu Nhục": "Bò Con"
+};
+const SCENE_NAME_MAP_TO_VI = {
+  "通用": "Chung",
+  "乳交": "Kẹp ngực",
+  "事后口交": "Bú cu sau quan hệ",
+  "亲吻": "Hôn sâu",
+  "传教士体位做爱": "Tư thế truyền giáo",
+  "做爱射精": "Bắn tinh",
+  "做爱高潮": "Lên đỉnh",
+  "口交": "Bú cu",
+  "后入做爱": "Thao từ phía sau",
+  "吮吸乳头": "Bú đầu ti",
+  "女上位做爱": "Nữ thượng vị",
+  "射外面事后": "Bắn ngoài sau đó",
+  "打屁股后入": "Vỗ mông từ phía sau",
+  "抱着摸小穴": "Ôm sờ lồn",
+  "抱腿站着后入": "Gác chân đứng phía sau",
+  "抱起来做爱": "Bế bổng làm tình",
+  "指交": "Móc cua",
+  "掰开小穴": "Vạch lồn",
+  "摸胸": "Sờ ngực",
+  "激烈站着后入": "Đứng phía sau kịch liệt",
+  "站着后入": "Đứng phía sau",
+  "素股": "Kẹp đùi",
+  "背后坐位做爱": "Ngồi làm tình phía sau",
+  "脱衣服": "Cởi quần áo",
+  "自己掰开小穴": "Tự vạch lồn",
+  "自慰": "Thủ dâm",
+  "舔小穴": "Liếm lồn",
+  "足交": "Thủ dâm bằng chân",
+  "趴着口交": "Nằm sấp bú cu",
+  "躺着抬腿做爱": "Nằm ngửa nhấc chân làm tình"
 };
 function getDisplayName(name) {
   return CHAR_NAME_MAP_TO_VI[name] || name;
 }
 function getInternalName(name) {
   return CHAR_NAME_MAP_TO_CN[name] || name;
+}
+function getSceneDisplayName(name) {
+  return SCENE_NAME_MAP_TO_VI[name] || name;
 }
 /* 产物，不要改这个文件。
    由 scripts/build-cg-page.mjs 从下面这些分片原样拼接而成：
@@ -863,7 +921,7 @@ function generateGalleryPanel(data) {
             <div data-mode="progress" class="cg-mode-segment" style="
                 flex: 1; text-align: center; padding: 10px 0; font-size: 13px; font-weight: 600; cursor: pointer; border-radius: 8px; z-index: 1; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
                 ${isProgressMode ? 'background: #fff; color: #0f172a; box-shadow: 0 2px 4px rgba(0,0,0,0.06); transform: scale(1);' : 'color: #64748b; transform: scale(0.98);'}
-            ">收藏进度</div>
+            ">Tiến độ sưu tập</div>
             <div data-mode="unlock" class="cg-mode-segment" style="
                 flex: 1; text-align: center; padding: 10px 0; font-size: 13px; font-weight: 600; cursor: pointer; border-radius: 8px; z-index: 1; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
                 ${!isProgressMode ? 'background: #fff; color: #0f172a; box-shadow: 0 2px 4px rgba(0,0,0,0.06); transform: scale(1);' : 'color: #64748b; transform: scale(0.98);'}
@@ -887,7 +945,7 @@ function generateGalleryPanel(data) {
                         <div style="font-size: 32px; font-weight: 800; color: #0f172a; line-height: 1; letter-spacing: -0.5px;">${stats.total.percentage}<span style="font-size: 16px; color: #94a3b8; font-weight: 600; margin-left: 2px;">%</span></div>
                     </div>
                     <div style="text-align: right;">
-                        <span style="font-size: 12px; color: #94a3b8; font-weight: 500;">详情</span>
+                        <span style="font-size: 12px; color: #94a3b8; font-weight: 500;">Chi tiết</span>
                         <i class="fas fa-chevron-down" style="font-size: 12px; color: #94a3b8; margin-left: 6px; transition: transform 0.3s;"></i>
                     </div>
                 </div>
@@ -911,7 +969,7 @@ function generateGalleryPanel(data) {
                     border-bottom: 1px solid #f8fafc;
                 ">
                     <div style="width: 85px; font-weight: 700; color: #334155; font-size: 14px;">
-                        ${escapeHtml(char)}
+                        ${escapeHtml(getDisplayName(char))}
                         <div style="font-size: 11px; color: #94a3b8; font-weight: 500; margin-top: 2px;">${charStats.unlocked}/${charStats.total}</div>
                     </div>
                     <div style="flex: 1; padding: 0 8px;">
@@ -965,7 +1023,7 @@ function generateGalleryPanel(data) {
 
             let btnState = '';
             if (isUnlockedModeActive) {
-                btnState = `<span style="color: #10b981; font-size: 12px; font-weight: 600; display: flex; align-items: center; gap: 4px;"><i class="fas fa-check-circle"></i> 已开启</span>`;
+                btnState = `<span style="color: #10b981; font-size: 12px; font-weight: 600; display: flex; align-items: center; gap: 4px;"><i class="fas fa-check-circle"></i> Đã bật</span>`;
             } else if (canUnlock) {
                 btnState = `
                     <button class="cg-unlock-btn" data-character="${escapeHtml(char)}" style="
@@ -973,7 +1031,7 @@ function generateGalleryPanel(data) {
                         color: white; border: none; padding: 6px 14px; 
                         border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer;
                         box-shadow: 0 2px 6px rgba(234, 88, 12, 0.25); transition: transform 0.1s;
-                    ">开启</button>
+                    ">Bật</button>
                 `;
             } else {
                 btnState = `<span style="color: #cbd5e1; font-size: 12px; font-weight: 500;">Chưa đủ hảo cảm</span>`;
@@ -986,8 +1044,8 @@ function generateGalleryPanel(data) {
                 ">
                     <div style="display: flex; align-items: center; gap: 12px;">
                         <div>
-                            <span style="font-weight: 700; color: #334155; font-size: 14px; display: block;">${escapeHtml(char)}</span>
-                            <span style="font-size: 11px; color: #94a3b8; font-weight: 500;">真实进度: ${charStats.unlocked}/${charStats.total}</span>
+                            <span style="font-weight: 700; color: #334155; font-size: 14px; display: block;">${escapeHtml(getDisplayName(char))}</span>
+                            <span style="font-size: 11px; color: #94a3b8; font-weight: 500;">Tiến độ thực tế: ${charStats.unlocked}/${charStats.total}</span>
                         </div>
                         <span style="
                             font-size: 11px; 
@@ -1009,8 +1067,8 @@ function generateGalleryPanel(data) {
     html += `
         <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; margin: 10px 2px 12px;">
             <div>
-                <div style="font-size:16px; font-weight:800; color:#0f172a;">角色图鉴</div>
-                <div style="font-size:11px; color:#94a3b8; margin-top:2px;">${characters.length} 人</div>
+                <div style="font-size:16px; font-weight:800; color:#0f172a;">Minh họa nhân vật</div>
+                <div style="font-size:11px; color:#94a3b8; margin-top:2px;">${characters.length} nhân vật</div>
             </div>
             <div style="font-size:12px; color:#64748b; font-weight:700;">${cgCharacterPage + 1} / ${pageCount}</div>
         </div>
@@ -1032,9 +1090,9 @@ function generateGalleryPanel(data) {
 
         if (!isProgressMode) {
             if (isPreviewActive) {
-                unlockStateHtml = `<span class="cg-card-pill cg-card-pill-ok"><i class="fas fa-check-circle"></i> 已开启</span>`;
+                unlockStateHtml = `<span class="cg-card-pill cg-card-pill-ok"><i class="fas fa-check-circle"></i> Đã bật</span>`;
             } else if (canUnlock) {
-                unlockStateHtml = `<button class="cg-unlock-btn cg-card-unlock-btn" data-character="${escapeHtml(char)}">开启</button>`;
+                unlockStateHtml = `<button class="cg-unlock-btn cg-card-unlock-btn" data-character="${escapeHtml(char)}">Bật</button>`;
             } else {
                 unlockStateHtml = `<span class="cg-card-pill">Chưa đủ hảo cảm</span>`;
             }
@@ -1042,7 +1100,7 @@ function generateGalleryPanel(data) {
 
         html += `
             <div class="cg-character-card" data-character="${escapeHtml(char)}">
-                <button class="cg-favorite-btn ${isFavorite ? 'active' : ''}" data-character="${escapeHtml(char)}" title="${isFavorite ? '取消收藏' : '收藏置顶'}">
+                <button class="cg-favorite-btn ${isFavorite ? 'active' : ''}" data-character="${escapeHtml(char)}" title="${isFavorite ? 'Bỏ thích' : 'Ghim yêu thích'}">
                     <i class="fas fa-heart"></i>
                 </button>
                 <div class="cg-character-cover">
@@ -1051,7 +1109,7 @@ function generateGalleryPanel(data) {
                     <div class="cg-character-cover-fallback">${fallbackInitial}</div>
                 </div>
                 <div class="cg-character-info">
-                    <div class="cg-character-name">${escapeHtml(char)}</div>
+                    <div class="cg-character-name">${escapeHtml(getDisplayName(char))}</div>
                     <div class="cg-character-meta">
                         <span><i class="fas fa-images"></i> ${charStats.unlocked}/${charStats.total}</span>
                         <span><i class="fas fa-heart"></i> ${affection}</span>
@@ -1071,11 +1129,11 @@ function generateGalleryPanel(data) {
         html += `
             <div class="cg-pagination">
                 <button class="cg-page-btn" data-direction="prev" ${cgCharacterPage === 0 ? 'disabled' : ''}>
-                    <i class="fas fa-chevron-left"></i> 上一页
+                    <i class="fas fa-chevron-left"></i> Trang trước
                 </button>
                 <span>${cgCharacterPage + 1} / ${pageCount}</span>
                 <button class="cg-page-btn" data-direction="next" ${cgCharacterPage >= pageCount - 1 ? 'disabled' : ''}>
-                    下一页 <i class="fas fa-chevron-right"></i>
+                    Trang sau <i class="fas fa-chevron-right"></i>
                 </button>
             </div>
         `;
@@ -1298,7 +1356,7 @@ function renderCGSceneGrid(characterName, scenes, charUnlocked) {
                     <img src="${imgUrl}" alt="${escapeHtml(sceneType)}" 
                         style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s;" 
                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div style="display: none; position: absolute; inset: 0; align-items: center; justify-content: center; color: #94a3b8; font-size: 10px;">加载失败</div>
+                    <div style="display: none; position: absolute; inset: 0; align-items: center; justify-content: center; color: #94a3b8; font-size: 10px;">Tải thất bại</div>
                     ${maxCount > 1 ? `
                         <div class="cg-switch-btn" style="
                             position: absolute; top: 6px; right: 6px; background: rgba(0,0,0,0.6); backdrop-filter: blur(2px);
@@ -1310,7 +1368,7 @@ function renderCGSceneGrid(characterName, scenes, charUnlocked) {
                         background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
                         color: white; font-size: 11px; padding: 16px 8px 6px 8px; font-weight: 500;
                         white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-                    ">${escapeHtml(sceneType)}</div>
+                    ">${escapeHtml(getSceneDisplayName(sceneType))}</div>
                 </div>
             `;
         } else {
@@ -1321,7 +1379,7 @@ function renderCGSceneGrid(characterName, scenes, charUnlocked) {
                     border: 1px dashed #cbd5e1; color: #cbd5e1;
                 ">
                     <i class="fas fa-lock" style="font-size: 18px;"></i>
-                    <span style="font-size: 10px; font-weight: 500;">locked</span>
+                    <span style="font-size: 10px; font-weight: 500;">Đã khóa</span>
                 </div>
             `;
         }
@@ -1334,7 +1392,7 @@ function renderCGSceneGrid(characterName, scenes, charUnlocked) {
 function generateCGCharacterDetailPanel(characterName, data) {
     const scenes = CG_LIST[characterName];
     if (!scenes) {
-        return '<div class="empty-message">未找到该角色CG数据</div>';
+        return '<div class="empty-message">Không tìm thấy dữ liệu CG của nhân vật này</div>';
     }
 
     const stats = getCGCollectionStats();
@@ -1396,7 +1454,7 @@ function showCGCharacterDetail(characterName) {
         scrollPosition: appBodyElement ? appBodyElement.scrollTop : 0
     });
 
-    $('#phone-app-title').text(`🖼️ ${characterName}`);
+    $('#phone-app-title').text(`🖼️ ${getDisplayName(characterName)}`);
     $('#phone-app-body').html(generateCGCharacterDetailPanel(characterName, currentPhoneData));
     $('#phone-app-body').scrollTop(0);
     bindCGGalleryEvents();

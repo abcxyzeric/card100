@@ -1119,7 +1119,7 @@
       const a = ramp(ratio(key), 0.90, 1.05);
       const it = acquire('E:' + key, 'minor',
         `<div class="ni"><svg viewBox="0 0 32 32"><use href="#i-office"/></svg></div>` +
-        `<div class="nl"><b>${esc(pl.district)}</b><i>底板已就位 · 尚未布点</i></div>`);
+        `<div class="nl"><b>${esc(pl.district)}</b><i>Bản đồ đã sẵn sàng · Chưa đặt điểm</i></div>`);
       it.el.style.setProperty('--nc', '#7d8ea8');
       const c = inFrame(pl.frame, 0.5, 0.5);
       const p = toScreen(c.x, c.y);
@@ -1196,7 +1196,7 @@
         (OPENING_MODE ? `<i>${esc(openingSub(n))}</i>` : '') + '</div>' +
         /* 「可打工」角标在开局档是噪声：选住所时它跟这一步无关，
            选工作时留在场的每个牌子都是岗位，说了也是废话 */
-        (!OPENING_MODE && n.features && n.features.canWork ? '<div class="nj">可打工</div>' : ''));
+        (!OPENING_MODE && n.features && n.features.canWork ? '<div class="nj">Có thể làm thêm</div>' : ''));
       it.el.style.setProperty('--nc', okind === 'work' ? '#4b9bdd' : okind === 'home' ? '#e0559a' : k.color);
       it.el.classList.toggle('custom', !!n.custom);
       if (it._ok !== okind) { it._ok = okind; it.el.dataset.opening = okind; }
@@ -1974,7 +1974,7 @@
     document.getElementById('custom-special').value = '';
     ['custom-date', 'custom-gather', 'custom-work', 'custom-shop'].forEach(id => { document.getElementById(id).checked = false; });
     document.getElementById('custom-anchor-note').textContent = anchor
-      ? `${customDraft.district} · 接驳到「${customDraft.anchorName}」，约 ${customDraft.accessKm} km`
+      ? `${customDraft.district} · Kết nối đến 「${customDraft.anchorName}」, khoảng ${customDraft.accessKm} km`
       : `${customDraft.district} · Gần đây không có điểm kết nối khả dụng`;
     /* 先取消隐藏再排版：syncCustomSave 在面板隐藏时会直接返回，
        顺序颠倒的话按钮文案就停在上一次的状态。 */
@@ -2096,9 +2096,9 @@
          不会动按钮；之后再自己写「重新保存」，就不会被覆盖回「支付…并建设」。 */
       renderBuildCost();
       customSaving = false;
-      document.getElementById('custom-anchor-note').textContent = `保存失败：${error?.message || error}`;
+      document.getElementById('custom-anchor-note').textContent = `Lưu thất bại: ${error?.message || error}`;
       customSave.disabled = false;
-      customSave.textContent = '重新保存';
+      customSave.textContent = 'Lưu lại';
     }
   }
 
@@ -2400,7 +2400,7 @@
   const CARD_KIND = {
     pureLove: 'love', mischief: 'mischief', sexAction: 'sex'
   };
-  const TAG_KIND = { 纯爱: 'love', 调教: 'mischief', 日常: 'daily' };
+  const TAG_KIND = { 纯爱: 'love', 调教: 'mischief', 日常: 'daily', 'Thuần ái': 'love', 'Điều giáo': 'mischief', 'Thường nhật': 'daily' };
 
   function featChips(n) {
     const f = n.features || {};
@@ -2481,7 +2481,7 @@
     const job = OPENING_JOB_META[n.id];
     if (raw) {
       const h = raw;
-      const tier = HOUSING_TIER_LABEL[h.tier] || '住宅';
+      const tier = HOUSING_TIER_LABEL[h.tier] || 'Nhà ở';
       const cost = h.cost || housingCost(h);
       const unlock = h.unlock && h.unlock.minMoney ? ' / Mở khóa vốn RMB ' + Number(h.unlock.minMoney).toLocaleString() : '';
       return '<section class="spot-opening"><div class="spot-opening-top"><span>Housing</span><b>'+esc(tier)+'</b></div><strong>'+esc(cost)+'</strong><p>'+esc((h.note || n.draw || '') + unlock)+'</p></section>';
@@ -2514,7 +2514,7 @@
     const events = eventList.map((ev, index) =>
       `<details class="spot-evt">` +
       `<summary class="spot-evt-summary"><div class="spot-evt-main">` +
-      `<span class="spot-evt-index">事件 ${String(index + 1).padStart(2, '0')}</span>` +
+      `<span class="spot-evt-index">Sự kiện ${String(index + 1).padStart(2, '0')}</span>` +
       `<h3>${esc(ev.title)}</h3>` +
       (ev['场所'] ? `<div class="where">${esc(ev['场所'])}</div>` : '') +
       `</div><span class="spot-evt-toggle" aria-hidden="true"></span></summary>` +
@@ -2553,7 +2553,7 @@
       `<h2 id="spot-title">${esc(n.name)}</h2>` +
       full +
       `<div class="spot-meta"><div class="spot-hours">${hours}</div>` +
-      `<span class="spot-priv">${esc(PRIVACY_LABEL[priv] || '私密')}` +
+      `<span class="spot-priv">${esc(PRIVACY_LABEL[priv] || 'Riêng tư')}` +
       `<i><b style="width:${(priv / 5) * 100}%"></b></i></span></div>` +
       (nav ? `<div class="spot-navrow">${nav}</div>` : '') + customActions;
 
@@ -2648,7 +2648,7 @@
   function legText(l) {
     if (l.carrier === 'rail') {
       const line = NET.lineOf(l.line);
-      return `<em style="--lc:${line ? line.color : '#888'}">${esc(line ? line.name : '轨道')}</em>` +
+      return `<em style="--lc:${line ? line.color : '#888'}">${esc(line ? line.name : 'Đường ray')}</em>` +
         `<span>${esc(l.fromLabel)} → ${esc(l.toLabel)}　${l.stops} trạm</span><i>${l.min} phút</i>`;
     }
     if (l.carrier === 'bus') {

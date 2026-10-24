@@ -65,22 +65,22 @@ function renderHostDaily(){
  amount.textContent=net<0?'−'+fmt(-net):fmt(net);amount.dataset.sign=sign(net);
  last.hidden=!Number.isSafeInteger(total?.lastNet);last.textContent=last.hidden?'':signed(total.lastNet);last.dataset.sign=sign(total?.lastNet||0);
  $('hostDailyAccount').dataset.long=String(amount.textContent.length+last.textContent.length>18);
- $('hostDailyAccount').setAttribute('aria-label',`${D.hosts[state.host]?.name||''}今日总账 ${amount.textContent}${last.hidden?'':`，最近一场 ${last.textContent}`}`);
- $('hosts').querySelectorAll('[data-host]').forEach(button=>{const h=D.hosts[+button.dataset.host],value=state.hostDaily.totals[h.id]?.net||0,label=`${h.name} · ${h.skill} · 今日总账 ${value===0?'0':signed(value)}`;button.title=label;button.setAttribute('aria-label',label);});
+ $('hostDailyAccount').setAttribute('aria-label',`${D.hosts[state.host]?.name||''} Tổng sổ hôm nay ${amount.textContent}${last.hidden?'':`, Trận gần nhất ${last.textContent}`}`);
+ $('hosts').querySelectorAll('[data-host]').forEach(button=>{const h=D.hosts[+button.dataset.host],value=state.hostDaily.totals[h.id]?.net||0,label=`${h.name} · ${h.skill} · Tổng sổ hôm nay ${value===0?'0':signed(value)}`;button.title=label;button.setAttribute('aria-label',label);});
  dailyTimer=setTimeout(renderHostDaily,AuctionDaily.untilReset()+20);
 }
 function renderPrepare(){balanceUI();
- $('hosts').innerHTML=D.hosts.map(h=>`<button class="host-button ${state.host===h.id?'active':''}" data-host="${h.id}" aria-label="邀请${h.name} · ${h.skill}" aria-pressed="${state.host===h.id}" title="${h.name} · ${h.skill}"><img src="${h.avatar}" alt="${h.name}" width="64" height="64"></button>`).join('');
+ $('hosts').innerHTML=D.hosts.map(h=>`<button class="host-button ${state.host===h.id?'active':''}" data-host="${h.id}" aria-label="Mời ${h.name} · ${h.skill}" aria-pressed="${state.host===h.id}" title="${h.name} · ${h.skill}"><img src="${h.avatar}" alt="${h.name}" width="64" height="64"></button>`).join('');
  renderHostDaily();const h=D.hosts[state.host]||D.hosts[0];renderPortrait(h);$('heroName').textContent=h.name;$('hostDescription').innerHTML=`<h3>${h.skill}</h3><p>${h.desc}</p>`;
- $('tools').innerHTML=`<div class="loadout-heading"><span>已装备 ${state.loadout.length} / 3</span><button class="text-button" data-open-shop>采购 / 配装 ↗</button></div>`+state.loadout.map(id=>{const t=D.tools.find(t=>t.id===id);return `<article class="tool-card"><span>${t.symbol}</span><div><div class="tool-title"><strong>${t.name}</strong><em>库存 ${state.instrumentStock[id]||0}</em></div><p>${t.desc}</p></div></article>`;}).join('');
- $('btnStart').disabled=false;$('btnStart').innerHTML='选择会场 <span>↗</span>';renderAdmission();
+ $('tools').innerHTML=`<div class="loadout-heading"><span>Đã trang bị ${state.loadout.length} / 3</span><button class="text-button" data-open-shop>Mua sắm / Trang bị ↗</button></div>`+state.loadout.map(id=>{const t=D.tools.find(t=>t.id===id);return `<article class="tool-card"><span>${t.symbol}</span><div><div class="tool-title"><strong>${t.name}</strong><em>Kho ${state.instrumentStock[id]||0}</em></div><p>${t.desc}</p></div></article>`;}).join('');
+ $('btnStart').disabled=false;$('btnStart').innerHTML='Chọn hội trường <span>↗</span>';renderAdmission();
 }
 function renderAdmission(){const bal=wallet().balance,v=D.venues.find(v=>v.id===state.venue)||D.venues[0],h=D.hosts[state.host]||D.hosts[0];
- $('venues').innerHTML=D.venues.map(x=>`<button class="venue ${v.id===x.id?'active':''}" data-venue="${x.id}" aria-pressed="${v.id===x.id}"><strong>${x.name}</strong><p>${x.desc}</p><span class="venue-multiplier">回收倍率 ×${x.scale}</span><div class="venue-fee">◈ ${fmt(x.entryFee)}<small>门票</small></div><span>扣票后至少保留 ◈ ${fmt(x.min)}</span><span class="venue-availability">${bal<x.min+x.entryFee?'入场所需资产 ◈ '+fmt(x.min+x.entryFee):'可入场'}</span></button>`).join('');
+ $('venues').innerHTML=D.venues.map(x=>`<button class="venue ${v.id===x.id?'active':''}" data-venue="${x.id}" aria-pressed="${v.id===x.id}"><strong>${x.name}</strong><p>${x.desc}</p><span class="venue-multiplier">Hệ số thu hồi ×${x.scale}</span><div class="venue-fee">◈ ${fmt(x.entryFee)}<small>Vé vào</small></div><span>Sau khi trừ vé giữ lại ít nhất ◈ ${fmt(x.min)}</span><span class="venue-availability">${bal<x.min+x.entryFee?'Tài sản cần để vào cửa ◈ '+fmt(x.min+x.entryFee):'Có thể vào'}</span></button>`).join('');
  $('admissionPartner').innerHTML=`<img src="${h.avatar}" alt="${h.name}"><strong>${h.name}</strong>`;
- $('admissionBill').innerHTML=`<p><span>当前资产</span><b>◈ ${fmt(bal)}</b></p><p><span>${v.name} · 门票</span><b>− ${fmt(v.entryFee)}</b></p><p class="remaining"><span>扣票后可用资金</span><b>◈ ${fmt(Math.max(0,bal-v.entryFee))}</b></p>`;
- $('admissionError').textContent=bal<v.min+v.entryFee?`还差 ${fmt(v.min+v.entryFee-bal)} 资产：门票 ${fmt(v.entryFee)} + 最低资金 ${fmt(v.min)}。`:'';
- $('btnConfirmEntry').disabled=busy||bal<v.min+v.entryFee;$('btnConfirmEntry').textContent=`支付 ${fmt(v.entryFee)} · 确认入场 ↗`;
+ $('admissionBill').innerHTML=`<p><span>Tài sản hiện tại</span><b>◈ ${fmt(bal)}</b></p><p><span>${v.name} · Vé vào</span><b>− ${fmt(v.entryFee)}</b></p><p class="remaining"><span>Tiền khả dụng sau khi trừ vé</span><b>◈ ${fmt(Math.max(0,bal-v.entryFee))}</b></p>`;
+ $('admissionError').textContent=bal<v.min+v.entryFee?`Còn thiếu ${fmt(v.min+v.entryFee-bal)} tài sản: Vé ${fmt(v.entryFee)} + Tiền tối thiểu ${fmt(v.min)}.`:'';
+ $('btnConfirmEntry').disabled=busy||bal<v.min+v.entryFee;$('btnConfirmEntry').textContent=`Thanh toán ${fmt(v.entryFee)} · Xác nhận vào cửa ↗`;
 }
 function vaultHTML(items,revealed=false){return items.filter(i=>i.w!=null).map(i=>{const q=i.quality==null?null:D.qualities[i.quality],known=i.identified!=null;return `<button class="vault-item ${selected===i.slot&&!revealed?'selected':''}" data-slot="${i.slot}" style="grid-column:${i.x+1}/span ${i.w};grid-row:${i.y+1}/span ${i.h};--q:${q?.color||'#75838a'}" aria-label="${known?i.name:((q?.name||'未知品质')+'藏品')}，占格${i.w}乘${i.h}">${known?`<img src="${i.image}" alt="${i.name}">`:'<span class="unknown">?</span>'}<small>${known?(revealed?fmt(i.value):i.name):(i.category||`${i.w}×${i.h}`)}</small></button>`;}).join('');}
 // Presentation is persisted with the atomic bid, not with a second economic action.
@@ -108,7 +108,7 @@ function paintRoundPresentation(p,actual){
   card.classList.toggle('bid-submitted',submitted);card.classList.toggle('bid-thinking',!submitted);
   card.classList.toggle('bid-revealed',revealed);
   if(revealed)card.querySelectorAll('.bid-history>span')[p.round-1]?.classList.add('round-amount');
-  status.textContent=revealed?(row.bids[i]===null?'已退出':'已出价'):(submitted?'已提交':'思考中');
+  status.textContent=revealed?(row.bids[i]===null?'Đã bỏ lượt':'Đã đặt giá'):(submitted?'Đã nộp':'Đang suy nghĩ');
   if(revealed&&row.bids[i]!==null&&row.bids[i]===Math.max(...row.bids.filter(n=>n!==null))){card.classList.add('round-leading');status.textContent='最高价';}
  });
  const speech=AuctionPresentation.speech(p,revealed?row:null,now);
@@ -120,18 +120,18 @@ function paintRoundPresentation(p,actual){
 
  if(revealed){
   const resolution=E.resolveRound(row.bids,p.round),high=Math.max(0,...row.bids.filter(n=>n!==null));
-  const winner=resolution.winner===0?'你':resolution.winner!=null?D.hosts[p.before.rivals[resolution.winner-1]].name:null;
-  const title=resolution.done?(winner?`${winner}竞得 · ${fmt(resolution.price)}`:'本场流拍'):`最高报价 ${fmt(high)}`;
-  const detail=resolution.done?'即将揭晓藏品':resolution.ties?'最高价并列 · 即将进入加赛':'未达落槌条件 · 即将进入第 '+(p.round+1)+' 轮';
-  feedback.innerHTML=`<strong><small>第 ${p.round} 轮</small>${escapeHTML(title)}</strong><span>${detail}</span>`;
+  const winner=resolution.winner===0?'Bạn':resolution.winner!=null?D.hosts[p.before.rivals[resolution.winner-1]].name:null;
+  const title=resolution.done?(winner?`${winner} thắng · ${fmt(resolution.price)}`:'Đấu giá bất thành'):`Báo giá cao nhất ${fmt(high)}`;
+  const detail=resolution.done?'Sắp hé lộ bảo vật':resolution.ties?'Giá cao nhất bằng nhau · Sắp vào vòng phụ':`Chưa đạt điều kiện gõ búa · Sắp vào vòng ${p.round+1}`+' 轮';
+  feedback.innerHTML=`<strong><small>Vòng ${p.round}</small>${escapeHTML(title)}</strong><span>${detail}</span>`;
  }else feedback.innerHTML=`<strong>等待其他竞拍人 <small>${ready} / ${total}</small></strong><span>报价将在全员提交后公开</span>`;
- $('btnBid').textContent=revealed?'本轮结算':'等待出价';
+ $('btnBid').textContent=revealed?'Kết toán vòng':'Đợi đặt giá';
  for(const id of ['btnBid','btnPass','btnTool'])$(id).disabled=true;
  const next=[...p.readyAt,p.revealAt,p.endAt,...(p.bubbles||[]).flatMap(b=>[b.at,b.until])].filter(t=>t!==null&&t>now).sort((a,b)=>a-b)[0];
  roundTimer=setTimeout(()=>{if(session?.view().id===p.id)renderPlay();},Math.max(20,next-now+10));
 }
 function intelHTML(c){
- let text=c.text,source=c.private?'私有情报':'公开情报';
+ let text=c.text,source=c.private?'Thông tin riêng':'Thông tin công khai';
  const colon=text.indexOf('：');
  // Partner/tool identity is metadata, not part of the main clue sentence.
  if(c.private&&colon>0){source=text.slice(0,colon).replace(/（消耗.*?）/g,'');text=text.slice(colon+1);}
@@ -141,15 +141,15 @@ function intelHTML(c){
 function renderPlay(){clearTimeout(roundTimer);if(!session)return;const actual=session.view(),presentation=roundPresentation();view=presentation?structuredClone(presentation.before):actual;const v=view;v.pricingVersion??=actual.pricingVersion;if(presentation&&$('bidDialog').open)$('bidDialog').close();if(presentation&&$('fieldToolsDialog').open)$('fieldToolsDialog').close();if(presentation&&Date.now()>=presentation.revealAt)v.history=structuredClone(actual.history);balanceUI();screen('play');document.body.dataset.roundStage='idle';$('roundFeedback').hidden=true;$('btnBid').textContent='出价 ↗';
  if(v.phase==='result'){renderResult();return;}
  $('venueTitle').textContent=D.venues.find(x=>x.id===v.venue).name+` · ×${v.scale}`;
- $('roundTrack').innerHTML=`<span class="current">${v.round>5?'同价加赛':'竞拍第 '+v.round+' 回合'}</span>`;
- $('roundRule').textContent=v.round<=4?`落槌：最高价 > 次高价 × ${E.THRESHOLDS[v.round-1]}`:v.round===5?'唯一最高价胜出，同价加赛':'最高价仍同价则流拍';
+ $('roundTrack').innerHTML=`<span class="current">${v.round>5?'Vòng phụ bằng giá':'Vòng đấu giá thứ '+v.round}</span>`;
+ $('roundRule').textContent=v.round<=4?`Gõ búa: Giá cao nhất > Giá nhì × ${E.THRESHOLDS[v.round-1]}`:v.round===5?'唯一最高价胜出，同价加赛':'最高价仍同价则流拍';
  const seatsHTML=[D.hosts[v.host],...v.rivals.map(id=>D.hosts[id])].map((h,i)=>`<article class="bidder ${i===0?'self':''} ${!v.active[i]?'out':''}"><div class="bidder-main"><img class="bidder-avatar" src="${h.avatar}" alt="${h.name}"><div class="bidder-name"><strong>${i===0?'你 · '+h.name:h.name}</strong></div><span class="bidder-status">${v.active[i]?'竞拍中':'已退出'}</span></div><button type="button" class="bidder-last" data-bid-history="${i}" aria-haspopup="dialog" aria-label="查看${escapeHTML(h.name)}的报价记录">${v.history.at(-1)?.bids[i]!=null?fmt(v.history.at(-1).bids[i]):'—'}</button><button type="button" class="bid-history" data-bid-history="${i}" aria-haspopup="dialog" aria-label="查看${escapeHTML(h.name)}的逐轮报价">${Array.from({length:6},(_,r)=>{const row=v.history[r],amount=row?.bids[i];return `<span title="第${r+1}轮${row?(amount==null?'退出':'报价 '+fmt(amount)):'待公开'}"><small>${r+1}</small>${row?(amount==null?'弃':amount>=10000?(amount/1000).toFixed(1)+'k':fmt(amount)):'—'}</span>`;}).join('')}</button>${i?'<div class="npc-bubble" role="status" aria-live="polite" aria-atomic="true" aria-hidden="true"></div>':''}</article>`).join('');
  const seatsKey=v.id+':'+v.round+':'+seatsHTML;if($('seats').dataset.content!==seatsKey){$('seats').innerHTML=seatsHTML;$('seats').dataset.content=seatsKey;}
  const clues=v.clues.filter(c=>!c.text.includes('结果由对方私有'));const clueHTML=clues.map(intelHTML).join('');if($('clues').dataset.content!==clueHTML){const top=$('clues').scrollTop;$('clues').innerHTML=clueHTML;$('clues').dataset.content=clueHTML;$('clues').scrollTop=top;}$('intelCount').textContent=clues.length+' 条';
  $('vault').innerHTML=vaultHTML(v.items);
  const unlocated=v.items.filter(i=>i.w==null),informed=unlocated.filter(i=>i.quality!=null||i.category);
  $('unlocatedIntel').innerHTML=(unlocated.length?`<span class="unlocated-count">未定位 ${unlocated.length}</span>`:'')+informed.map(i=>`<button class="unlocated-chip" data-slot="${i.slot}" style="--q:${D.qualities[i.quality]?.color||'#9ca6ab'}">${[D.qualities[i.quality]?.name,i.category].filter(Boolean).join(' · ')}</button>`).join('');
- $('itemCount').textContent=v.items.length+' 件';$('estimate').textContent=fmt(v.estimate);
+ $('itemCount').textContent=v.items.length+' món';$('estimate').textContent=fmt(v.estimate);
  const item=v.items.find(i=>i.slot===selected);if(item){const pool=E.candidates(item);$('selection').innerHTML=`<b>${item.name||'未知藏品'}</b><button id="selectedCandidates" class="text-button">${pool.length} 种候选 · ${fmt(Math.min(...pool.map(i=>D.catalogPrice(i,v.scale,v.pricingVersion))))}–${fmt(Math.max(...pool.map(i=>D.catalogPrice(i,v.scale,v.pricingVersion))))} ↗</button>`;}else $('selection').textContent='';
  if(!v.loadout.includes(activeTool))activeTool=v.loadout[0]||null;
  $('activeInstrument').innerHTML=v.loadout.map(id=>{const t=D.tools.find(t=>t.id===id);return `<option value="${id}" ${id===activeTool?'selected':''}>${t.name} · ${v.stock[id]||0}件${v.usedTools.includes(id)?' · 已用':''}</option>`;}).join('')||'<option value="">未装备仪器</option>';
@@ -161,24 +161,24 @@ function renderPlay(){clearTimeout(roundTimer);if(!session)return;const actual=s
 }
 function renderBidHistory(){
  const hosts=[D.hosts[view.host],...view.rivals.map(i=>D.hosts[i])];
- $('bidHistoryTable').innerHTML=`<thead><tr><th scope="col">轮次</th>${hosts.map((h,i)=>`<th scope="col">${i===0?'你 · ':''}${escapeHTML(h.name)}</th>`).join('')}</tr></thead><tbody>${view.history.map(row=>`<tr><th scope="row">${row.round===6?'加赛':row.round}</th>${row.bids.map(n=>`<td>${n===null?'退出':fmt(n)}</td>`).join('')}</tr>`).join('')}</tbody>`;
+ $('bidHistoryTable').innerHTML=`<thead><tr><th scope="col">Vòng</th>${hosts.map((h,i)=>`<th scope="col">${i===0?'你 · ':''}${escapeHTML(h.name)}</th>`).join('')}</tr></thead><tbody>${view.history.map(row=>`<tr><th scope="row">${row.round===6?'加赛':row.round}</th>${row.bids.map(n=>`<td>${n===null?'退出':fmt(n)}</td>`).join('')}</tr>`).join('')}</tbody>`;
  $('bidHistoryEmpty').hidden=view.history.length>0;
 }
 function openCatalog(slot=null){candidateSlot=slot;$('filterCategory').value='';$('filterQuality').value='';renderCatalog();showDialog('catalogDialog');}
 function catalogPricing(){return session?session.view():{scale:D.venues.find(v=>v.id===state.venue)?.scale||1,pricingVersion:D.pricingVersion};}
 function catalogCard(c){const pricing=catalogPricing();const q=D.qualities[c.quality];return `<article class="catalog-card" style="--q:${q.color}"><img src="${c.image}" alt="${c.name}" loading="lazy"><small>${q.label} · ${q.name} / ${c.seriesName}</small><strong>${c.name}</strong><p><span>${c.w}×${c.h} · ${c.category}</span><b>◈ ${fmt(D.catalogPrice(c,pricing.scale,pricing.pricingVersion))}</b></p></article>`;}
-function renderCatalog(){const slot=view?.items.find(i=>i.slot===candidateSlot);let pool=slot?E.candidates(slot):D.catalog;const cat=$('filterCategory').value,q=$('filterQuality').value;pool=pool.filter(i=>(!cat||i.category===cat)&&(q===''||i.quality===+q));$('catalogTitle').textContent=slot?'符合情报的候选藏品':'城市藏品图鉴';$('catalogHint').textContent=`${pool.length} 件 · 回收倍率 ×${catalogPricing().scale}`;$('catalogGrid').innerHTML=pool.map(catalogCard).join('')||'<p class="empty">暂无符合条件的藏品</p>';$('clearCandidate').hidden=!slot;}
+function renderCatalog(){const slot=view?.items.find(i=>i.slot===candidateSlot);let pool=slot?E.candidates(slot):D.catalog;const cat=$('filterCategory').value,q=$('filterQuality').value;pool=pool.filter(i=>(!cat||i.category===cat)&&(q===''||i.quality===+q));$('catalogTitle').textContent=slot?'符合情报的候选藏品':'城市藏品图鉴';$('catalogHint').textContent=`${pool.length} 件 · Hệ số thu hồi ×${catalogPricing().scale}`;$('catalogGrid').innerHTML=pool.map(catalogCard).join('')||'<p class="empty">暂无符合条件的藏品</p>';$('clearCandidate').hidden=!slot;}
 function previousPlayerBid(){return view?.history.filter(row=>row.bids[0]!=null).at(-1)?.bids[0]??null;}
 function updateBidDisplay(){
  const amount=Number(bidDraft),balance=wallet().balance;
- $('bidAmount').textContent=fmt(amount);$('bidBudget').textContent='可用资产 '+fmt(balance);
- $('bidError').textContent=amount>balance?'报价超出可用资产':'';
+ $('bidAmount').textContent=fmt(amount);$('bidBudget').textContent='Tài sản khả dụng '+fmt(balance);
+ $('bidError').textContent=amount>balance?'Báo giá vượt quá tài sản khả dụng':'';
  $('bidConfirm').disabled=busy||!Number.isSafeInteger(amount)||amount<1||amount>balance;
  const previous=previousPlayerBid();$('bidPrevious').disabled=previous===null;
- $('bidPrevious').title=previous===null?'首轮暂无上次出价':'上次出价 '+fmt(previous);
+ $('bidPrevious').title=previous===null?'Vòng đầu chưa có giá trước':'Giá trước '+fmt(previous);
  const advice=AuctionRecommendation.recommend(view,balance);
  $('bidRecommend').disabled=busy||advice.amount===null;
- $('bidRecommend').textContent=advice.amount===null?'暂无推荐价':'推荐出价 '+fmt(advice.amount);
+ $('bidRecommend').textContent=advice.amount===null?'Chưa có giá đề xuất':'Đề xuất đặt '+fmt(advice.amount);
  $('bidAdvice').textContent=advice.amount===null?(balance<1?'当前余额不足以出价。':'估算扣除成本后无出价空间，建议退出。'):'按已知情报估算，不保证盈利。';
 }
 function openBid(){
@@ -196,7 +196,7 @@ function revealCard(item){const el=$('resultVault').querySelector(`[data-slot="$
 function countRevealValue(from,to){const current=revealState;cancelAnimationFrame(current.frame);const start=performance.now(),reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;function step(now){if(revealState!==current)return;const t=reduced?1:Math.min(1,(now-start)/380);$('revealValue').textContent=fmt(from+(to-from)*(1-Math.pow(1-t,3)));if(t<1)current.frame=requestAnimationFrame(step);}current.frame=requestAnimationFrame(step);}
 function finishReveal(){const a=revealState;if(!a||a.done)return;clearTimeout(a.timer);cancelAnimationFrame(a.frame);a.done=true;sound('finish');$('resultDialog').dataset.revealing='false';$('revealValue').textContent=fmt(a.total);$('resultItemCount').textContent=`${a.items.length} / ${a.items.length}`;$('btnSkipReveal').hidden=true;
  const r=view.result,reward=Math.min(r.compensation||0,rewardQuota().remaining),net=(r.won?r.profit:reward-view.instrumentCost)-(view.entryFee||0);
- $('resultTitle').textContent=r.winner==null?'本场流拍':'拍品已揭晓';$('resultGrade').textContent=!r.won?'◆':net<0?'C':net/Math.max(1,r.price)>.5?'S':net/Math.max(1,r.price)>.2?'A':'B';
+ $('resultTitle').textContent=r.winner==null?'Đấu giá bất thành':'Đã hé lộ bảo vật';$('resultGrade').textContent=!r.won?'◆':net<0?'C':net/Math.max(1,r.price)>.5?'S':net/Math.max(1,r.price)>.2?'A':'B';
  $('resultNet').textContent=signed(net);$('resultNet').className=net>=0?'positive':'negative';$('resultReward').textContent=fmt(reward);$('btnSell').hidden=$('btnKeep').hidden=!r.won;$('btnNext').hidden=r.won;for(const id of ['btnSell','btnKeep','btnNext'])$(id).disabled=false;
 }
 function revealNext(){const a=revealState;if(!a||a.done)return;if(a.index>=a.items.length){finishReveal();return;}
@@ -204,9 +204,9 @@ function revealNext(){const a=revealState;if(!a||a.done)return;if(a.index>=a.ite
 }
 function skipReveal(){const a=revealState;if(!a||a.done)return;clearTimeout(a.timer);for(const item of a.items)revealCard(item);a.index=a.items.length;a.total=a.items.reduce((n,i)=>n+i.value,0);$('revealSpotlight').innerHTML='';finishReveal();}
 function renderResult(){const v=view,r=v.result;if(revealState?.id===v.id&&$('resultDialog').open)return;closeDialogs();
- $('resultGrade').textContent='◆';$('resultTitle').textContent='逐件揭晓';$('resultError').textContent='';$('revealSpotlight').innerHTML='';$('resultDialog').dataset.revealing='true';
+ $('resultGrade').textContent='◆';$('resultTitle').textContent='Hé lộ từng món';$('resultError').textContent='';$('revealSpotlight').innerHTML='';$('resultDialog').dataset.revealing='true';
  const winner=r.winner===0?D.hosts[v.host]:r.winner!=null?D.hosts[v.rivals[r.winner-1]]:null;$('resultWinner').innerHTML=winner?`<img src="${winner.avatar}" alt="${winner.name}"><span>${r.won?'你竞得仓库':winner.name+'竞得仓库'}</span>`:'<span>本场流拍</span>';
- $('resultNumbers').innerHTML=`<div class="sale-price"><span>成交价</span><strong>${fmt(r.price)}</strong></div><div class="value-total"><span>拍品总值</span><strong id="revealValue">0</strong></div><div class="settlement-cost"><span>门票</span><strong>${fmt(v.entryFee||0)}</strong></div><div class="settlement-cost"><span>已用仪器</span><strong>${fmt(v.instrumentCost)}</strong></div>${!r.won?'<div class="settlement-cost"><span>溢价补偿</span><strong id="resultReward">—</strong></div>':'<span id="resultReward" hidden></span>'}<div class="profit"><span>本场净盈亏</span><strong id="resultNet">—</strong></div>`;
+ $('resultNumbers').innerHTML=`<div class="sale-price"><span>Giá trúng</span><strong>${fmt(r.price)}</strong></div><div class="value-total"><span>拍品总值</span><strong id="revealValue">0</strong></div><div class="settlement-cost"><span>门票</span><strong>${fmt(v.entryFee||0)}</strong></div><div class="settlement-cost"><span>已用仪器</span><strong>${fmt(v.instrumentCost)}</strong></div>${!r.won?'<div class="settlement-cost"><span>溢价补偿</span><strong id="resultReward">—</strong></div>':'<span id="resultReward" hidden></span>'}<div class="profit"><span>本场净盈亏</span><strong id="resultNet">—</strong></div>`;
  for(const id of ['btnSell','btnKeep','btnNext']){$(id).hidden=true;$(id).disabled=true;}$('btnSkipReveal').hidden=false;
  $('resultVault').innerHTML=v.items.map((i,n)=>`<button class="vault-item sealed" data-slot="${i.slot}" style="grid-column:${i.x+1}/span ${i.w};grid-row:${i.y+1}/span ${i.h};--q:#738087" aria-label="未揭晓藏品 ${n+1}"><span class="seal-mark">✦</span><small>${String(n+1).padStart(2,'0')}</small></button>`).join('');$('resultItemCount').textContent=`0 / ${v.items.length}`;
  revealState={id:v.id,items:[...v.items],index:0,total:0,done:false,timer:0,frame:0};showDialog('resultDialog');revealState.timer=setTimeout(revealNext,650);
@@ -218,9 +218,9 @@ async function finishLegacy(){if(!session)return;const id=session.view().id;try{
 function renderCabinet(){balanceUI();const rewards=AuctionRewards.progress();$('collectionRewards').textContent=`首藏代币 ${rewards.earned} / ${rewards.total}`;const collected=new Set(state.collected),owned=new Map();for(const i of state.inventory)owned.set(i.id,(owned.get(i.id)||0)+1);
  $('collectionProgress').textContent=`${collected.size} / ${D.catalog.length}`;$('collectionProgressBar').style.width=collected.size/D.catalog.length*100+'%';
  state.pins=state.pins.filter(id=>owned.has(id));$('showcase').innerHTML=Array.from({length:6},(_,n)=>{const id=state.pins[n],c=D.catalog.find(x=>x.id===id);return c?`<button class="showcase-slot filled" data-unpin="${id}" style="--q:${D.qualities[c.quality].color}" title="移出展示柜"><span class="showcase-rarity">${D.qualities[c.quality].name}</span><img src="${c.image}" alt="${c.name}"><strong>${c.name}</strong><small>点击移出展示柜</small></button>`:`<div class="showcase-slot empty-slot"><span>＋</span><small>展位 0${n+1}</small></div>`;}).join('');
- $('seriesTabs').innerHTML=[{id:'',name:'全部系列'},...D.series].map(s=>{const all=D.catalog.filter(c=>!s.id||c.series===s.id),have=all.filter(c=>collected.has(c.id)).length;return `<button data-series="${s.id}" class="${cabinetSeries===s.id?'active':''}" aria-pressed="${cabinetSeries===s.id}">${s.name}<small>${have} / ${all.length}${have===all.length?' ✓':''}</small></button>`;}).join('');
+ $('seriesTabs').innerHTML=[{id:'',name:'Tất cả series'},...D.series].map(s=>{const all=D.catalog.filter(c=>!s.id||c.series===s.id),have=all.filter(c=>collected.has(c.id)).length;return `<button data-series="${s.id}" class="${cabinetSeries===s.id?'active':''}" aria-pressed="${cabinetSeries===s.id}">${s.name}<small>${have} / ${all.length}${have===all.length?' ✓':''}</small></button>`;}).join('');
  const filter=$('collectionFilter').value,rarity=$('collectionRarity').value,query=$('collectionSearch').value.trim();const pool=D.catalog.filter(c=>(!cabinetSeries||c.series===cabinetSeries)&&(rarity===''||c.quality===+rarity)&&(!query||c.name.includes(query))&&(filter==='all'||filter==='missing'&&!collected.has(c.id)||filter==='collected'&&collected.has(c.id)||filter==='owned'&&owned.has(c.id)));
- $('collectionTotal').textContent=`显示 ${pool.length} 件 · 当前持有 ${state.inventory.length} 件`;
+ $('collectionTotal').textContent=`Hiển thị ${pool.length} món · Hiện có ${state.inventory.length} món`;
  $('collectionGrid').innerHTML=pool.map(c=>{const q=D.qualities[c.quality],count=owned.get(c.id)||0,nextOwned=state.inventory.find(i=>i.id===c.id),known=collected.has(c.id),pinned=state.pins.includes(c.id);return `<article class="cabinet-card ${known?'collected':'locked'}" style="--q:${q.color}"><div class="cabinet-card-top"><span>${q.label} / ${q.name}</span><b>${count?'×'+count:known?'已收集':'未收集'}</b></div><img src="${c.image}" alt="${c.name}${known?'':'的未收集轮廓'}" loading="lazy"><small>${c.seriesName}</small><h3>${c.name}</h3><div class="cabinet-card-value">${count?'本件回收':'基础回收'} <b>◈ ${fmt(nextOwned?.value??c.base)}</b></div><div class="cabinet-card-value"><span>${rewards.claimed.includes(c.key)?'首藏已奖励':'首次留藏'}</span><b>${c.quality+1} 代币</b></div>${count?`<div class="cabinet-actions"><button data-pin="${c.id}" ${pinned?'disabled':''}>${pinned?'已陈列':'陈列'}</button><button data-sell="${c.id}">出售 1 件</button></div>`:`<p class="cabinet-locked-note">${known?'收集记录已保留':'在竞拍中寻获并留藏'}</p>`}</article>`;}).join('')||'<div class="empty">暂无符合条件的藏品</div>';
 }
 function openCollection(){renderCabinet();showDialog('collectionDialog');}
@@ -229,24 +229,24 @@ $('venues').onclick=async e=>{const b=e.target.closest('[data-venue]');if(b&&!bu
 $('hosts').onclick=async e=>{const b=e.target.closest('[data-host]');if(b){state.host=+b.dataset.host;await save();renderPrepare();}};
 function shopPageSize(){return 2;}
 function renderShop(){
- balanceUI();$('shopBalance').textContent=`◈ ${fmt(wallet().balance)} · 装备 ${state.loadout.length} / 3`;
+ balanceUI();$('shopBalance').textContent=`◈ ${fmt(wallet().balance)} · Trang bị ${state.loadout.length} / 3`;
  const filter=$('instrumentTier').value,kind=$('instrumentKind').value;
  const pool=D.tools.filter(t=>(filter===''||t.tier===+filter)&&(!kind||t.effect.kind===kind)),size=shopPageSize(),pages=Math.max(1,Math.ceil(pool.length/size));shopPage=Math.max(0,Math.min(shopPage,pages-1));
  $('instrumentGrid').innerHTML=pool.slice(shopPage*size,(shopPage+1)*size).map(t=>`<article class="instrument-card tier-${t.tier}"><div class="instrument-eyebrow">${D.toolTiers[t.tier]} · 库存 ${state.instrumentStock[t.id]||0}</div><h3><span>${t.symbol}</span>${t.name}</h3><p>${t.desc}</p><div class="instrument-price">◈ ${fmt(t.cost)} <small>/ 件</small></div><div class="instrument-actions"><button class="secondary" data-equip="${t.id}" ${session?'disabled':''}>${state.loadout.includes(t.id)?'移出':'装备'}</button><button class="primary" data-buy="${t.id}" ${wallet().balance<t.cost||busy?'disabled':''}>购买</button></div></article>`).join('')||'<p class="shop-empty">暂无符合条件的仪器</p>';
- $('shopHint').hidden=!session;$('shopHint').textContent=session?'本场配装已锁定，可补货。':'';
- $('shopCount').textContent=`${pool.length} 件`;
+ $('shopHint').hidden=!session;$('shopHint').textContent=session?'Trang bị trận này đã khóa, có thể bổ sung kho.':'';
+ $('shopCount').textContent=`${pool.length} món`;
  $('shopPageSelect').innerHTML=Array.from({length:pages},(_,i)=>`<option value="${i}" ${i===shopPage?'selected':''}>${i+1} / ${pages}</option>`).join('');
  $('shopPrev').disabled=shopPage===0;$('shopNext').disabled=shopPage>=pages-1;
 }
 function openShop(){shopPage=0;renderShop();showDialog('instrumentDialog');}
 async function buyInstrument(id){if(busy)return;busy=true;try{const tool=D.tools.find(t=>t.id===id);if(!tool)throw Error('仪器不存在');await transaction('purchase-'+crypto.randomUUID(),(disk,bal)=>{
- const stock={...(disk.instrumentStock||{})};if((stock[id]||0)>=99)throw Error('单种库存上限99件');if(bal<tool.cost)throw Error('余额不足');stock[id]=(stock[id]||0)+1;
+ const stock={...(disk.instrumentStock||{})};if((stock[id]||0)>=99)throw Error('Mỗi loại tối đa 99 món');if(bal<tool.cost)throw Error('余额不足');stock[id]=(stock[id]||0)+1;
  const engine=disk.snapshot?E.restore(disk.snapshot):null;if(engine){engine.addStock(id);engine.setBudget(bal-tool.cost);}
  return {next:{...disk,instrumentStock:stock,snapshot:engine?.export()||null},delta:-tool.cost};});sound('purchase');toast(`已购买 ${tool.name} ×1，扣除 ${tool.cost}`);if(session)renderPlay();else renderPrepare();}catch(e){toast(e.message);}finally{busy=false;renderShop();}}
 async function equipInstrument(id){if(busy||session)return;busy=true;try{await transaction('loadout-'+crypto.randomUUID(),(disk)=>{if(disk.snapshot)throw Error('本场已经开始，配装已锁定');const loadout=[...disk.loadout];const n=loadout.indexOf(id);if(n>=0)loadout.splice(n,1);else{if(loadout.length>=3)throw Error('最多装备3种，请先移出一种');if(!D.tools.some(t=>t.id===id))throw Error('仪器不存在');loadout.push(id);}return {next:{...disk,loadout},delta:0};});renderPrepare();}catch(e){toast(e.message);}finally{busy=false;renderShop();}}
 $('tools').onclick=e=>{if(e.target.closest('[data-open-shop]'))openShop();};$('btnFieldTools').onclick=()=>$('fieldToolsDialog').showModal();
 $('btnShop').onclick=openShop;
-$('instrumentTier').innerHTML='<option value="">全部档次</option>'+D.toolTiers.map((t,i)=>`<option value="${i}">${t}</option>`).join('');
+$('instrumentTier').innerHTML='<option value="">Tất cả cấp bậc</option>'+D.toolTiers.map((t,i)=>`<option value="${i}">${t}</option>`).join('');
 $('instrumentTier').onchange=$('instrumentKind').onchange=()=>{shopPage=0;renderShop();};
 $('shopPrev').onclick=()=>{shopPage--;renderShop();};$('shopNext').onclick=()=>{shopPage++;renderShop();};$('shopPageSelect').onchange=()=>{shopPage=+$('shopPageSelect').value;renderShop();};
 addEventListener('resize',()=>{if($('instrumentDialog').open)renderShop();});
@@ -254,7 +254,7 @@ $('instrumentGrid').onclick=e=>{const buy=e.target.closest('[data-buy]'),equip=e
 $('activeInstrument').onchange=()=>{activeTool=$('activeInstrument').value;renderPlay();};
 $('btnStart').onclick=()=>{if(session||busy)return;renderAdmission();screen('admission');scrollTo({top:0,behavior:'instant'});};
 $('btnAdmissionBack').onclick=()=>{if(busy)return;screen('prepare');renderPrepare();};
-$('btnConfirmEntry').onclick=async()=>{if(busy)return;const expectedVenue=state.venue,expectedHost=state.host;busy=true;$('btnConfirmEntry').disabled=true;try{await transaction('start-'+crypto.randomUUID(),(disk,bal)=>{if(disk.snapshot)throw Error('其他窗口已开始一场竞拍');if(disk.venue!==expectedVenue||disk.host!==expectedHost)throw Error('会场或搭档已在其他窗口更改，请核对后再确认');const venue=D.venues.find(v=>v.id===disk.venue);if(!venue||bal<venue.min+venue.entryFee)throw Error('余额不足：支付门票后需保留会场最低资金');const engine=E.createSession({budget:bal-venue.entryFee,entryFee:venue.entryFee,venue:disk.venue,host:disk.host,loadout:disk.loadout,stock:disk.instrumentStock,npcProfiles:disk.npcProfiles});engine.beginLot();return {next:{...disk,snapshot:engine.export()},delta:-venue.entryFee};});selected=null;renderPlay();scrollTo({top:0,behavior:'instant'});}catch(e){toast(e.message);await locked(()=>{const disk=recover();state=hydrate(disk);AuctionAudio.setEnabled(state.sound);$('btnSound').setAttribute('aria-pressed',String(state.sound));$('btnSound').setAttribute('aria-label',state.sound?'关闭音乐与音效':'开启音乐与音效');session=disk.snapshot?E.restore(disk.snapshot):null;});if(session){view=session.view();if(view.phase==='closed')await finishLegacy();else renderPlay();}}finally{busy=false;renderAdmission();}};
+$('btnConfirmEntry').onclick=async()=>{if(busy)return;const expectedVenue=state.venue,expectedHost=state.host;busy=true;$('btnConfirmEntry').disabled=true;try{await transaction('start-'+crypto.randomUUID(),(disk,bal)=>{if(disk.snapshot)throw Error('其他窗口已开始一场竞拍');if(disk.venue!==expectedVenue||disk.host!==expectedHost)throw Error('会场或搭档已在其他窗口更改，请核对后再确认');const venue=D.venues.find(v=>v.id===disk.venue);if(!venue||bal<venue.min+venue.entryFee)throw Error('余额不足：支付门票后需保留会场最低资金');const engine=E.createSession({budget:bal-venue.entryFee,entryFee:venue.entryFee,venue:disk.venue,host:disk.host,loadout:disk.loadout,stock:disk.instrumentStock,npcProfiles:disk.npcProfiles});engine.beginLot();return {next:{...disk,snapshot:engine.export()},delta:-venue.entryFee};});selected=null;renderPlay();scrollTo({top:0,behavior:'instant'});}catch(e){toast(e.message);await locked(()=>{const disk=recover();state=hydrate(disk);AuctionAudio.setEnabled(state.sound);$('btnSound').setAttribute('aria-pressed',String(state.sound));$('btnSound').setAttribute('aria-label',state.sound?'Tắt âm thanh':'Bật âm thanh');session=disk.snapshot?E.restore(disk.snapshot):null;});if(session){view=session.view();if(view.phase==='closed')await finishLegacy();else renderPlay();}}finally{busy=false;renderAdmission();}};
 $('seats').onclick=e=>{if(e.target.closest('[data-bid-history]')){renderBidHistory();showDialog('bidHistoryDialog');}};
 $('btnBid').onclick=openBid;$('btnPass').onclick=()=>submit(null);
 $('bidForm').onsubmit=e=>{e.preventDefault();if(!$('bidConfirm').disabled)submit(Number(bidDraft));};
@@ -269,11 +269,11 @@ $('vault').onclick=$('unlocatedIntel').onclick=e=>{const b=e.target.closest('[da
 $('btnTool').onclick=async()=>{if(busy||roundPresentation()||!session)return;busy=true;const expected=session.view();try{await transaction(`consume-${expected.id}-${expected.round}`,(disk,bal)=>{const engine=E.restore(disk.snapshot),v=engine.view();if(roundPresentation(disk)||v.id!==expected.id||v.round!==expected.round||v.phase!=='bidding')throw Error('本轮已变化，请查看最新进度');engine.setBudget(bal);engine.useTool(activeTool);return {next:{...disk,instrumentStock:engine.view().stock,snapshot:engine.export()},delta:0};});$('fieldToolsDialog').close();renderPlay();sound('tool');}catch(e){toast(e.message);}finally{busy=false;}};$('btnCatalog').onclick=()=>openCatalog();$('filterCategory').onchange=$('filterQuality').onchange=renderCatalog;$('clearCandidate').onclick=()=>openCatalog();
 $('btnSkipReveal').onclick=skipReveal;
 $('btnSell').onclick=()=>settle('sell');$('btnKeep').onclick=()=>settle('keep');$('btnNext').onclick=()=>settle('none');$('resultDialog').addEventListener('cancel',e=>e.preventDefault());
-$('navPrepare').onclick=()=>{if(session){toast('请先完成当前竞拍。');return;}screen('prepare');renderPrepare();};
+$('navPrepare').onclick=()=>{if(session){toast('Vui lòng hoàn thành buổi đấu giá hiện tại trước.');return;}screen('prepare');renderPrepare();};
 $('btnRules').onclick=$('estimateInfo').onclick=()=>showDialog('rulesDialog');$('navCollection').onclick=$('btnMobileCollection').onclick=openCollection;
-$('btnSound').onclick=async()=>{state.sound=!state.sound;state.soundPreference=true;AuctionAudio.setEnabled(state.sound);sound('key');$('btnSound').setAttribute('aria-pressed',String(state.sound));$('btnSound').setAttribute('aria-label',state.sound?'关闭音乐与音效':'开启音乐与音效');await save();toast(state.sound?'音乐与音效已开启':'音乐与音效已关闭');};
+$('btnSound').onclick=async()=>{state.sound=!state.sound;state.soundPreference=true;AuctionAudio.setEnabled(state.sound);sound('key');$('btnSound').setAttribute('aria-pressed',String(state.sound));$('btnSound').setAttribute('aria-label',state.sound?'Tắt âm thanh':'Bật âm thanh');await save();toast(state.sound?'音乐与音效已开启':'音乐与音效已关闭');};
 $('seriesTabs').onclick=e=>{const b=e.target.closest('[data-series]');if(b){cabinetSeries=b.dataset.series;renderCabinet();}};$('collectionFilter').onchange=$('collectionRarity').onchange=$('collectionSearch').oninput=renderCabinet;
-$('collectionRarity').innerHTML='<option value="">全部稀有度</option>'+D.qualities.map((q,i)=>`<option value="${i}">${q.name}</option>`).join('');
+$('collectionRarity').innerHTML='<option value="">Tất cả độ hiếm</option>'+D.qualities.map((q,i)=>`<option value="${i}">${q.name}</option>`).join('');
 $('collectionGrid').onclick=async e=>{const sell=e.target.closest('[data-sell]'),pin=e.target.closest('[data-pin]');if(sell)sellItem(+sell.dataset.sell);if(pin){const id=+pin.dataset.pin;if(state.pins.length>=6){toast('六个展位已满，先点击展示柜中的藏品腾出位置。');return;}if(!state.pins.includes(id))state.pins.push(id);await save();renderCabinet();}};$('showcase').onclick=async e=>{const b=e.target.closest('[data-unpin]');if(b){state.pins=state.pins.filter(id=>id!==+b.dataset.unpin);await save();renderCabinet();}};
 for(const b of document.querySelectorAll('[data-play-tab]'))b.onclick=()=>{document.body.dataset.playTab=b.dataset.playTab;document.querySelectorAll('[data-play-tab]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));};
 for(const b of document.querySelectorAll('[data-prepare-tab]'))b.onclick=()=>{document.body.dataset.prepareTab=b.dataset.prepareTab;document.querySelectorAll('[data-prepare-tab]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));};
@@ -281,10 +281,10 @@ for(const b of document.querySelectorAll('[data-close]'))b.onclick=()=>b.closest
 addEventListener('message',async e=>{if(e.source!==parent||parent===window)return;const d=e.data||{};if(d.type===NS+':set-balance'&&Number.isFinite(d.balance)){putWallet(d.balance);balanceUI();if(!session)renderPrepare();}if(d.type===NS+':reset-command'){closeDialogs();session=null;view=null;state.snapshot=null;if(d.keepBalance!==true)putWallet(1000);await save();screen('prepare');renderPrepare();}});
 document.addEventListener('visibilitychange',()=>{if(!document.hidden){renderHostDaily();if(session&&state.roundPresentation)renderPlay();}});
 addEventListener('focus',renderHostDaily);
-addEventListener('storage',e=>{if(e.key===WALLET){balanceUI();if($('bidDialog').open)updateBidDisplay();if(!session)renderPrepare();}if(e.key===KEY&&!busy){const disk=read(KEY);if(disk&&!disk.pending){state=hydrate(disk);AuctionAudio.setEnabled(state.sound);$('btnSound').setAttribute('aria-pressed',String(state.sound));$('btnSound').setAttribute('aria-label',state.sound?'关闭音乐与音效':'开启音乐与音效');session=disk.snapshot?E.restore(disk.snapshot):null;if(session){view=session.view();if(view.phase==='closed')finishLegacy();else renderPlay();}else{if(view)closeDialogs();view=null;if(document.body.dataset.screen!=='admission')screen('prepare');renderPrepare();}if($('collectionDialog').open)renderCabinet();if($('instrumentDialog').open)renderShop();}}});
+addEventListener('storage',e=>{if(e.key===WALLET){balanceUI();if($('bidDialog').open)updateBidDisplay();if(!session)renderPrepare();}if(e.key===KEY&&!busy){const disk=read(KEY);if(disk&&!disk.pending){state=hydrate(disk);AuctionAudio.setEnabled(state.sound);$('btnSound').setAttribute('aria-pressed',String(state.sound));$('btnSound').setAttribute('aria-label',state.sound?'Tắt âm thanh':'Bật âm thanh');session=disk.snapshot?E.restore(disk.snapshot):null;if(session){view=session.view();if(view.phase==='closed')finishLegacy();else renderPlay();}else{if(view)closeDialogs();view=null;if(document.body.dataset.screen!=='admission')screen('prepare');renderPrepare();}if($('collectionDialog').open)renderCabinet();if($('instrumentDialog').open)renderShop();}}});
 try{state=hydrate(recover());if(state.snapshot)session=E.restore(state.snapshot);}catch(e){toast(e.message);session=null;}
 $('btnSound').setAttribute('aria-pressed',String(state.sound));
-$('btnSound').setAttribute('aria-label',state.sound?'关闭音乐与音效':'开启音乐与音效');
+$('btnSound').setAttribute('aria-label',state.sound?'Tắt âm thanh':'Bật âm thanh');
 AuctionAudio.setEnabled(state.sound);
 AuctionPresentation.dragScroll($('clues'));
 document.addEventListener('pointerdown',()=>AuctionAudio.setEnabled(state.sound),{capture:true});
