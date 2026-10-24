@@ -25,16 +25,16 @@ const CHAR_NAME_MAP_TO_CN = {
   "Ngưu Nhục": "牛肉"
 };
 const CHAR_NAME_MAP_TO_VI = {
-  "时雨羽衣": "Thời Vũ Vũ Y",
+  "时雨羽衣": "Shigure Ui",
   "Shigure Ui": "Thời Vũ Vũ Y",
-  "沙花叉": "Sa Hoa Xoa",
+  "沙花叉": "Sakamata",
   "Sakamata Chloe": "Sa Hoa Xoa",
-  "塔菲": "Tạ Phỉ",
+  "塔菲": "Taffy",
   "Ace Taffy": "Tạ Phỉ",
   "Taffy": "Tạ Phỉ",
-  "璃亚梦": "Lưu Á Mộng",
+  "璃亚梦": "Riamu",
   "Yumemi Riamu": "Lưu Á Mộng",
-  "东雪莲": "Đông Tuyết Liên",
+  "东雪莲": "Azuma Seren",
   "Azuma Seren": "Đông Tuyết Liên",
   "红蔷薇": "Hồng Tường Vi",
   "斯黛拉": "Stella",
@@ -43,11 +43,11 @@ const CHAR_NAME_MAP_TO_VI = {
   "Thỏ Hang Miku": "Miku Rabbit Hole",
   "神乐七奈": "Kagura Nana",
   "Thần Nhạc Thất Nại": "Kagura Nana",
-  "鲸鱼娘": "Nàng Cá Voi",
-  "Bé Cá Voi": "Nàng Cá Voi",
-  "牛肉": "Bò Con",
-  "Neuro": "Bò Con",
-  "Ngưu Nhục": "Bò Con"
+  "鲸鱼娘": "Bé Cá Voi",
+  "Bé Cá Voi": "Bé Cá Voi",
+  "牛肉": "Neuro",
+  "Neuro": "Neuro",
+  "Ngưu Nhục": "Neuro"
 };
 const SCENE_NAME_MAP_TO_VI = {
   "通用": "Chung",

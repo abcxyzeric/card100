@@ -2,17 +2,17 @@
 (function (root) {
 'use strict';
 const hosts = [
- ['塔菲','Tạ Phỉ','Từng Bước Phá Án','Vòng 1, 2, 3 mỗi vòng hé lộ ngẫu nhiên 1 món có phẩm cấp chưa biết.','ladder','#e5b8be','Bản cân bằng'],
+ ['塔菲','Taffy','Từng Bước Phá Án','Vòng 1, 2, 3 mỗi vòng hé lộ ngẫu nhiên 1 món có phẩm cấp chưa biết.','ladder','#e5b8be','Bản cân bằng'],
  ['红蔷薇','Hồng Tường Vi','Tụ Quang Truy Vết','Vòng 1 hé lộ ngẫu nhiên đường nét 2 món, vòng 2 và 4 lần lượt giám định hoàn chỉnh 2 món này.','track','#d4787d','Bản cân bằng'],
- ['东雪莲','Đông Tuyết Liên','Chi Tiết Phân Sắc','Vòng 1 hé lộ ngẫu nhiên danh mục 2 món và đường nét 1 món; vòng 2 hé lộ phẩm cấp món đó, vòng 3 giám định hoàn chỉnh món còn lại.','common','#a6bdd6','Bản cân bằng'],
- ['沙花叉','Sa Hoa Xoa','Phân Loại Tầm Bảo','Vòng 1 hé lộ ngẫu nhiên đường nét và danh mục 2 món; vòng 3, 4 lần lượt hé lộ phẩm cấp 2 món này.','category-wave','#afafb8','Bản cân bằng'],
- ['时雨羽衣','Thời Vũ Vũ Y','Sắc Màu Trải Rộng','Vòng 1 hé lộ ngẫu nhiên đường nét và phẩm cấp 1 món; vòng 3, 5 mỗi vòng hé lộ ngẫu nhiên 1 món có phẩm cấp chưa biết.','colour-wave','#bfd2ac','Bản cân bằng'],
+ ['东雪莲','Azuma Seren','Chi Tiết Phân Sắc','Vòng 1 hé lộ ngẫu nhiên danh mục 2 món và đường nét 1 món; vòng 2 hé lộ phẩm cấp món đó, vòng 3 giám định hoàn chỉnh món còn lại.','common','#a6bdd6','Bản cân bằng'],
+ ['沙花叉','Sakamata','Phân Loại Tầm Bảo','Vòng 1 hé lộ ngẫu nhiên đường nét và danh mục 2 món; vòng 3, 4 lần lượt hé lộ phẩm cấp 2 món này.','category-wave','#afafb8','Bản cân bằng'],
+ ['时雨羽衣','Shigure Ui','Sắc Màu Trải Rộng','Vòng 1 hé lộ ngẫu nhiên đường nét và phẩm cấp 1 món; vòng 3, 5 mỗi vòng hé lộ ngẫu nhiên 1 món có phẩm cấp chưa biết.','colour-wave','#bfd2ac','Bản cân bằng'],
  ['斯黛拉','Stella','Ánh Sao Màn Cuối','Vòng 1 hé lộ ngẫu nhiên đường nét 2 món chưa biết, vòng 3 hé lộ ngẫu nhiên 1 món phẩm cấp chưa biết, vòng 5 hé lộ thêm tối đa 3 món phẩm cấp chưa biết.','finale','#c3b3d6','Bản cân bằng'],
- ['璃亚梦','Lưu Á Mộng','Lát Cắt Vận Mệnh','Vòng 1, 3, 5 mỗi vòng kích hoạt ngẫu nhiên 1 hiệu ứng: giám định 1 món, hé lộ phẩm cấp 1 món, hé lộ đường nét và phẩm cấp 1 món, hoặc hé lộ đường nét và danh mục 2 món.','fortune','#eba8c6','Bản cân bằng'],
+ ['璃亚梦','Riamu','Lát Cắt Vận Mệnh','Vòng 1, 3, 5 mỗi vòng kích hoạt ngẫu nhiên 1 hiệu ứng: giám định 1 món, hé lộ phẩm cấp 1 món, hé lộ đường nét và phẩm cấp 1 món, hoặc hé lộ đường nét và danh mục 2 món.','fortune','#eba8c6','Bản cân bằng'],
  ['兔子洞初音','Miku Rabbit Hole','Tuần Hoàn Tiêu Điểm','Vòng 1 hé lộ ngẫu nhiên đường nét và danh mục 1 món, vòng 2 hé lộ phẩm cấp món đó; vòng 4 hé lộ ngẫu nhiên thêm tối đa 2 món cả đường nét lẫn phẩm cấp.','apex','#95ccc8','Bản cân bằng'],
  ['神乐七奈','Kagura Nana','Kiểm Tra Trân Phẩm','Vòng 1 rút ngẫu nhiên 2 món, chỉ biết tổng số lượng món Sử Thi và Truyền Thuyết trong đó; vòng 3 hé lộ phẩm cấp 2 món này.','rare-count','#a3bce6','Bản cân bằng'],
- ['鲸鱼娘','Nàng Cá Voi','Vọng Âm Định Giá','Vòng 1 chọn ngẫu nhiên 2 món, chỉ hé lộ đường nét 1 món; vòng 2 biết tổng giá trị của 2 món này.','analyst','#8eadd5','Bản cân bằng'],
- ['牛肉','Bò Con','Ưu Tiên Kiện Lớn','Vòng 1 hé lộ đường nét món chiếm nhiều ô nhất, vòng 2 hé lộ phẩm cấp món đó, vòng 4 giám định hoàn chỉnh; vòng 3 hé lộ ngẫu nhiên thêm 1 món có phẩm cấp chưa biết.','large-track','#b4cabe','Bản cân bằng'],
+ ['鲸鱼娘','Bé Cá Voi','Vọng Âm Định Giá','Vòng 1 chọn ngẫu nhiên 2 món, chỉ hé lộ đường nét 1 món; vòng 2 biết tổng giá trị của 2 món này.','analyst','#8eadd5','Bản cân bằng'],
+ ['牛肉','Neuro','Ưu Tiên Kiện Lớn','Vòng 1 hé lộ đường nét món chiếm nhiều ô nhất, vòng 2 hé lộ phẩm cấp món đó, vòng 4 giám định hoàn chỉnh; vòng 3 hé lộ ngẫu nhiên thêm 1 món có phẩm cấp chưa biết.','large-track','#b4cabe','Bản cân bằng'],
 ].map(([file,name,skill,desc,effect,color,reference],id)=>({id,name,file,skill,desc,effect,color,reference,portrait:`assets/auction/hosts/${file}.webp`,avatar:`assets/auction/hosts/${file}-avatar.webp`}));
 const qualities=[{"name": "Phổ thông", "color": "#adb7bf", "label": "C"}, {"name": "Tinh xảo", "color": "#8ccb9a", "label": "B"}, {"name": "Hiếm", "color": "#80bce8", "label": "A"}, {"name": "Sử thi", "color": "#bb9bec", "label": "S"}, {"name": "Truyền thuyết", "color": "#ffbc61", "label": "SS"}];
 const series=[{"id": "signal", "name": "Sóng Điện Thất Lạc", "category": "Điện tử"}, {"id": "playroom", "name": "Phòng Chiếu Tuổi Thơ", "category": "Đồ chơi"}, {"id": "encore", "name": "Encore Đêm Khuya", "category": "Âm nhạc"}, {"id": "atelier", "name": "Tiểu Vũ Trụ Thủ Công", "category": "Thủ công"}, {"id": "roadtrip", "name": "Dạo Quanh Đô Thị", "category": "Mô hình"}, {"id": "pantry", "name": "Trạm Tiếp Ngọt", "category": "Mô hình kẹo"}, {"id": "archive", "name": "Ký Ức Thành Cũ", "category": "Cổ vật"}, {"id": "anomaly", "name": "Cục Quan Sát Dị Thường", "category": "Kỳ vật"}];
