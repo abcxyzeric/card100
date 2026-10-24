@@ -225,8 +225,8 @@
   };
   const readHudUi = (stat) => {
     const characterCovers = {};
-    const names = Object.keys((stat && stat.对象信息) || {});
-    const rooms = stat?.系统配置?.直播间 || {};
+    const names = Object.keys((stat && (stat['Thông tin đối tượng'] || stat.对象信息)) || {});
+    const rooms = (stat?.['Cấu hình hệ thống'] || stat?.系统配置)?.['Phòng phát sóng'] || (stat?.['Cấu hình hệ thống'] || stat?.系统配置)?.直播间 || {};
     try {
       const core = getCoreWindow();
       const storage = core.localStorage || localStorage;
@@ -449,7 +449,7 @@
   const pushSnapshot = (force) => {
     if (!isOwner()) return;
     const stat = fetchLatestMvuData();
-    const hasWorld = !!(stat && stat.世界信息);
+    const hasWorld = !!(stat && (stat['Thông tin thế giới'] || stat.世界信息));
     showHint(hasWorld ? '' : '等待 MVU 数据…');
     if (!hasWorld) return;
     const snapshot = hudSnapshot(stat);
