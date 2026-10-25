@@ -72,7 +72,7 @@
     return;
   }
   window[GUARD] = SHELL_VERSION;
-  const HUD_URL = 'https://abcxyzeric.github.io/card100/?v=20261025-fix-v10';
+  const HUD_URL = 'https://abcxyzeric.github.io/card100/?v=20261025-fix-v11';
   // const HUD_URL = 'http://127.0.0.1:5173/';
   const CHANNEL = 'linjiang-hud';
   const POLL_MS = 10000;
@@ -1897,16 +1897,16 @@
     if (!btn) return;
     btn.innerHTML = expanded ? FS_ICON_RESTORE : FS_ICON_EXPAND;
     btn.setAttribute('aria-pressed', expanded ? 'true' : 'false');
-    btn.setAttribute('aria-label', expanded ? '还原' : '全屏');
-    btn.title = expanded ? '还原' : '全屏';
+    btn.setAttribute('aria-label', expanded ? 'Khôi phục' : 'Toàn màn hình');
+    btn.title = expanded ? 'Khôi phục' : 'Toàn màn hình';
   };
 
   const syncShrinkButton = (btn) => {
     if (!btn) return;
     btn.innerHTML = compacted ? SHRINK_ICON_OUT : SHRINK_ICON_IN;
     btn.setAttribute('aria-pressed', compacted ? 'true' : 'false');
-    btn.setAttribute('aria-label', compacted ? '展开到页面' : '收回嵌入框');
-    btn.title = compacted ? '展开到页面' : '收回嵌入框';
+    btn.setAttribute('aria-label', compacted ? 'Mở rộng ra trang' : 'Thu gọn vào khung');
+    btn.title = compacted ? 'Mở rộng ra trang' : 'Thu gọn vào khung';
   };
 
   const chromeBtn = (id) => {
@@ -1941,19 +1941,33 @@
     /* 覆盖层期间一律收起：placeFsButton 的调用点很多（重排、跟随滚动、补正），
        在这里挡一次比在每个调用点各判一次可靠。 */
     if (overlayOpen) { hideChromeButtons(); return; }
+    try { ensureFsChrome(); } catch (e) {}
     const tavern = tavernWin();
     const btn = tavern.document.getElementById(HUD_FS_ID);
     if (!btn || !hudFrame || !hudFrame.parentNode) return;
     const box = hudScreenRect();
-    if (!box.width || !box.height) return;
-    const k = Math.min(box.width / BODY_W, box.height / BODY_H);
-    const drawW = BODY_W * k;
-    const drawH = BODY_H * k;
-    const ox = box.left + (box.width - drawW) / 2;
-    const oy = box.top + (box.height - drawH) / 2;
-    const x = ox + (FS_CANVAS_X - 16) * k - FS_SIZE / 2;
-    const y = oy + (FS_CANVAS_Y - 48) * k - FS_SIZE / 2;
-    const z = expanded ? '2147483646' : '50';
+    if (!box.width || !box.height) { hideChromeButtons(); return; }
+    const winH = tavern.innerHeight || 800;
+    if (box.top + box.height < 10 || box.top > winH - 10) {
+      hideChromeButtons();
+      return;
+    }
+
+    let x, y;
+    if (compacted || portraitHud() || hudFrame._linjiangAlign === 'slot' || hudFrame._linjiangAlign === 'inline') {
+      x = Math.round(box.left + box.width - FS_SIZE - 12);
+      y = Math.round(box.top + 12);
+    } else {
+      const k = Math.min(box.width / BODY_W, box.height / BODY_H);
+      const drawW = BODY_W * k;
+      const drawH = BODY_H * k;
+      const ox = box.left + (box.width - drawW) / 2;
+      const oy = box.top + (box.height - drawH) / 2;
+      x = Math.round(ox + (FS_CANVAS_X - 16) * k - FS_SIZE / 2);
+      y = Math.round(oy + (FS_CANVAS_Y - 48) * k - FS_SIZE / 2);
+    }
+
+    const z = '2147483646';
     btn.style.zIndex = z;
     btn.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0)';
     btn.style.visibility = 'visible';
@@ -2361,10 +2375,10 @@
       setHudOffset(x, view.top - clip.top);
     }
     applySlotVisibility(view, box, paneRect);
-    if (align === 'slot') {
-      try { hideChromeButtons(); } catch (e) {}
-    } else if (hudFrame.style.visibility !== 'hidden') {
+    if (hudFrame.style.visibility !== 'hidden') {
       placeFsButton();
+    } else {
+      try { hideChromeButtons(); } catch (e) {}
     }
   };
 
@@ -2469,7 +2483,7 @@
     hudFrame._linjiangAlign = 'slot';
     moveHud(after, box);
     hudFrame._linjiangBox = box;
-    try { hideChromeButtons(); } catch (e) {}
+    placeFsButton();
   };
 
   /* 收回态的原生嵌入（只在 INLINE_DOCK 打开时走到）。
@@ -2539,8 +2553,7 @@
     hudFrame._linjiangBox = { width, height };
     hudFrame._linjiangOffX = 0;
     hudFrame._linjiangOffY = 0;
-    /* 那两颗角钮是注入酒馆顶层文档、按抬起后的 HUD 位置摆的，原生嵌入下没有对应位置。 */
-    try { hideChromeButtons(); } catch (e) {}
+    placeFsButton();
   };
 
   /* 原生嵌入下的「整页」状态（次级页面 / 全屏）。
