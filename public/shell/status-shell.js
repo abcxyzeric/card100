@@ -195,16 +195,74 @@
     },
   };
 
+  const getLatestMvuRecord = () => {
+    try {
+      if (!mvuState.ready && !mvuState.check()) return null;
+      const mvu = mvuState.mvu;
+      if (typeof mvu.getCurrentMvuData === 'function') {
+        const cur = mvu.getCurrentMvuData();
+        if (cur && cur.stat_data && Object.keys(cur.stat_data).length > 0) return cur;
+      }
+      const core = getCoreWindow();
+      let lastId = null;
+      if (typeof mvu.getLastMessageId === 'function') {
+        try { lastId = mvu.getLastMessageId(); } catch (e) {}
+      }
+      if (lastId == null) {
+        const chats = (core && core.SillyTavern && Array.isArray(core.SillyTavern.chat)) ? core.SillyTavern.chat
+          : (window.SillyTavern && Array.isArray(window.SillyTavern.chat)) ? window.SillyTavern.chat : null;
+        if (chats && chats.length > 0) lastId = chats.length - 1;
+      }
+      if (lastId != null && typeof lastId === 'number' && lastId >= 0) {
+        const data = mvu.getMvuData({ type: 'message', message_id: lastId });
+        if (data && data.stat_data && Object.keys(data.stat_data).length > 0) return data;
+      }
+      try {
+        const latestMsg = mvu.getMvuData({ type: 'message', message_id: 'latest' });
+        if (latestMsg && latestMsg.stat_data && Object.keys(latestMsg.stat_data).length > 0) return latestMsg;
+      } catch (e) {}
+      try {
+        const chatData = mvu.getMvuData({ type: 'chat' });
+        if (chatData && chatData.stat_data && Object.keys(chatData.stat_data).length > 0) return chatData;
+      } catch (e) {}
+    } catch (e) {
+      console.warn('[临江状态栏] getLatestMvuRecord thất bại', e);
+    }
+    return null;
+  };
+
+  const replaceLatestMvuRecord = (mvuData) => {
+    try {
+      if (!mvuState.ready && !mvuState.check()) return false;
+      const mvu = mvuState.mvu;
+      const core = getCoreWindow();
+      let lastId = null;
+      if (typeof mvu.getLastMessageId === 'function') {
+        try { lastId = mvu.getLastMessageId(); } catch (e) {}
+      }
+      if (lastId == null) {
+        const chats = (core && core.SillyTavern && Array.isArray(core.SillyTavern.chat)) ? core.SillyTavern.chat
+          : (window.SillyTavern && Array.isArray(window.SillyTavern.chat)) ? window.SillyTavern.chat : null;
+        if (chats && chats.length > 0) lastId = chats.length - 1;
+      }
+      if (lastId != null && typeof lastId === 'number' && lastId >= 0) {
+        mvu.replaceMvuData(mvuData, { type: 'message', message_id: lastId });
+        return true;
+      }
+      mvu.replaceMvuData(mvuData, { type: 'message', message_id: 'latest' });
+      return true;
+    } catch (e) {
+      console.warn('[临江状态栏] replaceLatestMvuRecord thất bại', e);
+      return false;
+    }
+  };
+
   const fetchLatestMvuData = () => {
     let finalData = {};
     try {
-      if (mvuState.ready || mvuState.check()) {
-        const messageData = mvuState.mvu.getMvuData({ type: 'message', message_id: 'latest' });
-        const chatData = mvuState.mvu.getMvuData({ type: 'chat' });
-        const messageStat = messageData?.stat_data || {};
-        const chatStat = chatData?.stat_data || {};
-        if (Object.keys(messageStat).length > 0) finalData = messageStat;
-        else finalData = chatStat;
+      const rec = getLatestMvuRecord();
+      if (rec && rec.stat_data && typeof rec.stat_data === 'object') {
+        finalData = rec.stat_data;
       }
     } catch (e) {
       console.warn('[临江状态栏] MVU 读取失败', e);
@@ -249,7 +307,7 @@
   const applyMvuPatches = (patches) => {
     try {
       if (!mvuState.ready && !mvuState.check()) return false;
-      const mvuData = mvuState.mvu.getMvuData({ type: 'message', message_id: 'latest' });
+      const mvuData = getLatestMvuRecord();
       if (!mvuData?.stat_data) return false;
       (patches || []).forEach((patch) => {
         const parts = String(patch.path || '').split('/').filter(Boolean);
@@ -270,7 +328,7 @@
           delete obj[parts[parts.length - 1]];
         }
       });
-      mvuState.mvu.replaceMvuData(mvuData, { type: 'message', message_id: 'latest' });
+      replaceLatestMvuRecord(mvuData);
       return true;
     } catch (e) {
       console.warn('[临江状态栏] MVU 写入失败', e);
@@ -369,7 +427,7 @@
 
   const recordArcadeEvent = (event) => {
     if (!mvuState.ready && !mvuState.check()) throw new Error('MVU 未就绪');
-    const mvuData = mvuState.mvu.getMvuData({ type: 'message', message_id: 'latest' });
+    const mvuData = getLatestMvuRecord();
     if (!mvuData?.stat_data) throw new Error('MVU 数据为空');
     const stat = mvuData.stat_data;
     const profile = normalizeArcadeProfile(stat.系统配置?.街机);
@@ -412,7 +470,7 @@
     /* 蓝图是街机代币换的，玩街机的人正是持有它的人，这条又是最频繁的写入路径——
        挂在这儿，老存档的旧描述基本上下一次结算就被改正了。 */
     syncBlueprintDescription(stat);
-    mvuState.mvu.replaceMvuData(mvuData, { type: 'message', message_id: 'latest' });
+    replaceLatestMvuRecord(mvuData);
     return { profile, unlocked };
   };
 
@@ -669,7 +727,7 @@
     const isConsumable = bucket === '消耗品' || bucket === 'Vật phẩm tiêu hao';
     if (!name) throw new Error('Tên vật phẩm trống');
     if (!mvuState.ready && !mvuState.check()) throw new Error('MVU chưa sẵn sàng');
-    const mvuData = mvuState.mvu.getMvuData({ type: 'message', message_id: 'latest' });
+    const mvuData = getLatestMvuRecord();
     if (!mvuData?.stat_data) throw new Error('Dữ liệu MVU trống');
     const stat = mvuData.stat_data;
 
@@ -700,7 +758,7 @@
         'Mô tả': description || String(current?.描述 || current?.['Mô tả'] || '')
       };
       cBag[name] = newItem;
-      mvuState.mvu.replaceMvuData(mvuData, { type: 'message', message_id: 'latest' });
+      replaceLatestMvuRecord(mvuData);
       return { bucket, item: newItem };
     } else {
       const uBag = bag['Vật dụng'] || bag.用品 || {};
@@ -723,7 +781,7 @@
         'Đang đeo': false
       };
       uBag[name] = newItem;
-      mvuState.mvu.replaceMvuData(mvuData, { type: 'message', message_id: 'latest' });
+      replaceLatestMvuRecord(mvuData);
       return { bucket, item: newItem };
     }
   };
@@ -822,7 +880,7 @@
 
   const cleanCustomMapWorldbook = async () => {
     if (!mvuState.ready && !mvuState.check()) return { ok: false, removed: 0, added: 0, reason: 'mvu-not-ready' };
-    const mvuData = mvuState.mvu.getMvuData({ type: 'message', message_id: 'latest' });
+    const mvuData = getLatestMvuRecord();
     const nodes = mvuData?.stat_data?.['\u7cfb\u7edf\u914d\u7f6e']?.['\u5730\u56fe']?.['\u81ea\u5efa\u8282\u70b9'];
     const prefix = '\u73a9\u5bb6\u5730\u70b9 - ';
     const entryTitle = entry => String(entry?.name ?? entry?.comment ?? entry?.title ?? '').trim();
@@ -900,7 +958,7 @@
 
   const saveCustomMapNode = async (draft) => {
     if (!mvuState.ready && !mvuState.check()) throw new Error('MVU 未就绪');
-    const mvuData = mvuState.mvu.getMvuData({ type: 'message', message_id: 'latest' });
+    const mvuData = getLatestMvuRecord();
     if (!mvuData?.stat_data) throw new Error('MVU 数据为空');
     const stat = mvuData.stat_data;
     const id = String(draft?.id || `usr_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 7)}`).trim();
@@ -970,7 +1028,7 @@
     stat.玩家信息 = stat.玩家信息 && typeof stat.玩家信息 === 'object' ? stat.玩家信息 : {};
     if (!updating) stat.玩家信息.金钱 = funds - CITY_BUILD_COST;
     syncBlueprintDescription(stat);
-    mvuState.mvu.replaceMvuData(mvuData, { type: 'message', message_id: 'latest' });
+    replaceLatestMvuRecord(mvuData);
     return { node, worldbook, updated: updating, cost: updating ? 0 : CITY_BUILD_COST, money: Number(stat.玩家信息.金钱) || 0 };
   };
 
@@ -978,7 +1036,7 @@
     const nodeId = String(id || '').trim();
     if (!nodeId) throw new Error('节点 ID 为空');
     if (!mvuState.ready && !mvuState.check()) throw new Error('MVU 未就绪');
-    const mvuData = mvuState.mvu.getMvuData({ type: 'message', message_id: 'latest' });
+    const mvuData = getLatestMvuRecord();
     const stat = mvuData?.stat_data;
     const nodes = stat?.系统配置?.地图?.自建节点;
     if (!nodes?.[nodeId]) return true;
@@ -1005,7 +1063,7 @@
       }
     });
     delete nodes[nodeId];
-    mvuState.mvu.replaceMvuData(mvuData, { type: 'message', message_id: 'latest' });
+    replaceLatestMvuRecord(mvuData);
     return true;
   };
 
@@ -1018,7 +1076,7 @@
     if (!name || !label) throw new Error('部位图片参数不完整');
     if (url && !/^https?:\/\//i.test(url)) throw new Error('部位图片只接受 http(s) 网络链接');
     if (!mvuState.ready && !mvuState.check()) throw new Error('MVU 未就绪');
-    const mvuData = mvuState.mvu.getMvuData({ type: 'message', message_id: 'latest' });
+    const mvuData = getLatestMvuRecord();
     const stat = mvuData?.stat_data;
     if (!stat) throw new Error('MVU 数据为空');
     const room = stat?.系统配置?.直播间?.[name];
@@ -1026,7 +1084,7 @@
     room.部位图 = room.部位图 && typeof room.部位图 === 'object' ? room.部位图 : {};
     if (url) room.部位图[label] = url;
     else delete room.部位图[label];
-    mvuState.mvu.replaceMvuData(mvuData, { type: 'message', message_id: 'latest' });
+    replaceLatestMvuRecord(mvuData);
     return { name, part: key, label, url };
   };
 
