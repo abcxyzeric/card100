@@ -199,31 +199,39 @@
     try {
       if (!mvuState.ready && !mvuState.check()) return null;
       const mvu = mvuState.mvu;
-      if (typeof mvu.getCurrentMvuData === 'function') {
-        const cur = mvu.getCurrentMvuData();
-        if (cur && cur.stat_data && Object.keys(cur.stat_data).length > 0) return cur;
-      }
-      const core = getCoreWindow();
-      let lastId = null;
-      if (typeof mvu.getLastMessageId === 'function') {
-        try { lastId = mvu.getLastMessageId(); } catch (e) {}
-      }
-      if (lastId == null) {
-        const chats = (core && core.SillyTavern && Array.isArray(core.SillyTavern.chat)) ? core.SillyTavern.chat
-          : (window.SillyTavern && Array.isArray(window.SillyTavern.chat)) ? window.SillyTavern.chat : null;
-        if (chats && chats.length > 0) lastId = chats.length - 1;
-      }
-      if (lastId != null && typeof lastId === 'number' && lastId >= 0) {
-        const data = mvu.getMvuData({ type: 'message', message_id: lastId });
-        if (data && data.stat_data && Object.keys(data.stat_data).length > 0) return data;
-      }
+
       try {
         const latestMsg = mvu.getMvuData({ type: 'message', message_id: 'latest' });
         if (latestMsg && latestMsg.stat_data && Object.keys(latestMsg.stat_data).length > 0) return latestMsg;
       } catch (e) {}
+
+      try {
+        const core = getCoreWindow();
+        let lastId = null;
+        if (typeof mvu.getLastMessageId === 'function') {
+          try { lastId = mvu.getLastMessageId(); } catch (e) {}
+        }
+        if (lastId == null) {
+          const chats = (core && core.SillyTavern && Array.isArray(core.SillyTavern.chat)) ? core.SillyTavern.chat
+            : (window.SillyTavern && Array.isArray(window.SillyTavern.chat)) ? window.SillyTavern.chat : null;
+          if (chats && chats.length > 0) lastId = chats.length - 1;
+        }
+        if (lastId != null && typeof lastId === 'number' && lastId >= 0) {
+          const data = mvu.getMvuData({ type: 'message', message_id: lastId });
+          if (data && data.stat_data && Object.keys(data.stat_data).length > 0) return data;
+        }
+      } catch (e) {}
+
       try {
         const chatData = mvu.getMvuData({ type: 'chat' });
         if (chatData && chatData.stat_data && Object.keys(chatData.stat_data).length > 0) return chatData;
+      } catch (e) {}
+
+      try {
+        if (typeof mvu.getCurrentMvuData === 'function') {
+          const cur = mvu.getCurrentMvuData();
+          if (cur && cur.stat_data && Object.keys(cur.stat_data).length > 0) return cur;
+        }
       } catch (e) {}
     } catch (e) {
       console.warn('[临江状态栏] getLatestMvuRecord thất bại', e);
