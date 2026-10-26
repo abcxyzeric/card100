@@ -72,7 +72,7 @@
     return;
   }
   window[GUARD] = SHELL_VERSION;
-  const HUD_URL = 'https://abcxyzeric.github.io/card100/?v=20261025-fix-v11';
+  const HUD_URL = 'https://abcxyzeric.github.io/card100/?v=20261026-fix-v12';
   // const HUD_URL = 'http://127.0.0.1:5173/';
   const CHANNEL = 'linjiang-hud';
   const POLL_MS = 10000;
